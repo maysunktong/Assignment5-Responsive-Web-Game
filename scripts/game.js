@@ -93,28 +93,28 @@ function animate() {
 
 animate();
 
-addEventListener("keydown", ({ keyCode }) => {
-  switch (keyCode) {
-    case 87: // jump
+addEventListener("keydown", (event) => {
+  switch (event.code) {
+    case "KeyW": // jump
       player.velocity.y = -20;
       break;
-    case 65: // left
+    case "KeyA": 
       keys.left.pressed = true;
       break;
-    case 68: // right
+    case "KeyD": 
       keys.right.pressed = true;
       break;
   }
 });
 
-addEventListener("keyup", ({ keyCode }) => {
-  switch (keyCode) {
-    case 87:
+addEventListener("keyup", (event) => {
+  switch (event.code) {
+    case "KeyW":
       break;
-    case 65:
+    case "KeyA":
       keys.left.pressed = false;
       break;
-    case 68:
+    case "KeyD":
       keys.right.pressed = false;
       break;
   }
