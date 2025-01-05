@@ -1,8 +1,8 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = 1024;
+canvas.height = 576;
 
 const gravity = 1;
 class Player {
@@ -39,7 +39,6 @@ let player = new Player();
 
 function animate() {
   requestAnimationFrame(animate);
-  ctx.fillStyle = "white";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   player.update();
