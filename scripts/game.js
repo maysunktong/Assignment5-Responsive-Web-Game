@@ -72,12 +72,19 @@ function animate() {
   platform.draw();
 
   // player movement
-  if (keys.right.pressed) {
+  if (keys.right.pressed && player.position.x < 400) {
     player.velocity.x = 5;
-  } else if (keys.left.pressed) {
+  } else if (keys.left.pressed && player.position.x > 100) {
     player.velocity.x = -5;
   } else {
     player.velocity.x = 0;
+    
+    // when players hit edge, platform moves
+    if (keys.right.pressed) {
+      platform.position.x-= 5
+    } else if (keys.left.pressed){
+      platform.position.x += 5
+    }
   }
 
   // collision detection
@@ -98,10 +105,10 @@ addEventListener("keydown", (event) => {
     case "KeyW": // jump
       player.velocity.y = -20;
       break;
-    case "KeyA": 
+    case "KeyA":
       keys.left.pressed = true;
       break;
-    case "KeyD": 
+    case "KeyD":
       keys.right.pressed = true;
       break;
   }
