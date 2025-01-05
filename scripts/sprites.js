@@ -27,6 +27,10 @@ import redWolfRunRight from "../assets/sprites/Werewolf/run_right.png";
 import whiteWolfAttackLeft from "../assets/sprites/Werewolf/attack_left.png";
 import whiteWolfAttackRight from "../assets/sprites/Werewolf/attack_right.png";
 
+import explosionBlue from "../assets/sprites/explosion/explosion_blue.png";
+import explosionBrown from "../assets/sprites/explosion/explosion_brown.png";
+import explosionGreen from "../assets/sprites/explosion/explosion_green.png";
+
 export const sprites = {
   swordsman: {
     idle: {
@@ -72,14 +76,17 @@ export const sprites = {
     walk: {
       right: blackWolfWalkRight,
       left: blackWolfWalkLeft,
+      explosion: explosionBlue,
     },
     run: {
       right: redWolfRunRight,
       left: redWolfRunLeft,
+      explosion: explosionBrown,
     },
     attack: {
       right: whiteWolfAttackRight,
       left: whiteWolfAttackLeft,
+      explosion: explosionGreen,
     },
   },
 };
