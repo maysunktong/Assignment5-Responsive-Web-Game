@@ -1,35 +1,35 @@
-import swordsManIdleRight from "../assets/sprites/Swordsman/Idle.png";
-import swordsManIdleLeft from "../assets/sprites/Swordsman/left/Idle_left.png";
-import swordsManRunLeft from "../assets/sprites/Swordsman/left/Run_left.png";
-import swordsManRunRight from "../assets/sprites/Swordsman/Run.png";
+const swordsManIdleRight = "../assets/sprites/Swordsman/Idle.png";
+const swordsManIdleLeft = "../assets/sprites/Swordsman/left/Idle_left.png";
+const swordsManRunLeft = "../assets/sprites/Swordsman/left/Run_left.png";
+const swordsManRunRight = "../assets/sprites/Swordsman/Run.png";
 
-import wizardIdleRight from "../assets/sprites/Wizard/Idle.png";
-import wizardIdleLeft from "../assets/sprites/Wizard/left/Idle_left.png";
-import wizardRunLeft from "../assets/sprites/Wizard/left/Run_left.png";
-import wizardRunRight from "../assets/sprites/Wizard/Run.png";
+const wizardIdleRight = "../assets/sprites/Wizard/Idle.png";
+const wizardIdleLeft = "../assets/sprites/Wizard/left/Idle_left.png";
+const wizardRunLeft = "../assets/sprites/Wizard/left/Run_left.png";
+const wizardRunRight = "../assets/sprites/Wizard/Run.png";
 
-import musketeerIdleRight from "../assets/sprites/Musketeer/Idle.png";
-import musketeerIdleLeft from "../assets/sprites/Musketeer/left/Idle_left.png";
-import musketeerRunLeft from "../assets/sprites/Musketeer/left/Run_left.png";
-import musketeerRunRight from "../assets/sprites/Musketeer/Run.png";
+const musketeerIdleRight = "../assets/sprites/Musketeer/Idle.png";
+const musketeerIdleLeft = "../assets/sprites/Musketeer/left/Idle_left.png";
+const musketeerRunLeft = "../assets/sprites/Musketeer/left/Run_left.png";
+const musketeerRunRight = "../assets/sprites/Musketeer/Run.png";
 
-import archerIdleRight from "../assets/sprites/Archer/Idle.png";
-import archerIdleLeft from "../assets/sprites/Archer/left/Idle_left.png";
-import archerRunLeft from "../assets/sprites/Archer/left/Run_left.png";
-import archerRunRight from "../assets/sprites/Archer/Run.png";
+const archerIdleRight = "../assets/sprites/Archer/Idle.png";
+const archerIdleLeft = "../assets/sprites/Archer/left/Idle_left.png";
+const archerRunLeft = "../assets/sprites/Archer/left/Run_left.png";
+const archerRunRight = "../assets/sprites/Archer/Run.png";
 
-import blackWolfWalkLeft from "../assets/sprites/Werewolf/walk_left.png";
-import blackWolfWalkRight from "../assets/sprites/Werewolf/walk_right.png";
+const blackWolfWalkLeft = "../assets/sprites/Werewolf/walk_left.png";
+const blackWolfWalkRight = "../assets/sprites/Werewolf/walk_right.png";
 
-import redWolfRunLeft from "../assets/sprites/Werewolf/run_left.png";
-import redWolfRunRight from "../assets/sprites/Werewolf/run_right.png";
+const redWolfRunLeft = "../assets/sprites/Werewolf/run_left.png";
+const redWolfRunRight = "../assets/sprites/Werewolf/run_right.png";
 
-import whiteWolfAttackLeft from "../assets/sprites/Werewolf/attack_left.png";
-import whiteWolfAttackRight from "../assets/sprites/Werewolf/attack_right.png";
+const whiteWolfAttackLeft = "../assets/sprites/Werewolf/attack_left.png";
+const whiteWolfAttackRight = "../assets/sprites/Werewolf/attack_right.png";
 
-import explosionBlue from "../assets/sprites/explosion/explosion_blue.png";
-import explosionBrown from "../assets/sprites/explosion/explosion_brown.png";
-import explosionGreen from "../assets/sprites/explosion/explosion_green.png";
+const explosionBlue = "../assets/sprites/explosion/explosion_blue.png";
+const explosionBrown = "../assets/sprites/explosion/explosion_brown.png";
+const explosionGreen = "../assets/sprites/explosion/explosion_green.png";
 
 export const sprites = {
   swordsman: {

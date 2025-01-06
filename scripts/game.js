@@ -1,3 +1,6 @@
+import { images } from "./images.js";
+import { createImage } from "./utils.js";
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -5,6 +8,7 @@ canvas.width = 1024;
 canvas.height = 576;
 
 const gravity = 1;
+
 class Player {
   constructor() {
     this.position = {
@@ -37,23 +41,29 @@ class Player {
 }
 
 class Platform {
-  constructor({ x, y }) {
+  constructor({ x, y, image }) {
     this.position = {
       x,
       y,
     };
-    this.width = 200;
-    this.height = 10;
+
+    this.image = image;
+
+    this.width = image.width;
+    this.height = image.height;
   }
 
   draw() {
-    ctx.fillStyle = "red";
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+    ctx.drawImage(this.image, this.position.x, this.position.y);
   }
 }
 
 let player = new Player();
-let platforms = [new Platform({x: 200, y: 300}), new Platform({x: 500, y: 400})];
+
+let platforms = [
+  new Platform({ x: 200, y: 300, image: createImage(images.pillars.long) }),
+  new Platform({ x: 500, y: 400, image: createImage(images.pillars.long) }),
+];
 
 let keys = {
   right: {
@@ -65,8 +75,6 @@ let keys = {
 };
 
 let scrollOffset = 0;
-
-async function init() {}
 
 function animate() {
   requestAnimationFrame(animate);
@@ -112,8 +120,8 @@ function animate() {
       player.velocity.y = 0;
   });
 
-  if (scrollOffset > 1000){
-    alert("You win!")
+  if (scrollOffset > 1000) {
+    console.log("You win 🥳");
   }
 }
 
