@@ -40,7 +40,7 @@ class Player {
   }
 }
 
-class Platform {
+export class Platform {
   constructor({ x, y, image }) {
     this.position = {
       x,
@@ -106,79 +106,77 @@ let scrollOffset = 0;
 // initializing the game: restart
 const init = () => {
   player = new Player();
-  platforms = [
-    new Platform({
-      x: 0,
-      y: 500,
-      image: imagePlatforms.pmd,
-    }),
-    new Platform({
-      x: imagePlatforms.pmd.width + 200,
-      y: 500,
-      image: imagePlatforms.tpmd,
-    }),
-    new Platform({
-      x: imagePlatforms.pmd.width + 200 + imagePlatforms.tpmd.width + 200,
-      y: 400,
-      image: imagePlatforms.bmd,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.pmd.width +
-        200 +
-        imagePlatforms.tpmd.width +
-        200 +
-        imagePlatforms.bmd.width +
-        200,
-      y: 300,
-      image: imagePlatforms.blg,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.pmd.width +
-        200 +
-        imagePlatforms.tpmd.width +
-        200 +
-        imagePlatforms.bmd.width +
-        200 +
-        imagePlatforms.blg.width +
-        200,
-      y: 200,
-      image: imagePlatforms.blg,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.pmd.width +
-        200 +
-        imagePlatforms.tpmd.width +
-        200 +
-        imagePlatforms.bmd.width +
-        200 +
-        imagePlatforms.blg.width +
-        200 +
-        imagePlatforms.blg.width +
-        200,
-      y: 400,
-      image: imagePlatforms.tpplg,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.pmd.width +
-        200 +
-        imagePlatforms.tpmd.width +
-        200 +
-        imagePlatforms.bmd.width +
-        200 +
-        imagePlatforms.blg.width +
-        200 +
-        imagePlatforms.blg.width +
-        200 +
-        imagePlatforms.tpplg.width +
-        200,
-      y: 500,
-      image: imagePlatforms.tpmd,
-    }),
-  ];
+  platforms = [new Platform({
+    x: 0,
+    y: 500,
+    image: imagePlatforms.pmd,
+  }),
+  new Platform({
+    x: imagePlatforms.pmd.width + 200,
+    y: 500,
+    image: imagePlatforms.tpmd,
+  }),
+  new Platform({
+    x: imagePlatforms.pmd.width + 200 + imagePlatforms.tpmd.width + 200,
+    y: 400,
+    image: imagePlatforms.bmd,
+  }),
+  new Platform({
+    x:
+      imagePlatforms.pmd.width +
+      200 +
+      imagePlatforms.tpmd.width +
+      200 +
+      imagePlatforms.bmd.width +
+      200,
+    y: 300,
+    image: imagePlatforms.blg,
+  }),
+  new Platform({
+    x:
+      imagePlatforms.pmd.width +
+      200 +
+      imagePlatforms.tpmd.width +
+      200 +
+      imagePlatforms.bmd.width +
+      200 +
+      imagePlatforms.blg.width +
+      200,
+    y: 200,
+    image: imagePlatforms.blg,
+  }),
+  new Platform({
+    x:
+      imagePlatforms.pmd.width +
+      200 +
+      imagePlatforms.tpmd.width +
+      200 +
+      imagePlatforms.bmd.width +
+      200 +
+      imagePlatforms.blg.width +
+      200 +
+      imagePlatforms.blg.width +
+      200,
+    y: 400,
+    image: imagePlatforms.tpplg,
+  }),
+  new Platform({
+    x:
+      imagePlatforms.pmd.width +
+      200 +
+      imagePlatforms.tpmd.width +
+      200 +
+      imagePlatforms.bmd.width +
+      200 +
+      imagePlatforms.blg.width +
+      200 +
+      imagePlatforms.blg.width +
+      200 +
+      imagePlatforms.tpplg.width +
+      200,
+    y: 500,
+    image: imagePlatforms.tpmd,
+  }),];
 
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
@@ -240,6 +238,86 @@ const init = () => {
         500,
       y: 50,
       image: objects.trees.green3,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500 +
+        objects.trees.green3.width +
+        300,
+      y: 100,
+      image: objects.trees.brown1,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.brown1.width +
+        300,
+      y: 100,
+      image: objects.trees.brown2,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.brown1.width +
+        300 +
+        objects.trees.brown2.width +
+        500,
+      y: 100,
+      image: objects.trees.brown3,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.brown1.width +
+        300 +
+        objects.trees.brown2.width +
+        500 +
+        objects.trees.brown3.width +
+        300,
+      y: 100,
+      image: objects.trees.brown1,
     }),
   ];
 
