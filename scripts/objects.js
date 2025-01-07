@@ -7,16 +7,24 @@ const collectibleRedRunes = "../assets/sprites/collectibles/redRunes.png";
 const collectibleRuby = "../assets/sprites/collectibles/ruby.png";
 const collectibleStars = "../assets/sprites/collectibles/stars.png";
 
-const platform = "../assets/images/platforms/1plg.png";
-const trees = "../assets/images/objects/Environment/Bottle.png";
-const background = "../assets/images/objects/Environment/Bucket.png";
-const rocks = "../assets/images/objects/Environment/Decor_Bread.png";
+const green1 = "../assets/images/trees/green1.png";
+const green2 = "../assets/images/trees/green2.png";
+const green3 = "../assets/images/trees/green3.png";
+
+const brown1 = "../assets/images/trees/brown1.png";
+const brown2 = "../assets/images/trees/brown2.png";
+const brown3 = "../assets/images/trees/brown3.png";
+
+const bgForest = "../assets/images/backgrounds/bg_forest.png";
+const bgNight = "../assets/images/backgrounds/bg_night.png";
+const bgSky = "../assets/images/backgrounds/bg_sky.png";
 
 export const objects = {
-  platform: createImage(platform),
-  trees: createImage(trees),
-  background: createImage(background),
-  rocks: createImage(rocks),
+  backgrounds: {
+    forest: createImage(bgForest),
+    night: createImage(bgNight),
+    sky: createImage(bgSky),
+  },
   collectibles: {
     stars: createImage(collectibleStars),
     coins: createImage(collectibleCoins),
@@ -24,5 +32,13 @@ export const objects = {
     greenRunes: createImage(collectibleGreenRunes),
     redRunes: createImage(collectibleRedRunes),
     ruby: createImage(collectibleRuby),
+  },
+  trees: {
+    green1: createImage(green1),
+    green2: createImage(green2),
+    green3: createImage(green3),
+    brown1: createImage(brown1),
+    brown2: createImage(brown2),
+    brown3: createImage(brown3),
   },
 };

@@ -72,10 +72,27 @@ class GenericObject {
   }
 }
 
+class Background {
+  constructor({ x, y, image }) {
+    this.position = {
+      x,
+      y,
+    };
+    this.image = image;
+    this.width = image.width;
+    this.height = image.height;
+  }
+
+  draw() {
+    ctx.drawImage(this.image, this.position.x, this.position.y);
+  }
+}
+
 /* declare variables for init() */
 let player = new Player();
 let platforms = [];
 let genericObjects = [];
+let backgrounds = [];
 let keys = {
   right: {
     pressed: false,
@@ -129,16 +146,29 @@ const init = () => {
       image: imagePlatforms.pplg,
     }),
   ];
+
+  for (let i = 0; i < 10; i++) {
+    backgrounds.push(
+      new Background({
+        x: i * objects.backgrounds.forest.width,
+        y: 0,
+        image: objects.backgrounds.forest,
+      })
+    );
+  }
+
   genericObjects = [
-    new GenericObject({ x: 0, y: 0, image: objects.background }),
+    new GenericObject({ x: 0, y: 0, image: objects.trees.green1 }),
     new GenericObject({
-      x: objects.background.width,
+      x: imagePlatforms.psm.width,
       y: 0,
-      image: objects.background,
+      image: objects.trees.green3,
     }),
-    new GenericObject({ x: 0, y: 440, image: objects.trees }),
-    new GenericObject({ x: 200, y: 440, image: objects.trees }),
-    new GenericObject({ x: 600, y: 440, image: objects.trees }),
+    new GenericObject({
+      x: imagePlatforms.psm.width * 2,
+      y: 0,
+      image: objects.trees.green2,
+    }),
   ];
 
   // how far have platform scrolled
@@ -152,9 +182,14 @@ const animate = () => {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  backgrounds.forEach((background) => {
+    background.draw();
+  });
+
   genericObjects.forEach((genericObject) => {
     genericObject.draw();
   });
+
   // render multiple platforms
   platforms.forEach((platform) => {
     platform.draw();
@@ -182,6 +217,9 @@ const animate = () => {
       genericObjects.forEach((genericObject) => {
         genericObject.position.x -= player.speed * 0.7;
       });
+      backgrounds.forEach((background) => {
+        background.position.x -= player.speed * 0.7;
+      });
     } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
       platforms.forEach((platform) => {
@@ -189,6 +227,9 @@ const animate = () => {
       });
       genericObjects.forEach((genericObject) => {
         genericObject.position.x += player.speed * 0.7;
+      });
+      backgrounds.forEach((background) => {
+        background.position.x += player.speed * 0.7;
       });
     }
   }
@@ -223,7 +264,7 @@ animate();
 addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
-      player.velocity.y -= 10;
+      player.velocity.y -= 15;
       break;
     case "KeyA":
       keys.left.pressed = true;
