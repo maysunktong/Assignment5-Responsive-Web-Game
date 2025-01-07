@@ -1,4 +1,5 @@
-import { objects } from './objects.js';
+import { objects } from "./objects.js";
+import { imagePlatforms } from "./platforms.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -89,12 +90,43 @@ let scrollOffset = 0;
 const init = () => {
   player = new Player();
   platforms = [
-    new Platform({ x: 0, y: 500, image: objects.platform }),
-    new Platform({ x: objects.platform.width, y: 500, image: objects.platform }),
     new Platform({
-      x: objects.platform.width * 2 + 100,
+      x: 0,
       y: 500,
-      image: objects.platform,
+      image: imagePlatforms.plg,
+    }),
+    new Platform({
+      x: imagePlatforms.plg.width + 100,
+      y: 400,
+      image: imagePlatforms.bsm,
+    }),
+    new Platform({
+      x: imagePlatforms.plg.width + 100 + imagePlatforms.bsm.width + 100,
+      y: 300,
+      image: imagePlatforms.bmd,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.plg.width +
+        100 +
+        imagePlatforms.bsm.width +
+        100 +
+        imagePlatforms.bmd.width +
+        100,
+      y: 200,
+      image: imagePlatforms.blg,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.plg.width +
+        100 +
+        imagePlatforms.bsm.width +
+        100 +
+        imagePlatforms.bmd.width +
+        100 +
+        imagePlatforms.blg.width,
+      y: 500,
+      image: imagePlatforms.pplg,
     }),
   ];
   genericObjects = [
@@ -188,41 +220,29 @@ const animate = () => {
 init();
 animate();
 
-addEventListener("keydown", ({ keyCode }) => {
-  switch (keyCode) {
-    case 87:
-      console.log("up");
+addEventListener("keydown", (event) => {
+  switch (event.code) {
+    case "KeyW":
       player.velocity.y -= 10;
       break;
-    case 83:
-      console.log("down");
-      break;
-    case 65:
-      console.log("left");
+    case "KeyA":
       keys.left.pressed = true;
       break;
-    case 68:
-      console.log("right");
+    case "KeyD":
       keys.right.pressed = true;
       break;
   }
 });
 
-addEventListener("keyup", ({ keyCode }) => {
-  switch (keyCode) {
-    case 87:
-      console.log("up");
+addEventListener("keyup", (event) => {
+  switch (event.code) {
+    case "KeyW":
       player.velocity.y = 0;
       break;
-    case 83:
-      console.log("down");
-      break;
-    case 65:
-      console.log("left");
+    case "KeyA":
       keys.left.pressed = false;
       break;
-    case 68:
-      console.log("right");
+    case "KeyD":
       keys.right.pressed = false;
       break;
   }

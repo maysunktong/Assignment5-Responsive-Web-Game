@@ -1,4 +1,4 @@
-import { createImageAsync } from './utils.js';
+import { createImageAsync } from "./utils.js";
 
 const sm = "../assets/images/platforms/sm.png";
 const md = "../assets/images/platforms/md.png";
@@ -35,7 +35,10 @@ const tplg = "../assets/images/platforms/1tplg.png";
 const tpplg = "../assets/images/platforms/2tplg.png";
 const tppplg = "../assets/images/platforms/3tplg.png";
 
-export const platforms = {
+const longxl = "../assets/images/platforms/longxl.png";
+const hlongxl = "../assets/images/platforms/hlongxl.png";
+
+export const imagePlatforms = {
   sm: await createImageAsync(sm),
   md: await createImageAsync(md),
   lg: await createImageAsync(lg),
@@ -50,5 +53,8 @@ export const platforms = {
   pmd: await createImageAsync(pmd),
   ppmd: await createImageAsync(ppmd),
   pppmd: await createImageAsync(pppmd),
-  
+  longxl: await createImageAsync(longxl),
+  hlongxl: await createImageAsync(hlongxl),
+  plg: await createImageAsync(plg),
+  pplg: await createImageAsync(pplg)
 };
