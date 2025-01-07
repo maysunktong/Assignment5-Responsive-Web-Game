@@ -1,4 +1,4 @@
-import { createImageAsync } from './utils';
+import { createImageAsync } from './utils.js';
 
 const sm = "../assets/images/platforms/sm.png";
 const md = "../assets/images/platforms/md.png";

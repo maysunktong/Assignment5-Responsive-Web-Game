@@ -1,5 +1,4 @@
-import { platforms } from "./platforms.js";
-import { createImage } from "./utils.js";
+import { objects } from './objects.js';
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -7,7 +6,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 1024;
 canvas.height = 576;
 
-const gravity = 1;
+const gravity = 0.5;
 
 class Player {
   constructor() {
@@ -15,17 +14,18 @@ class Player {
       x: 100,
       y: 100,
     };
-    this.width = 50;
-    this.height = 50;
-
+    this.width = 30;
+    this.height = 30;
     this.velocity = {
+      // player will draw downward only, y-axis
       x: 0,
       y: 0,
     };
+    this.speed = 10;
   }
 
   draw() {
-    ctx.fillStyle = "green";
+    ctx.fillStyle = "red";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
@@ -36,7 +36,6 @@ class Player {
 
     if (this.position.y + this.height + this.velocity.y <= canvas.height)
       this.velocity.y += gravity;
-    else this.velocity.y = 0;
   }
 }
 
@@ -46,9 +45,7 @@ class Platform {
       x,
       y,
     };
-
     this.image = image;
-
     this.width = image.width;
     this.height = image.height;
   }
@@ -58,13 +55,26 @@ class Platform {
   }
 }
 
+class GenericObject {
+  constructor({ x, y, image }) {
+    this.position = {
+      x,
+      y,
+    };
+    this.image = image;
+    this.width = image.width;
+    this.height = image.height;
+  }
+
+  draw() {
+    ctx.drawImage(this.image, this.position.x, this.position.y);
+  }
+}
+
+/* declare variables for init() */
 let player = new Player();
-
-let platforms = [
-  new Platform({ x: 200, y: 300, image:  }),
-  new Platform({ x: 500, y: 400, image: }),
-];
-
+let platforms = [];
+let genericObjects = [];
 let keys = {
   right: {
     pressed: false,
@@ -73,42 +83,85 @@ let keys = {
     pressed: false,
   },
 };
-
 let scrollOffset = 0;
 
-function animate() {
+// initializing the game: restart
+const init = () => {
+  player = new Player();
+  platforms = [
+    new Platform({ x: 0, y: 500, image: objects.platform }),
+    new Platform({ x: objects.platform.width, y: 500, image: objects.platform }),
+    new Platform({
+      x: objects.platform.width * 2 + 100,
+      y: 500,
+      image: objects.platform,
+    }),
+  ];
+  genericObjects = [
+    new GenericObject({ x: 0, y: 0, image: objects.background }),
+    new GenericObject({
+      x: objects.background.width,
+      y: 0,
+      image: objects.background,
+    }),
+    new GenericObject({ x: 0, y: 440, image: objects.trees }),
+    new GenericObject({ x: 200, y: 440, image: objects.trees }),
+    new GenericObject({ x: 600, y: 440, image: objects.trees }),
+  ];
+
+  // how far have platform scrolled
+  scrollOffset = 0;
+};
+
+// loop over animate()
+
+const animate = () => {
   requestAnimationFrame(animate);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  player.update();
-
+  genericObjects.forEach((genericObject) => {
+    genericObject.draw();
+  });
+  // render multiple platforms
   platforms.forEach((platform) => {
     platform.draw();
   });
+  // player has to be generated after platforms
+  player.update();
 
-  // player movement
+  // key bindings management, limit player's distance
   if (keys.right.pressed && player.position.x < 400) {
-    player.velocity.x = 5;
-  } else if (keys.left.pressed && player.position.x > 100) {
-    player.velocity.x = -5;
+    player.velocity.x = player.speed;
+  } else if (
+    (keys.left.pressed && player.position.x > 100) ||
+    (keys.left.pressed && scrollOffset === 0 && player.position.x > 0)
+  ) {
+    player.velocity.x = -player.speed;
   } else {
     player.velocity.x = 0;
 
-    // when players hit edge, platform moves
+    // platform scrolling
     if (keys.right.pressed) {
+      scrollOffset += player.speed;
       platforms.forEach((platform) => {
-        platform.position.x -= 5;
+        platform.position.x -= player.speed;
       });
-      scrollOffset += 5;
-    } else if (keys.left.pressed) {
-      scrollOffset -= 5;
+      genericObjects.forEach((genericObject) => {
+        genericObject.position.x -= player.speed * 0.7;
+      });
+    } else if (keys.left.pressed && scrollOffset > 0) {
+      scrollOffset -= player.speed;
       platforms.forEach((platform) => {
-        platform.position.x += 5;
+        platform.position.x += player.speed;
+      });
+      genericObjects.forEach((genericObject) => {
+        genericObject.position.x += player.speed * 0.7;
       });
     }
   }
 
-  // collision detection
+  // platform collision detection
   platforms.forEach((platform) => {
     if (
       player.position.y + player.height <= platform.position.y &&
@@ -116,39 +169,60 @@ function animate() {
         platform.position.y &&
       player.position.x + player.width >= platform.position.x &&
       player.position.x <= platform.position.x + platform.width
-    )
+    ) {
       player.velocity.y = 0;
+    }
   });
 
-  if (scrollOffset > 1000) {
-    console.log("You win 🥳");
+  // WIN condition
+  if (scrollOffset > 3000) {
+    console.log("You win");
   }
-}
 
+  // LOSE condition: death pits
+  if (player.position.y > canvas.width) {
+    init();
+  }
+};
+
+init();
 animate();
 
-addEventListener("keydown", (event) => {
-  switch (event.code) {
-    case "KeyW": // jump
-      player.velocity.y = -20;
+addEventListener("keydown", ({ keyCode }) => {
+  switch (keyCode) {
+    case 87:
+      console.log("up");
+      player.velocity.y -= 10;
       break;
-    case "KeyA":
+    case 83:
+      console.log("down");
+      break;
+    case 65:
+      console.log("left");
       keys.left.pressed = true;
       break;
-    case "KeyD":
+    case 68:
+      console.log("right");
       keys.right.pressed = true;
       break;
   }
 });
 
-addEventListener("keyup", (event) => {
-  switch (event.code) {
-    case "KeyW":
+addEventListener("keyup", ({ keyCode }) => {
+  switch (keyCode) {
+    case 87:
+      console.log("up");
+      player.velocity.y = 0;
       break;
-    case "KeyA":
+    case 83:
+      console.log("down");
+      break;
+    case 65:
+      console.log("left");
       keys.left.pressed = false;
       break;
-    case "KeyD":
+    case 68:
+      console.log("right");
       keys.right.pressed = false;
       break;
   }

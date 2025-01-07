@@ -1,13 +1,22 @@
-import { createImage } from "./utils";
+import { createImage } from "./utils.js";
 
-import collectibleCoins from "../assets/sprites/collectibles/coins.png";
-import collectibleDiamonds from "../assets/sprites/collectibles/diamonds.png";
-import collectibleGreenRunes from "../assets/sprites/collectibles/greenRunes.png";
-import collectibleRedRunes from "../assets/sprites/collectibles/redRunes.png";
-import collectibleRuby from "../assets/sprites/collectibles/ruby.png";
-import collectibleStars from "../assets/sprites/collectibles/stars.png";
+const collectibleCoins = "../assets/sprites/collectibles/coins.png";
+const collectibleDiamonds = "../assets/sprites/collectibles/diamonds.png";
+const collectibleGreenRunes = "../assets/sprites/collectibles/greenRunes.png";
+const collectibleRedRunes = "../assets/sprites/collectibles/redRunes.png";
+const collectibleRuby = "../assets/sprites/collectibles/ruby.png";
+const collectibleStars = "../assets/sprites/collectibles/stars.png";
+
+const platform = "../assets/images/platforms/1plg.png";
+const trees = "../assets/images/objects/Environment/Bottle.png";
+const background = "../assets/images/objects/Environment/Bucket.png";
+const rocks = "../assets/images/objects/Environment/Decor_Bread.png";
 
 export const objects = {
+  platform: createImage(platform),
+  trees: createImage(trees),
+  background: createImage(background),
+  rocks: createImage(rocks),
   collectibles: {
     stars: createImage(collectibleStars),
     coins: createImage(collectibleCoins),
