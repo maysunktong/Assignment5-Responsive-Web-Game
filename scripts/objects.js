@@ -5,11 +5,13 @@ import collectibleRedRunes from "../assets/sprites/collectibles/redRunes.png";
 import collectibleRuby from "../assets/sprites/collectibles/ruby.png";
 import collectibleStars from "../assets/sprites/collectibles/stars.png";
 
-export const collectibles = {
-  stars: collectibleStars,
-  coins: collectibleCoins,
-  diamonds: collectibleDiamonds,
-  greenRunes: collectibleGreenRunes,
-  redRunes: collectibleRedRunes,
-  ruby: collectibleRuby,
+export const objects = {
+  collectibles: {
+    stars: collectibleStars,
+    coins: collectibleCoins,
+    diamonds: collectibleDiamonds,
+    greenRunes: collectibleGreenRunes,
+    redRunes: collectibleRedRunes,
+    ruby: collectibleRuby,
+  },
 };

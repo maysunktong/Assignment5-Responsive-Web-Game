@@ -1,4 +1,4 @@
-import { images } from "./images.js";
+import { platforms } from "./platforms.js";
 import { createImage } from "./utils.js";
 
 const canvas = document.querySelector("canvas");
@@ -61,8 +61,8 @@ class Platform {
 let player = new Player();
 
 let platforms = [
-  new Platform({ x: 200, y: 300, image: createImage(images.pillars.long) }),
-  new Platform({ x: 500, y: 400, image: createImage(images.pillars.long) }),
+  new Platform({ x: 200, y: 300, image:  }),
+  new Platform({ x: 500, y: 400, image: }),
 ];
 
 let keys = {

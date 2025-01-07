@@ -1,3 +1,5 @@
+import { createImage } from "./utils";
+
 const swordsManIdleRight = "../assets/sprites/Swordsman/Idle.png";
 const swordsManIdleLeft = "../assets/sprites/Swordsman/left/Idle_left.png";
 const swordsManRunLeft = "../assets/sprites/Swordsman/left/Run_left.png";
@@ -34,59 +36,59 @@ const explosionGreen = "../assets/sprites/explosion/explosion_green.png";
 export const sprites = {
   swordsman: {
     idle: {
-      right: swordsManIdleRight,
-      left: swordsManIdleLeft,
+      right: createImage(swordsManIdleRight),
+      left: createImage(swordsManIdleLeft),
     },
     run: {
-      right: swordsManRunRight,
-      left: swordsManRunLeft,
+      right: createImage(swordsManRunRight),
+      left: createImage(swordsManRunLeft),
     },
   },
   wizard: {
     idle: {
-      right: wizardIdleRight,
-      left: wizardIdleLeft,
+      right: createImage(wizardIdleRight),
+      left: createImage(wizardIdleLeft),
     },
     run: {
-      right: wizardRunRight,
-      left: wizardRunLeft,
+      right: createImage(wizardRunRight),
+      left: createImage(wizardRunLeft),
     },
   },
   musketeer: {
     idle: {
-      right: musketeerIdleRight,
-      left: musketeerIdleLeft,
+      right: createImage(musketeerIdleRight),
+      left: createImage(musketeerIdleLeft),
     },
     run: {
-      right: musketeerRunRight,
-      left: musketeerRunLeft,
+      right: createImage(musketeerRunRight),
+      left: createImage(musketeerRunLeft),
     },
   },
   archer: {
     idle: {
-      right: archerIdleRight,
-      left: archerIdleLeft,
+      right: createImage(archerIdleRight),
+      left: createImage(archerIdleLeft),
     },
     run: {
-      right: archerRunRight,
-      left: archerRunLeft,
+      right: createImage(archerRunRight),
+      left: createImage(archerRunLeft),
     },
   },
   werewolf: {
     walk: {
-      right: blackWolfWalkRight,
-      left: blackWolfWalkLeft,
-      explosion: explosionBlue,
+      right: createImage(blackWolfWalkRight),
+      left: createImage(blackWolfWalkLeft),
+      explosion: createImage(explosionBlue),
     },
     run: {
-      right: redWolfRunRight,
-      left: redWolfRunLeft,
-      explosion: explosionBrown,
+      right: createImage(redWolfRunRight),
+      left: createImage(redWolfRunLeft),
+      explosion: createImage(explosionBrown),
     },
     attack: {
-      right: whiteWolfAttackRight,
-      left: whiteWolfAttackLeft,
-      explosion: explosionGreen,
+      right: createImage(whiteWolfAttackRight),
+      left: createImage(whiteWolfAttackLeft),
+      explosion: createImage(explosionGreen),
     },
   },
 };
