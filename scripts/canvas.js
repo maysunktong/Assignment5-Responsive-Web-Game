@@ -110,40 +110,73 @@ const init = () => {
     new Platform({
       x: 0,
       y: 500,
-      image: imagePlatforms.plg,
+      image: imagePlatforms.pmd,
     }),
     new Platform({
-      x: imagePlatforms.plg.width + 100,
+      x: imagePlatforms.pmd.width + 200,
+      y: 500,
+      image: imagePlatforms.tpmd,
+    }),
+    new Platform({
+      x: imagePlatforms.pmd.width + 200 + imagePlatforms.tpmd.width + 200,
       y: 400,
-      image: imagePlatforms.bsm,
-    }),
-    new Platform({
-      x: imagePlatforms.plg.width + 100 + imagePlatforms.bsm.width + 100,
-      y: 300,
       image: imagePlatforms.bmd,
     }),
     new Platform({
       x:
-        imagePlatforms.plg.width +
-        100 +
-        imagePlatforms.bsm.width +
-        100 +
+        imagePlatforms.pmd.width +
+        200 +
+        imagePlatforms.tpmd.width +
+        200 +
         imagePlatforms.bmd.width +
-        100,
+        200,
+      y: 300,
+      image: imagePlatforms.blg,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.pmd.width +
+        200 +
+        imagePlatforms.tpmd.width +
+        200 +
+        imagePlatforms.bmd.width +
+        200 +
+        imagePlatforms.blg.width +
+        200,
       y: 200,
       image: imagePlatforms.blg,
     }),
     new Platform({
       x:
-        imagePlatforms.plg.width +
-        100 +
-        imagePlatforms.bsm.width +
-        100 +
+        imagePlatforms.pmd.width +
+        200 +
+        imagePlatforms.tpmd.width +
+        200 +
         imagePlatforms.bmd.width +
-        100 +
-        imagePlatforms.blg.width,
+        200 +
+        imagePlatforms.blg.width +
+        200 +
+        imagePlatforms.blg.width +
+        200,
+      y: 400,
+      image: imagePlatforms.tpplg,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.pmd.width +
+        200 +
+        imagePlatforms.tpmd.width +
+        200 +
+        imagePlatforms.bmd.width +
+        200 +
+        imagePlatforms.blg.width +
+        200 +
+        imagePlatforms.blg.width +
+        200 +
+        imagePlatforms.tpplg.width +
+        200,
       y: 500,
-      image: imagePlatforms.pplg,
+      image: imagePlatforms.tpmd,
     }),
   ];
 
@@ -160,22 +193,59 @@ const init = () => {
   genericObjects = [
     new GenericObject({ x: 0, y: 0, image: objects.trees.green1 }),
     new GenericObject({
-      x: imagePlatforms.psm.width,
-      y: 0,
+      x: objects.trees.green1.width + 300,
+      y: 50,
       image: objects.trees.green3,
     }),
     new GenericObject({
-      x: imagePlatforms.psm.width * 2,
-      y: 0,
+      x: objects.trees.green1.width + 300 + objects.trees.green3.width + 200,
+      y: 50,
       image: objects.trees.green2,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200,
+      y: 50,
+      image: objects.trees.green3,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300,
+      y: 50,
+      image: objects.trees.green2,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500,
+      y: 50,
+      image: objects.trees.green3,
     }),
   ];
 
   // how far have platform scrolled
   scrollOffset = 0;
 };
-
-// loop over animate()
 
 const animate = () => {
   requestAnimationFrame(animate);
@@ -248,9 +318,9 @@ const animate = () => {
   });
 
   // WIN condition
-  if (scrollOffset > 3000) {
-    console.log("You win");
-  }
+  // if (scrollOffset > 3000) {
+  //   console.log("You win");
+  // }
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
