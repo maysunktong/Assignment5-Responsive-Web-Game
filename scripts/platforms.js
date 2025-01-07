@@ -39,22 +39,42 @@ const longxl = "../assets/images/platforms/longxl.png";
 const hlongxl = "../assets/images/platforms/hlongxl.png";
 
 export const imagePlatforms = {
+  // grass towers
   sm: await createImageAsync(sm),
   md: await createImageAsync(md),
   lg: await createImageAsync(lg),
+  // corners
   cl: await createImageAsync(cl),
   cr: await createImageAsync(cr),
+  // stone towers
   bsm: await createImageAsync(bsm),
   bmd: await createImageAsync(bmd),
   blg: await createImageAsync(blg),
+  // small platforms
   psm: await createImageAsync(psm),
   ppsm: await createImageAsync(ppsm),
   pppsm: await createImageAsync(pppsm),
+  // medium platforms
   pmd: await createImageAsync(pmd),
   ppmd: await createImageAsync(ppmd),
   pppmd: await createImageAsync(pppmd),
+  // large platforms
+  plg: await createImageAsync(plg),
+  pplg: await createImageAsync(pplg),
+  ppplg: await createImageAsync(ppplg),
+  // trimmed small platforms
+  tpsm: await createImageAsync(tpsm),
+  tppsm: await createImageAsync(tppsm),
+  tpppsm: await createImageAsync(tpppsm),
+  // trimmed medium platforms
+  tpmd: await createImageAsync(tpmd),
+  tppmd: await createImageAsync(tppmd),
+  tpppmd: await createImageAsync(tpppmd),
+  // trimmed large platforms
+  tplg: await createImageAsync(tplg),
+  tpplg: await createImageAsync(tpplg),
+  tppplg: await createImageAsync(tppplg),
+  // extra long platforms
   longxl: await createImageAsync(longxl),
   hlongxl: await createImageAsync(hlongxl),
-  plg: await createImageAsync(plg),
-  pplg: await createImageAsync(pplg)
 };
