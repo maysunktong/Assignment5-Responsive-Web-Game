@@ -455,7 +455,6 @@ const animate = () => {
     player.currentSprite !== player.sprites.swordsman.idle.right
   ) {
     player.currentSprite = player.sprites.swordsman.idle.right;
-    d;
   }
 
   // WIN condition

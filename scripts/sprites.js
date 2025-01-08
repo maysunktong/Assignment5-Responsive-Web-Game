@@ -4,6 +4,8 @@ const swordsManIdleRight = "../assets/sprites/Swordsman/Idle.png";
 const swordsManIdleLeft = "../assets/sprites/Swordsman/left/Idle_left.png";
 const swordsManRunLeft = "../assets/sprites/Swordsman/left/Run_left.png";
 const swordsManRunRight = "../assets/sprites/Swordsman/Run.png";
+const swordsManJumpLeft = "../assets/sprites/Swordsman/left/Jump_left.png";
+const swordsManJumpRight = "../assets/sprites/Swordsman/Jump.png";
 
 const wizardIdleRight = "../assets/sprites/Wizard/Idle.png";
 const wizardIdleLeft = "../assets/sprites/Wizard/left/Idle_left.png";
@@ -43,6 +45,10 @@ export const sprites = {
       right: createImage(swordsManRunRight),
       left: createImage(swordsManRunLeft),
     },
+    jump: {
+      right: createImage(swordsManJumpRight),
+      left: createImage(swordsManJumpLeft),
+    },
   },
   wizard: {
     idle: {
@@ -53,6 +59,7 @@ export const sprites = {
       right: createImage(wizardRunRight),
       left: createImage(wizardRunLeft),
     },
+    jump: {},
   },
   musketeer: {
     idle: {
@@ -63,6 +70,7 @@ export const sprites = {
       right: createImage(musketeerRunRight),
       left: createImage(musketeerRunLeft),
     },
+    jump: {},
   },
   archer: {
     idle: {
@@ -73,6 +81,7 @@ export const sprites = {
       right: createImage(archerRunRight),
       left: createImage(archerRunLeft),
     },
+    jump: {},
   },
   werewolf: {
     walk: {
