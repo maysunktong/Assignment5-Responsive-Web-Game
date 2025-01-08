@@ -28,7 +28,10 @@ const bush6 = "../assets/images/bushes/Bush6.png";
 const bush7 = "../assets/images/bushes/Bush7.png";
 const bush8 = "../assets/images/bushes/Bush8.png";
 
-
+const villa = "../assets/images/Environment/villa.png";
+const house = "../assets/images/Environment/house.png";
+const merchant = "../assets/images/Environment/merchant.png";
+const fences = "../assets/images/Environment/fences.png";
 
 export const objects = {
   backgrounds: {
@@ -61,5 +64,11 @@ export const objects = {
     bush6: createImage(bush6),
     bush7: createImage(bush7),
     bush8: createImage(bush8),
+  },
+  environments: {
+    villa: createImage(villa),
+    merchant: createImage(merchant),
+    house: createImage(house),
+    fences: createImage(fences),
   },
 };

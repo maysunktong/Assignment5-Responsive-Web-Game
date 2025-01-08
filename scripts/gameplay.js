@@ -71,6 +71,72 @@ class Player {
   }
 }
 
+class Enemy {
+  constructor({
+    position,
+    velocity,
+    image,
+    distance = {
+      limit: 200,
+      traveled: 0,
+    },
+  }) {
+    this.position = {
+      x: position.x,
+      y: position.y,
+    };
+
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y,
+    };
+
+    this.width = 128;
+    this.height = 128;
+
+    this.image = image;
+
+    this.frames = 0;
+    this.frameInterval = 10;
+    this.frameTimer = 0;
+
+    this.distance = distance;
+
+    this.sprites = 0;
+  }
+
+  draw() {
+    ctx.drawImage(
+      this.image,
+      this.width * this.frames,
+      0,
+      this.width,
+      this.height,
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    );
+  }
+
+  update() {
+    this.frameTimer++;
+    if (this.frameTimer % this.frameInterval === 0) {
+      this.frames++;
+      if (this.frames > this.image.width / this.height - 1) {
+        this.frames = 0;
+      }
+    }
+    this.draw();
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+
+    if (this.position.y + this.height + this.velocity.y <= canvas.height) {
+      this.velocity.y += gravity;
+    }
+  }
+}
+
 class Platform {
   constructor({ x, y, image }) {
     this.position = {
@@ -124,6 +190,8 @@ let player = new Player();
 let platforms = [];
 let genericObjects = [];
 let backgrounds = [];
+let enemies = [];
+
 let lastKey;
 let keys = {
   right: {
@@ -136,7 +204,7 @@ let keys = {
 let scrollOffset = 0;
 
 // initializing the game: restart
-async function init() {
+async function initLevel1() {
   player = new Player();
   platforms = [
     new Platform({
@@ -359,6 +427,230 @@ async function init() {
   scrollOffset = 0;
 }
 
+async function initLevel2() {
+  player = new Player();
+  platforms = [
+    new Platform({
+      x: 0,
+      y: 600,
+      image: imagePlatforms.level1.pmd,
+    }),
+    new Platform({
+      x: imagePlatforms.level1.pmd.width + 200,
+      y: 600,
+      image: imagePlatforms.level1.tpmd,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level1.pmd.width +
+        200 +
+        imagePlatforms.level1.tpmd.width +
+        200,
+      y: 500,
+      image: imagePlatforms.level1.bsm,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level1.pmd.width +
+        200 +
+        imagePlatforms.level1.tpmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200,
+      y: 400,
+      image: imagePlatforms.level1.bmd,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level1.pmd.width +
+        200 +
+        imagePlatforms.level1.tpmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200 +
+        imagePlatforms.level1.bmd.width +
+        200,
+      y: 500,
+      image: imagePlatforms.level1.bsm,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level1.pmd.width +
+        200 +
+        imagePlatforms.level1.tpmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200 +
+        imagePlatforms.level1.bmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200,
+      y: 500,
+      image: imagePlatforms.level1.tpplg,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level1.pmd.width +
+        200 +
+        imagePlatforms.level1.tpmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200 +
+        imagePlatforms.level1.bmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200 +
+        imagePlatforms.level1.tpplg.width +
+        200,
+      y: 600,
+      image: imagePlatforms.level1.tpmd,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level1.pmd.width +
+        200 +
+        imagePlatforms.level1.tpmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200 +
+        imagePlatforms.level1.bmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
+        200 +
+        imagePlatforms.level1.tpplg.width +
+        200 +
+        imagePlatforms.level1.tpmd.width +
+        200,
+      y: 600,
+      image: imagePlatforms.level1.plg,
+    }),
+  ];
+
+  for (let i = 0; i < 10; i++) {
+    backgrounds.push(
+      new Background({
+        x: i * objects.backgrounds.forest.width,
+        y: 0,
+        image: objects.backgrounds.forest,
+      })
+    );
+  }
+
+  genericObjects = [
+    new GenericObject({ x: 0, y: 100, image: objects.trees.green1 }),
+    new GenericObject({
+      x: objects.trees.green1.width + 300,
+      y: 150,
+      image: objects.trees.green3,
+    }),
+    new GenericObject({
+      x: objects.trees.green1.width + 300 + objects.trees.green3.width + 200,
+      y: 150,
+      image: objects.trees.green2,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200,
+      y: 150,
+      image: objects.trees.green3,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300,
+      y: 150,
+      image: objects.trees.green2,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500,
+      y: 150,
+      image: objects.trees.green3,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500 +
+        objects.trees.green3.width +
+        300,
+      y: 250,
+      image: objects.trees.brown1,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.brown1.width +
+        300,
+      y: 250,
+      image: objects.trees.brown2,
+    }),
+    new GenericObject({
+      x:
+        objects.trees.green1.width +
+        300 +
+        objects.trees.green3.width +
+        200 +
+        objects.trees.green2.width +
+        200 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.green2.width +
+        500 +
+        objects.trees.green3.width +
+        300 +
+        objects.trees.brown1.width +
+        300 +
+        objects.trees.brown2.width +
+        500,
+      y: 200,
+      image: objects.trees.brown3,
+    }),
+  ];
+
+  // how far have platform scrolled
+  scrollOffset = 0;
+}
+
+
 const animate = () => {
   requestAnimationFrame(animate);
   ctx.fillStyle = "white";
@@ -429,32 +721,34 @@ const animate = () => {
     }
   });
 
-  // Sprite switching logic
-  if (
-    keys.right.pressed &&
-    lastKey === "right" &&
-    player.currentSprite !== player.sprites.swordsman.run.right
-  ) {
-    player.frames = 1;
-    player.currentSprite = player.sprites.swordsman.run.right;
-  } else if (
-    keys.left.pressed &&
-    lastKey === "left" &&
-    player.currentSprite !== player.sprites.swordsman.run.left
-  ) {
-    player.currentSprite = player.sprites.swordsman.run.left;
-  } else if (
-    !keys.left.pressed &&
-    lastKey === "left" &&
-    player.currentSprite !== player.sprites.swordsman.idle.left
-  ) {
-    player.currentSprite = player.sprites.swordsman.idle.left;
-  } else if (
-    !keys.right.pressed &&
-    lastKey === "right" &&
-    player.currentSprite !== player.sprites.swordsman.idle.right
-  ) {
-    player.currentSprite = player.sprites.swordsman.idle.right;
+  if (player.velocity.y === 0) {
+    // Sprite switching logic
+    if (
+      keys.right.pressed &&
+      lastKey === "right" &&
+      player.currentSprite !== player.sprites.swordsman.run.right
+    ) {
+      player.frames = 1;
+      player.currentSprite = player.sprites.swordsman.run.right;
+    } else if (
+      keys.left.pressed &&
+      lastKey === "left" &&
+      player.currentSprite !== player.sprites.swordsman.run.left
+    ) {
+      player.currentSprite = player.sprites.swordsman.run.left;
+    } else if (
+      !keys.left.pressed &&
+      lastKey === "left" &&
+      player.currentSprite !== player.sprites.swordsman.idle.left
+    ) {
+      player.currentSprite = player.sprites.swordsman.idle.left;
+    } else if (
+      !keys.right.pressed &&
+      lastKey === "right" &&
+      player.currentSprite !== player.sprites.swordsman.idle.right
+    ) {
+      player.currentSprite = player.sprites.swordsman.idle.right;
+    }
   }
 
   // WIN condition
@@ -464,17 +758,24 @@ const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    init();
+    // initLevel1();
+    initLevel2();
+    // initLevel3();
   }
 };
 
-init();
+// initLevel1();
+initLevel2();
+// initLevel3();
 animate();
 
 addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
       player.velocity.y = -15; // Perform jump
+      if (lastKey === "right")
+        player.currentSprite = player.sprites.swordsman.jump.right;
+      else player.currentSprite = player.sprites.swordsman.jump.left;
       break;
     case "KeyA":
       keys.left.pressed = true;
