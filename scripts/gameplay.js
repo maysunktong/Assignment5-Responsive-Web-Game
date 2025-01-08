@@ -71,7 +71,7 @@ class Player {
   }
 }
 
-export class Platform {
+class Platform {
   constructor({ x, y, image }) {
     this.position = {
       x,
