@@ -142,92 +142,96 @@ async function init() {
     new Platform({
       x: 0,
       y: 600,
-      image: imagePlatforms.pmd,
+      image: imagePlatforms.level1.pmd,
     }),
     new Platform({
-      x: imagePlatforms.pmd.width + 200,
+      x: imagePlatforms.level1.pmd.width + 200,
       y: 600,
-      image: imagePlatforms.tpmd,
-    }),
-    new Platform({
-      x: imagePlatforms.pmd.width + 200 + imagePlatforms.tpmd.width + 200,
-      y: 500,
-      image: imagePlatforms.bsm,
+      image: imagePlatforms.level1.tpmd,
     }),
     new Platform({
       x:
-        imagePlatforms.pmd.width +
+        imagePlatforms.level1.pmd.width +
         200 +
-        imagePlatforms.tpmd.width +
+        imagePlatforms.level1.tpmd.width +
+        200,
+      y: 500,
+      image: imagePlatforms.level1.bsm,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level1.pmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.tpmd.width +
+        200 +
+        imagePlatforms.level1.bsm.width +
         200,
       y: 400,
-      image: imagePlatforms.bmd,
+      image: imagePlatforms.level1.bmd,
     }),
     new Platform({
       x:
-        imagePlatforms.pmd.width +
+        imagePlatforms.level1.pmd.width +
         200 +
-        imagePlatforms.tpmd.width +
+        imagePlatforms.level1.tpmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.bsm.width +
         200 +
-        imagePlatforms.bmd.width +
+        imagePlatforms.level1.bmd.width +
         200,
       y: 500,
-      image: imagePlatforms.bsm,
+      image: imagePlatforms.level1.bsm,
     }),
     new Platform({
       x:
-        imagePlatforms.pmd.width +
+        imagePlatforms.level1.pmd.width +
         200 +
-        imagePlatforms.tpmd.width +
+        imagePlatforms.level1.tpmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.bsm.width +
         200 +
-        imagePlatforms.bmd.width +
+        imagePlatforms.level1.bmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.bsm.width +
         200,
       y: 500,
-      image: imagePlatforms.tpplg,
+      image: imagePlatforms.level1.tpplg,
     }),
     new Platform({
       x:
-        imagePlatforms.pmd.width +
+        imagePlatforms.level1.pmd.width +
         200 +
-        imagePlatforms.tpmd.width +
+        imagePlatforms.level1.tpmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.bsm.width +
         200 +
-        imagePlatforms.bmd.width +
+        imagePlatforms.level1.bmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.bsm.width +
         200 +
-        imagePlatforms.tpplg.width +
+        imagePlatforms.level1.tpplg.width +
         200,
       y: 600,
-      image: imagePlatforms.tpmd,
+      image: imagePlatforms.level1.tpmd,
     }),
     new Platform({
       x:
-        imagePlatforms.pmd.width +
+        imagePlatforms.level1.pmd.width +
         200 +
-        imagePlatforms.tpmd.width +
+        imagePlatforms.level1.tpmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.bsm.width +
         200 +
-        imagePlatforms.bmd.width +
+        imagePlatforms.level1.bmd.width +
         200 +
-        imagePlatforms.bsm.width +
+        imagePlatforms.level1.bsm.width +
         200 +
-        imagePlatforms.tpplg.width +
+        imagePlatforms.level1.tpplg.width +
         200 +
-        imagePlatforms.tpmd.width +
+        imagePlatforms.level1.tpmd.width +
         200,
       y: 600,
-      image: imagePlatforms.plg,
+      image: imagePlatforms.level1.plg,
     }),
   ];
 
@@ -450,7 +454,8 @@ const animate = () => {
     lastKey === "right" &&
     player.currentSprite !== player.sprites.swordsman.idle.right
   ) {
-    player.currentSprite = player.sprites.swordsman.idle.right;d
+    player.currentSprite = player.sprites.swordsman.idle.right;
+    d;
   }
 
   // WIN condition
