@@ -1,5 +1,6 @@
 import { imagePlatforms } from "./imagePlatforms.js";
 import { objects } from "./objects.js";
+import { sprites } from "./sprites.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -15,28 +16,55 @@ class Player {
       x: 100,
       y: 100,
     };
-    this.width = 30;
-    this.height = 30;
+
+    this.width = 128;
+    this.height = 128;
     this.velocity = {
-      // player will draw downward only, y-axis
       x: 0,
       y: 0,
     };
     this.speed = 10;
+
+    this.image = sprites.swordsman.idle.right;
+
+    this.frames = 0;
+    this.frameInterval = 10;
+    this.frameTimer = 0;
+
+    this.jumpCount = 0;
   }
 
   draw() {
-    ctx.fillStyle = "red";
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+    ctx.drawImage(
+      this.image,
+      this.width * this.frames,
+      0,
+      this.width,
+      this.height,
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    );
   }
 
   update() {
+    this.frameTimer++;
+    if (this.frameTimer % this.frameInterval === 0) {
+      this.frames++;
+      if (this.frames > this.image.width / this.height - 1) {
+        this.frames = 0;
+      }
+    }
     this.draw();
     this.position.y += this.velocity.y;
     this.position.x += this.velocity.x;
 
     if (this.position.y + this.height + this.velocity.y <= canvas.height)
       this.velocity.y += gravity;
+    else {
+      this.jumpCount = 0;
+    }
   }
 }
 
@@ -104,7 +132,7 @@ let keys = {
 let scrollOffset = 0;
 
 // initializing the game: restart
-const init = () => {
+async function init() {
   player = new Player();
   platforms = [
     new Platform({
@@ -321,7 +349,7 @@ const init = () => {
 
   // how far have platform scrolled
   scrollOffset = 0;
-};
+}
 
 const animate = () => {
   requestAnimationFrame(animate);
@@ -410,7 +438,7 @@ animate();
 addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
-      player.velocity.y -= 15;
+      player.velocity.y = -15; // Perform jump
       break;
     case "KeyA":
       keys.left.pressed = true;

@@ -1,4 +1,4 @@
-import { createImage } from "./utils";
+import { createImage } from "./utils.js";
 
 const swordsManIdleRight = "../assets/sprites/Swordsman/Idle.png";
 const swordsManIdleLeft = "../assets/sprites/Swordsman/left/Idle_left.png";
