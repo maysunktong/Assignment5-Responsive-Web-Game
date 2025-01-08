@@ -203,9 +203,20 @@ let keys = {
 };
 let scrollOffset = 0;
 
-// initializing the game: restart
+// initializing Level 1
 async function initLevel1() {
   player = new Player();
+
+  for (let i = 0; i < 10; i++) {
+    backgrounds.push(
+      new Background({
+        x: i * objects.backgrounds.forest.width,
+        y: 0,
+        image: objects.backgrounds.forest,
+      })
+    );
+  }
+
   platforms = [
     new Platform({
       x: 0,
@@ -302,16 +313,6 @@ async function initLevel1() {
       image: imagePlatforms.level1.plg,
     }),
   ];
-
-  for (let i = 0; i < 10; i++) {
-    backgrounds.push(
-      new Background({
-        x: i * objects.backgrounds.forest.width,
-        y: 0,
-        image: objects.backgrounds.forest,
-      })
-    );
-  }
 
   genericObjects = [
     new GenericObject({ x: 0, y: 100, image: objects.trees.green1 }),
@@ -427,229 +428,33 @@ async function initLevel1() {
   scrollOffset = 0;
 }
 
+// initializing Level 2
 async function initLevel2() {
   player = new Player();
-  platforms = [
-    new Platform({
-      x: 0,
-      y: 600,
-      image: imagePlatforms.level1.pmd,
-    }),
-    new Platform({
-      x: imagePlatforms.level1.pmd.width + 200,
-      y: 600,
-      image: imagePlatforms.level1.tpmd,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level1.pmd.width +
-        200 +
-        imagePlatforms.level1.tpmd.width +
-        200,
-      y: 500,
-      image: imagePlatforms.level1.bsm,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level1.pmd.width +
-        200 +
-        imagePlatforms.level1.tpmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200,
-      y: 400,
-      image: imagePlatforms.level1.bmd,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level1.pmd.width +
-        200 +
-        imagePlatforms.level1.tpmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200 +
-        imagePlatforms.level1.bmd.width +
-        200,
-      y: 500,
-      image: imagePlatforms.level1.bsm,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level1.pmd.width +
-        200 +
-        imagePlatforms.level1.tpmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200 +
-        imagePlatforms.level1.bmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200,
-      y: 500,
-      image: imagePlatforms.level1.tpplg,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level1.pmd.width +
-        200 +
-        imagePlatforms.level1.tpmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200 +
-        imagePlatforms.level1.bmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200 +
-        imagePlatforms.level1.tpplg.width +
-        200,
-      y: 600,
-      image: imagePlatforms.level1.tpmd,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level1.pmd.width +
-        200 +
-        imagePlatforms.level1.tpmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200 +
-        imagePlatforms.level1.bmd.width +
-        200 +
-        imagePlatforms.level1.bsm.width +
-        200 +
-        imagePlatforms.level1.tpplg.width +
-        200 +
-        imagePlatforms.level1.tpmd.width +
-        200,
-      y: 600,
-      image: imagePlatforms.level1.plg,
-    }),
-  ];
 
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
       new Background({
-        x: i * objects.backgrounds.forest.width,
-        y: 0,
-        image: objects.backgrounds.forest,
+        x: i * objects.backgrounds.sky.width,
+        y: 300,
+        image: objects.backgrounds.sky,
       })
     );
   }
 
-  genericObjects = [
-    new GenericObject({ x: 0, y: 100, image: objects.trees.green1 }),
-    new GenericObject({
-      x: objects.trees.green1.width + 300,
-      y: 150,
-      image: objects.trees.green3,
-    }),
-    new GenericObject({
-      x: objects.trees.green1.width + 300 + objects.trees.green3.width + 200,
-      y: 150,
-      image: objects.trees.green2,
-    }),
-    new GenericObject({
-      x:
-        objects.trees.green1.width +
-        300 +
-        objects.trees.green3.width +
-        200 +
-        objects.trees.green2.width +
-        200,
-      y: 150,
-      image: objects.trees.green3,
-    }),
-    new GenericObject({
-      x:
-        objects.trees.green1.width +
-        300 +
-        objects.trees.green3.width +
-        200 +
-        objects.trees.green2.width +
-        200 +
-        objects.trees.green3.width +
-        300,
-      y: 150,
-      image: objects.trees.green2,
-    }),
-    new GenericObject({
-      x:
-        objects.trees.green1.width +
-        300 +
-        objects.trees.green3.width +
-        200 +
-        objects.trees.green2.width +
-        200 +
-        objects.trees.green3.width +
-        300 +
-        objects.trees.green2.width +
-        500,
-      y: 150,
-      image: objects.trees.green3,
-    }),
-    new GenericObject({
-      x:
-        objects.trees.green1.width +
-        300 +
-        objects.trees.green3.width +
-        200 +
-        objects.trees.green2.width +
-        200 +
-        objects.trees.green3.width +
-        300 +
-        objects.trees.green2.width +
-        500 +
-        objects.trees.green3.width +
-        300,
-      y: 250,
-      image: objects.trees.brown1,
-    }),
-    new GenericObject({
-      x:
-        objects.trees.green1.width +
-        300 +
-        objects.trees.green3.width +
-        200 +
-        objects.trees.green2.width +
-        200 +
-        objects.trees.green3.width +
-        300 +
-        objects.trees.green2.width +
-        500 +
-        objects.trees.green3.width +
-        300 +
-        objects.trees.brown1.width +
-        300,
-      y: 250,
-      image: objects.trees.brown2,
-    }),
-    new GenericObject({
-      x:
-        objects.trees.green1.width +
-        300 +
-        objects.trees.green3.width +
-        200 +
-        objects.trees.green2.width +
-        200 +
-        objects.trees.green3.width +
-        300 +
-        objects.trees.green2.width +
-        500 +
-        objects.trees.green3.width +
-        300 +
-        objects.trees.brown1.width +
-        300 +
-        objects.trees.brown2.width +
-        500,
-      y: 200,
-      image: objects.trees.brown3,
+  platforms = [
+    new Platform({
+      x: 0,
+      y: 600,
+      image: imagePlatforms.level2.plg,
     }),
   ];
+
+  genericObjects = [];
 
   // how far have platform scrolled
   scrollOffset = 0;
 }
-
 
 const animate = () => {
   requestAnimationFrame(animate);

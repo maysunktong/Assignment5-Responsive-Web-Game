@@ -89,8 +89,8 @@ export const imagePlatforms = {
     // stone platforms
     pmd: await createImageAsync(lvl2pmd),
     plg: await createImageAsync(lvl2plg),
-    sm: await createImageAsync(lvl2sm),
     // stone towers
+    sm: await createImageAsync(lvl2sm),
     md: await createImageAsync(lvl2md),
     lg: await createImageAsync(lvl2lg),
   },
