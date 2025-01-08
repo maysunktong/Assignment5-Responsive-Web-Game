@@ -26,6 +26,9 @@ class Player {
     this.speed = 10;
 
     this.image = sprites.swordsman.idle.right;
+    this.currentSprite = sprites.swordsman.idle.right;
+
+    this.sprites = sprites;
 
     this.frames = 0;
     this.frameInterval = 10;
@@ -36,7 +39,7 @@ class Player {
 
   draw() {
     ctx.drawImage(
-      this.image,
+      this.currentSprite,
       this.width * this.frames,
       0,
       this.width,
@@ -121,6 +124,7 @@ let player = new Player();
 let platforms = [];
 let genericObjects = [];
 let backgrounds = [];
+let lastKey;
 let keys = {
   right: {
     pressed: false,
@@ -421,6 +425,34 @@ const animate = () => {
     }
   });
 
+  // Sprite switching logic
+  if (
+    keys.right.pressed &&
+    lastKey === "right" &&
+    player.currentSprite !== player.sprites.swordsman.run.right
+  ) {
+    player.frames = 1;
+    player.currentSprite = player.sprites.swordsman.run.right;
+  } else if (
+    keys.left.pressed &&
+    lastKey === "left" &&
+    player.currentSprite !== player.sprites.swordsman.run.left
+  ) {
+    player.currentSprite = player.sprites.swordsman.run.left;
+  } else if (
+    !keys.left.pressed &&
+    lastKey === "left" &&
+    player.currentSprite !== player.sprites.swordsman.idle.left
+  ) {
+    player.currentSprite = player.sprites.swordsman.idle.left;
+  } else if (
+    !keys.right.pressed &&
+    lastKey === "right" &&
+    player.currentSprite !== player.sprites.swordsman.idle.right
+  ) {
+    player.currentSprite = player.sprites.swordsman.idle.right;d
+  }
+
   // WIN condition
   // if (scrollOffset > 3000) {
   //   console.log("You win");
@@ -442,9 +474,11 @@ addEventListener("keydown", (event) => {
       break;
     case "KeyA":
       keys.left.pressed = true;
+      lastKey = "left";
       break;
     case "KeyD":
       keys.right.pressed = true;
+      lastKey = "right";
       break;
   }
 });
