@@ -109,17 +109,17 @@ const init = () => {
   platforms = [
     new Platform({
       x: 0,
-      y: 500,
+      y: 600,
       image: imagePlatforms.pmd,
     }),
     new Platform({
       x: imagePlatforms.pmd.width + 200,
-      y: 500,
+      y: 600,
       image: imagePlatforms.tpmd,
     }),
     new Platform({
       x: imagePlatforms.pmd.width + 200 + imagePlatforms.tpmd.width + 200,
-      y: 400,
+      y: 500,
       image: imagePlatforms.bsm,
     }),
     new Platform({
@@ -130,7 +130,7 @@ const init = () => {
         200 +
         imagePlatforms.bsm.width +
         200,
-      y: 300,
+      y: 400,
       image: imagePlatforms.bmd,
     }),
     new Platform({
@@ -143,7 +143,7 @@ const init = () => {
         200 +
         imagePlatforms.bmd.width +
         200,
-      y: 350,
+      y: 500,
       image: imagePlatforms.bsm,
     }),
     new Platform({
@@ -158,7 +158,7 @@ const init = () => {
         200 +
         imagePlatforms.bsm.width +
         200,
-      y: 400,
+      y: 500,
       image: imagePlatforms.tpplg,
     }),
     new Platform({
@@ -175,7 +175,7 @@ const init = () => {
         200 +
         imagePlatforms.tpplg.width +
         200,
-      y: 500,
+      y: 600,
       image: imagePlatforms.tpmd,
     }),
     new Platform({
@@ -194,7 +194,7 @@ const init = () => {
         200 +
         imagePlatforms.tpmd.width +
         200,
-      y: 500,
+      y: 600,
       image: imagePlatforms.plg,
     }),
   ];
@@ -210,15 +210,15 @@ const init = () => {
   }
 
   genericObjects = [
-    new GenericObject({ x: 0, y: 0, image: objects.trees.green1 }),
+    new GenericObject({ x: 0, y: 100, image: objects.trees.green1 }),
     new GenericObject({
       x: objects.trees.green1.width + 300,
-      y: 50,
+      y: 150,
       image: objects.trees.green3,
     }),
     new GenericObject({
       x: objects.trees.green1.width + 300 + objects.trees.green3.width + 200,
-      y: 50,
+      y: 150,
       image: objects.trees.green2,
     }),
     new GenericObject({
@@ -229,7 +229,7 @@ const init = () => {
         200 +
         objects.trees.green2.width +
         200,
-      y: 50,
+      y: 150,
       image: objects.trees.green3,
     }),
     new GenericObject({
@@ -242,7 +242,7 @@ const init = () => {
         200 +
         objects.trees.green3.width +
         300,
-      y: 50,
+      y: 150,
       image: objects.trees.green2,
     }),
     new GenericObject({
@@ -257,7 +257,7 @@ const init = () => {
         300 +
         objects.trees.green2.width +
         500,
-      y: 50,
+      y: 150,
       image: objects.trees.green3,
     }),
     new GenericObject({
@@ -274,7 +274,7 @@ const init = () => {
         500 +
         objects.trees.green3.width +
         300,
-      y: 100,
+      y: 250,
       image: objects.trees.brown1,
     }),
     new GenericObject({
@@ -293,7 +293,7 @@ const init = () => {
         300 +
         objects.trees.brown1.width +
         300,
-      y: 100,
+      y: 250,
       image: objects.trees.brown2,
     }),
     new GenericObject({
@@ -314,7 +314,7 @@ const init = () => {
         300 +
         objects.trees.brown2.width +
         500,
-      y: 100,
+      y: 200,
       image: objects.trees.brown3,
     }),
   ];
