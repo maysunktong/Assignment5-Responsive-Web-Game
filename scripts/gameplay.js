@@ -73,11 +73,7 @@ class Player {
 }
 
 class Enemy {
-  constructor({
-    position,
-    velocity,
-    image
-  }) {
+  constructor({ position, velocity, image }) {
     this.position = {
       x: position.x,
       y: position.y,
@@ -96,7 +92,7 @@ class Enemy {
     this.frames = 0;
     this.frameInterval = 10;
     this.frameTimer = 0;
-    
+
     this.sprites = 0;
   }
 
@@ -504,7 +500,6 @@ async function initLevel1() {
     }),
   ];
 
-  // how far have platform scrolled
   scrollOffset = 0;
 }
 
@@ -541,6 +536,7 @@ async function initLevel2() {
       x: imagePlatforms.level2.plg.width,
       y: 400,
       image: imagePlatforms.level2.barwood,
+      block: true,
     }),
     new Platform({
       x:
@@ -549,6 +545,7 @@ async function initLevel2() {
         100,
       y: 300,
       image: imagePlatforms.level2.barwood,
+      block: true,
     }),
     new Platform({
       x:
@@ -559,6 +556,7 @@ async function initLevel2() {
         100,
       y: 200,
       image: imagePlatforms.level2.barwood,
+      block: true,
     }),
     new Platform({
       x:
@@ -571,6 +569,7 @@ async function initLevel2() {
         100,
       y: 350,
       image: imagePlatforms.level2.barwood,
+      block: true,
     }),
     new Platform({
       x:
@@ -665,16 +664,19 @@ async function initLevel2() {
       x: 500,
       y: 300,
       image: imagePlatforms.level2.barbox,
+      block: true,
     }),
     new Platform({
       x: 900,
       y: 300,
       image: imagePlatforms.level2.barboxlong,
+      block: true,
     }),
     new Platform({
       x: 1500,
       y: 200,
       image: imagePlatforms.level2.barboxlong,
+      block: true,
     }),
     new Platform({
       x: imagePlatforms.level2.plg.width + 400,
@@ -703,6 +705,7 @@ async function initLevel2() {
         100,
       y: 200,
       image: imagePlatforms.level2.barboxlong,
+      block: true,
     }),
     new Platform({
       x:
@@ -719,6 +722,7 @@ async function initLevel2() {
         200,
       y: 200,
       image: imagePlatforms.level2.barbox,
+      block: true,
     }),
     new Platform({
       x:
@@ -737,6 +741,7 @@ async function initLevel2() {
         200,
       y: 200,
       image: imagePlatforms.level2.barboxlong,
+      block: true,
     }),
     new Platform({
       x:
@@ -758,6 +763,7 @@ async function initLevel2() {
         imagePlatforms.level2.barbox.width,
       y: 250,
       image: imagePlatforms.level2.barbox,
+      block: true,
     }),
     new Platform({
       x:
@@ -781,6 +787,7 @@ async function initLevel2() {
         imagePlatforms.level2.barbox.width,
       y: 250,
       image: imagePlatforms.level2.barbox,
+      block: true,
     }),
   ];
 
