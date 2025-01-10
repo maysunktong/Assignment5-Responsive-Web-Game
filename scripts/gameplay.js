@@ -597,9 +597,38 @@ async function initLevel2() {
 
   enemies = [
     new Enemy({
-      position: { x: 500, y: 300 },
-      velocity: { x: -0.5, y: 0 },
+      position: { x: 1900, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 300, traveled: 0},
       image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 4000, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 200, traveled: 0},
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 4800, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 200, traveled: 0},
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 5100, y: 100 },
+      velocity: { x: 1.5, y: 0 },
+      distance: { limit: 300, traveled: 0},
+      image: sprites.werewolf.run.right,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 7300, y: 100 },
+      velocity: { x: 1.5, y: 0 },
+      distance: { limit: 200, traveled: 0},
+      image: sprites.werewolf.run.right,
       state: "run",
     }),
   ];
