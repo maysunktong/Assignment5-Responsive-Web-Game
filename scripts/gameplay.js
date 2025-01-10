@@ -193,19 +193,34 @@ let backgrounds = [];
 let enemies = [];
 
 let lastKey;
-let keys = {
-  right: {
-    pressed: false,
-  },
-  left: {
-    pressed: false,
-  },
-};
+let keys;
 let scrollOffset = 0;
+
+let currentLevel = 1;
+
+function selectLevel(currentLevel) {
+  switch (currentLevel) {
+    case 1:
+      initLevel1();
+      break;
+    case 2:
+      initLevel2;
+      break;
+  }
+}
 
 // initializing Level 1
 async function initLevel1() {
   player = new Player();
+
+  keys = {
+    right: {
+      pressed: false,
+    },
+    left: {
+      pressed: false,
+    },
+  };
 
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
@@ -432,6 +447,15 @@ async function initLevel1() {
 async function initLevel2() {
   player = new Player();
 
+  keys = {
+    right: {
+      pressed: false,
+    },
+    left: {
+      pressed: false,
+    },
+  };
+
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
       new Background({
@@ -550,6 +574,27 @@ async function initLevel2() {
         300,
       y: 600,
       image: imagePlatforms.level2.plg,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.plg.width,
+      y: 600,
+      image: imagePlatforms.level2.pmd,
     }),
     new Platform({
       x: 500,
@@ -813,6 +858,7 @@ const animate = () => {
   platforms.forEach((platform) => {
     platform.draw();
   });
+  
   // player has to be generated after platforms
   player.update();
 
@@ -898,21 +944,17 @@ const animate = () => {
   }
 
   // WIN condition
-  // if (scrollOffset > 3000) {
-  //   console.log("You win");
-  // }
+  if (scrollOffset > 9000) {
+    initLevel2()
+  }
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    // initLevel1();
-    initLevel1();
-    // initLevel3();
+    selectLevel(1)
   }
 };
 
-// initLevel1();
-initLevel2();
-// initLevel3();
+selectLevel(1);
 animate();
 
 addEventListener("keydown", (event) => {
