@@ -73,7 +73,15 @@ class Player {
 }
 
 class Enemy {
-  constructor({ position, velocity, image }) {
+  constructor({
+    position,
+    velocity,
+    distance = {
+      limit: 100,
+      traveled: 0,
+    },
+    image,
+  }) {
     this.position = {
       x: position.x,
       y: position.y,
@@ -84,16 +92,17 @@ class Enemy {
       y: velocity.y,
     };
 
+    this.image = image;
     this.width = 128;
     this.height = 128;
-
-    this.image = image;
 
     this.frames = 0;
     this.frameInterval = 10;
     this.frameTimer = 0;
 
     this.sprites = 0;
+
+    this.distance = distance;
   }
 
   draw() {
@@ -124,6 +133,16 @@ class Enemy {
 
     if (this.position.y + this.height + this.velocity.y <= canvas.height) {
       this.velocity.y += gravity;
+    }
+
+    // walk the goomba back and forth
+    this.distance.traveled += Math.abs(this.velocity.x);
+
+    if (this.distance.traveled > this.distance.limit) {
+      this.distance.traveled = 0;
+      this.velocity.x = -this.velocity.x;
+      this.image = (this.image === sprites.werewolf.walk.left) ? sprites.werewolf.walk.right : sprites.werewolf.walk.left;
+
     }
   }
 }
@@ -247,7 +266,7 @@ let explosions = [];
 
 let lastKey;
 let keys;
-let scrollOffset = 0;
+let scrollOffset;
 
 let currentLevel = 1;
 
@@ -274,36 +293,42 @@ async function initLevel1() {
   };
 
   player = new Player();
+  scrollOffset = 0;
 
   enemies = [
     new Enemy({
       position: { x: 700, y: 100 },
-      velocity: { x: -0.3, y: 0 },
+      velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
     }),
     new Enemy({
-      position: { x: imagePlatforms.level1.pmd.width+700, y: 100 },
-      velocity: { x: 0.3, y: 0 },
+      position: { x: 1700, y: 100 },
+      velocity: { x: 0.5, y: 0 },
       image: sprites.werewolf.walk.right,
     }),
     new Enemy({
-      position: { x: imagePlatforms.level1.pmd.width+500, y: 100 },
-      velocity: { x: -0.3, y: 0 },
+      position: { x: 2200, y: 100 },
+      velocity: { x: -0.5, y: 0 },
+      image: sprites.werewolf.walk.left,
+    }),
+    new Enemy({
+      position: { x: 4700, y: 100 },
+      velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
     }),
     new Enemy({
       position: { x: 5600, y: 100 },
-      velocity: { x: -0.3, y: 0 },
+      velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
     }),
     new Enemy({
       position: { x: 7700, y: 100 },
-      velocity: { x: 0.3, y: 0 },
+      velocity: { x: 0.5, y: 0 },
       image: sprites.werewolf.walk.right,
     }),
     new Enemy({
       position: { x: 9000, y: 100 },
-      velocity: { x: -0.3, y: 0 },
+      velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
     }),
   ];
@@ -417,21 +442,19 @@ async function initLevel1() {
       x: 500,
       y: 300,
       image: imagePlatforms.level2.barwood,
-      block: true
+      block: true,
     }),
     new Platform({
       x: 1000,
       y: 350,
       image: imagePlatforms.level2.barbox,
-      block: true
+      block: true,
     }),
     new Platform({
-      x:  imagePlatforms.level1.pmd.width +
-      200 +
-      imagePlatforms.level1.sm,
+      x: imagePlatforms.level1.pmd.width + 200 + imagePlatforms.level1.sm,
       y: 350,
       image: imagePlatforms.level2.barbox,
-      block: true
+      block: true,
     }),
   ];
 
@@ -544,8 +567,6 @@ async function initLevel1() {
       image: objects.trees.brown3,
     }),
   ];
-
-  scrollOffset = 0;
 }
 
 // initializing Level 2
@@ -560,6 +581,8 @@ async function initLevel2() {
       pressed: false,
     },
   };
+
+  scrollOffset = 0;
 
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
@@ -953,8 +976,6 @@ async function initLevel2() {
       image: objects.environments.villa,
     }),
   ];
-
-  scrollOffset = 0;
 }
 
 const animate = () => {
@@ -1130,7 +1151,6 @@ const animate = () => {
 
   // WIN condition
   if (scrollOffset > 9000) {
-   
     initLevel2();
   }
 
@@ -1138,7 +1158,7 @@ const animate = () => {
   if (player.position.y > canvas.width) {
     selectLevel(1);
   }
-  console.log('scrollOffset', scrollOffset)
+  console.log("scrollOffset", scrollOffset);
 };
 
 selectLevel(1);
