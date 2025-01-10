@@ -63,9 +63,9 @@ class Player {
     this.position.y += this.velocity.y;
     this.position.x += this.velocity.x;
 
-    if (this.position.y + this.height + this.velocity.y <= canvas.height)
+    if (this.position.y + this.height + this.velocity.y <= canvas.height) {
       this.velocity.y += gravity;
-    else {
+    } else {
       this.jumpCount = 0;
     }
   }
@@ -863,6 +863,7 @@ const animate = () => {
       player.position.x <= platform.position.x + platform.width
     ) {
       player.velocity.y = 0;
+      player.jumpCount = 0;
     }
   });
 
@@ -917,7 +918,11 @@ animate();
 addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
-      player.velocity.y = -15; // Perform jump
+      if (player.jumpCount < 2) {
+        player.velocity.y = -15; // Perform jump
+        player.jumpCount++;
+      }
+
       if (lastKey === "right")
         player.currentSprite = player.sprites.swordsman.jump.right;
       else player.currentSprite = player.sprites.swordsman.jump.left;
