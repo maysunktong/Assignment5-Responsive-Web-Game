@@ -315,15 +315,15 @@ async function initLevel1() {
   ];
 
   genericObjects = [
-    new GenericObject({ x: 0, y: 100, image: objects.trees.green1 }),
+    new GenericObject({ x: 0, y: 200, image: objects.trees.green1 }),
     new GenericObject({
       x: objects.trees.green1.width + 300,
-      y: 150,
+      y: 200,
       image: objects.trees.green3,
     }),
     new GenericObject({
       x: objects.trees.green1.width + 300 + objects.trees.green3.width + 200,
-      y: 150,
+      y: 200,
       image: objects.trees.green2,
     }),
     new GenericObject({
@@ -334,7 +334,7 @@ async function initLevel1() {
         200 +
         objects.trees.green2.width +
         200,
-      y: 150,
+      y: 200,
       image: objects.trees.green3,
     }),
     new GenericObject({
@@ -347,7 +347,7 @@ async function initLevel1() {
         200 +
         objects.trees.green3.width +
         300,
-      y: 150,
+      y: 200,
       image: objects.trees.green2,
     }),
     new GenericObject({
@@ -904,7 +904,7 @@ const animate = () => {
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
     // initLevel1();
-    initLevel2();
+    initLevel1();
     // initLevel3();
   }
 };
