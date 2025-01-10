@@ -1055,7 +1055,6 @@ const animate = () => {
   });
 
   if (player.velocity.y === 0) {
-    // Sprite switching logic
     if (
       keys.right.pressed &&
       lastKey === "right" &&
