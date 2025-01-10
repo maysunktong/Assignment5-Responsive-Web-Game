@@ -81,6 +81,7 @@ class Enemy {
       traveled: 0,
     },
     image,
+    state,
   }) {
     this.position = {
       x: position.x,
@@ -101,6 +102,8 @@ class Enemy {
     this.frameTimer = 0;
 
     this.sprites = 0;
+
+    this.state = state;
 
     this.distance = distance;
   }
@@ -141,8 +144,22 @@ class Enemy {
     if (this.distance.traveled > this.distance.limit) {
       this.distance.traveled = 0;
       this.velocity.x = -this.velocity.x;
-      this.image = (this.image === sprites.werewolf.walk.left) ? sprites.werewolf.walk.right : sprites.werewolf.walk.left;
-
+      if (this.state === "walk") {
+        this.image =
+          this.image === sprites.werewolf.walk.left
+            ? sprites.werewolf.walk.right
+            : sprites.werewolf.walk.left;
+      } else if (this.state === "attack") {
+        this.image =
+          this.image === sprites.werewolf.attack.left
+            ? sprites.werewolf.attack.right
+            : sprites.werewolf.attack.left;
+      } else if (this.state === "run") {
+        this.image =
+          this.image === sprites.werewolf.run.left
+            ? sprites.werewolf.run.right
+            : sprites.werewolf.run.left;
+      }
     }
   }
 }
@@ -300,36 +317,31 @@ async function initLevel1() {
       position: { x: 700, y: 100 },
       velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
+      state: "walk",
     }),
     new Enemy({
       position: { x: 1700, y: 100 },
       velocity: { x: 0.5, y: 0 },
       image: sprites.werewolf.walk.right,
+      state: "walk",
     }),
     new Enemy({
       position: { x: 2200, y: 100 },
       velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
+      state: "walk",
     }),
     new Enemy({
       position: { x: 4700, y: 100 },
       velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
+      state: "walk",
     }),
     new Enemy({
       position: { x: 5600, y: 100 },
       velocity: { x: -0.5, y: 0 },
       image: sprites.werewolf.walk.left,
-    }),
-    new Enemy({
-      position: { x: 7700, y: 100 },
-      velocity: { x: 0.5, y: 0 },
-      image: sprites.werewolf.walk.right,
-    }),
-    new Enemy({
-      position: { x: 9000, y: 100 },
-      velocity: { x: -0.5, y: 0 },
-      image: sprites.werewolf.walk.left,
+      state: "walk",
     }),
   ];
 
@@ -571,8 +583,6 @@ async function initLevel1() {
 
 // initializing Level 2
 async function initLevel2() {
-  player = new Player();
-
   keys = {
     right: {
       pressed: false,
@@ -582,7 +592,17 @@ async function initLevel2() {
     },
   };
 
+  player = new Player();
   scrollOffset = 0;
+
+  enemies = [
+    new Enemy({
+      position: { x: 500, y: 300 },
+      velocity: { x: -0.5, y: 0 },
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+  ];
 
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
@@ -1161,7 +1181,7 @@ const animate = () => {
   console.log("scrollOffset", scrollOffset);
 };
 
-selectLevel(1);
+initLevel2();
 animate();
 
 addEventListener("keydown", (event) => {
