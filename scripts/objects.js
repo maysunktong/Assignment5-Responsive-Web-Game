@@ -9,7 +9,7 @@ const collectibleStars = "../assets/sprites/collectibles/stars.png";
 
 const bgForest = "../assets/images/backgrounds/bg_forest.png";
 const bgNight = "../assets/images/backgrounds/bg_night.png";
-const bgSky = "../assets/images/backgrounds/bg_sky.png";
+const bgDesert = "../assets/images/backgrounds/bg_desert.jpg";
 
 const green1 = "../assets/images/trees/green1.png";
 const green2 = "../assets/images/trees/green2.png";
@@ -32,12 +32,17 @@ const villa = "../assets/images/Environment/villa.png";
 const house = "../assets/images/Environment/house.png";
 const merchant = "../assets/images/Environment/merchant.png";
 const fences = "../assets/images/Environment/fences.png";
+const cart = "../assets/images/Environment/Decor_Cart.png";
+const barrel = "../assets/images/Environment/Wooden_Barrel.png";
+const lantern = "../assets/images/Environment/Street_Lantern.png";
+const well = "../assets/images/Environment/Well.png";
+const furnace = "../assets/images/Environment/Furnace.png";
 
 export const objects = {
   backgrounds: {
     forest: createImage(bgForest),
     night: createImage(bgNight),
-    sky: createImage(bgSky),
+    desert: createImage(bgDesert),
   },
   collectibles: {
     stars: createImage(collectibleStars),
@@ -70,5 +75,10 @@ export const objects = {
     merchant: createImage(merchant),
     house: createImage(house),
     fences: createImage(fences),
+    cart: createImage(cart),
+    barrel: createImage(barrel),
+    lantern: createImage(lantern),
+    well: createImage(well),
+    furnace: createImage(furnace)
   },
 };

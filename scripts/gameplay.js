@@ -435,9 +435,9 @@ async function initLevel2() {
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
       new Background({
-        x: i * objects.backgrounds.sky.width,
-        y: 300,
-        image: objects.backgrounds.sky,
+        x: i * objects.backgrounds.desert.width,
+        y: 0,
+        image: objects.backgrounds.desert,
       })
     );
   }
@@ -448,9 +448,412 @@ async function initLevel2() {
       y: 600,
       image: imagePlatforms.level2.plg,
     }),
+    new Platform({
+      x: imagePlatforms.level2.plg.width,
+      y: 400,
+      image: imagePlatforms.level2.barwood,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 300,
+      image: imagePlatforms.level2.barwood,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 200,
+      image: imagePlatforms.level2.barwood,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 350,
+      image: imagePlatforms.level2.barwood,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 600,
+      image: imagePlatforms.level2.pmd,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200,
+      y: 400,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200,
+      y: 500,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barbox.width +
+        100 +
+        imagePlatforms.level2.barbox.width +
+        100 +
+        imagePlatforms.level2.barboxlong.width +
+        100 +
+        imagePlatforms.level2.barboxlong.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300,
+      y: 500,
+      image: imagePlatforms.level2.barwood,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.barwood.width,
+      y: 500,
+      image: imagePlatforms.level2.barwood,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.barwood.width +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 600,
+      image: imagePlatforms.level2.plg,
+    }),
+    new Platform({
+      x: 500,
+      y: 300,
+      image: imagePlatforms.level2.barbox,
+    }),
+    new Platform({
+      x: 900,
+      y: 300,
+      image: imagePlatforms.level2.barboxlong,
+    }),
+    new Platform({
+      x: 1500,
+      y: 200,
+      image: imagePlatforms.level2.barboxlong,
+    }),
+    new Platform({
+      x: imagePlatforms.level2.plg.width + 400,
+      y: 600,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300,
+      y: 600,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 200,
+      image: imagePlatforms.level2.barboxlong,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barboxlong.width +
+        200,
+      y: 200,
+      image: imagePlatforms.level2.barbox,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barboxlong.width +
+        200 +
+        imagePlatforms.level2.barbox.width +
+        200,
+      y: 200,
+      image: imagePlatforms.level2.barbox,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width,
+      y: 250,
+      image: imagePlatforms.level2.barbox,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.barbox.width,
+      y: 250,
+      image: imagePlatforms.level2.barbox,
+    }),
+    new Platform({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.barbox.width +
+        200 +
+        imagePlatforms.level2.barbox.width,
+      y: 250,
+      image: imagePlatforms.level2.barbox,
+    }),
   ];
 
-  genericObjects = [];
+  genericObjects = [
+    new GenericObject({ x: 200, y: 470, image: objects.environments.cart }),
+    new GenericObject({ x: 400, y: 430, image: objects.environments.house }),
+    new GenericObject({ x: 1000, y: 450, image: objects.environments.furnace }),
+    new GenericObject({ x: 1600, y: 360, image: objects.environments.lantern }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        imagePlatforms.level2.barwood.width +
+        200,
+      y: 360,
+      image: objects.environments.well,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        imagePlatforms.level2.barwood.width +
+        200,
+      y: 360,
+      image: objects.environments.well,
+    }),
+    ,
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        imagePlatforms.level2.barwood.width +
+        450,
+      y: 440,
+      image: objects.environments.merchant,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300,
+      y: 430,
+      image: objects.environments.house,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        400,
+      y: 560,
+      image: objects.environments.fences,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300,
+      y: 430,
+      image: objects.environments.house,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.barwood.width +
+        imagePlatforms.level2.barwood.width,
+      y: 360,
+      image: objects.environments.villa,
+    }),
+  ];
 
   // how far have platform scrolled
   scrollOffset = 0;
@@ -494,7 +897,7 @@ const animate = () => {
         platform.position.x -= player.speed;
       });
       genericObjects.forEach((genericObject) => {
-        genericObject.position.x -= player.speed * 0.7;
+        genericObject.position.x -= player.speed * 0.8;
       });
       backgrounds.forEach((background) => {
         background.position.x -= player.speed * 0.7;
@@ -505,7 +908,7 @@ const animate = () => {
         platform.position.x += player.speed;
       });
       genericObjects.forEach((genericObject) => {
-        genericObject.position.x += player.speed * 0.7;
+        genericObject.position.x += player.speed * 0.8;
       });
       backgrounds.forEach((background) => {
         background.position.x += player.speed * 0.7;

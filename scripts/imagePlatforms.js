@@ -44,6 +44,10 @@ const lvl2sm = "../assets/images/platforms/level2/lvl2sm.png";
 const lvl2md = "../assets/images/platforms/level2/lvl2md.png";
 const lvl2lg = "../assets/images/platforms/level2/lvl2lg.png";
 
+const barWood = "../assets/images/platforms/level2/bar_wooden.png";
+const barBox = "../assets/images/platforms/level2/bar_box.png";
+const barBoxLong = "../assets/images/platforms/level2/bar_box-long.png";
+
 export const imagePlatforms = {
   level1: {
     // grass towers
@@ -93,5 +97,9 @@ export const imagePlatforms = {
     sm: await createImageAsync(lvl2sm),
     md: await createImageAsync(lvl2md),
     lg: await createImageAsync(lvl2lg),
+    // bars
+    barwood: await createImageAsync(barWood),
+    barbox: await createImageAsync(barBox),
+    barboxlong: await createImageAsync(barBoxLong)
   },
 };
