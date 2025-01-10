@@ -76,11 +76,7 @@ class Enemy {
   constructor({
     position,
     velocity,
-    image,
-    distance = {
-      limit: 200,
-      traveled: 0,
-    },
+    image
   }) {
     this.position = {
       x: position.x,
@@ -100,9 +96,7 @@ class Enemy {
     this.frames = 0;
     this.frameInterval = 10;
     this.frameTimer = 0;
-
-    this.distance = distance;
-
+    
     this.sprites = 0;
   }
 
@@ -289,7 +283,6 @@ async function initLevel1() {
     new Enemy({
       position: { x: 800, y: 100 },
       velocity: { x: -1, y: 0 },
-      distance: { limit: 300, traveled: 0 },
       image: sprites.werewolf.walk.left,
     }),
   ];
