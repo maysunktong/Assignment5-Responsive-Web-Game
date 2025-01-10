@@ -951,6 +951,10 @@ const animate = () => {
       setTimeout(() => {
         enemies.splice(index, 1);
       }, 0);
+
+      setTimeout(() => {
+        explosions.splice(index, 1);
+      }, 500);
     } else if (
       player.position.x + 50 >= enemy.position.x &&
       player.position.x <= enemy.position.x + 50 &&
