@@ -509,7 +509,7 @@ async function initLevel2() {
         imagePlatforms.level2.barwood.width +
         100 +
         imagePlatforms.level2.pmd.width +
-        200,
+        300,
       y: 400,
       image: imagePlatforms.level2.sm,
     }),
@@ -525,73 +525,29 @@ async function initLevel2() {
         imagePlatforms.level2.barwood.width +
         100 +
         imagePlatforms.level2.pmd.width +
-        200 +
+        300 +
         imagePlatforms.level2.sm.width +
-        200,
-      y: 500,
+        300,
+      y: 400,
       image: imagePlatforms.level2.sm,
     }),
     new Platform({
       x:
         imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barbox.width +
+        imagePlatforms.level2.barwood.width +
         100 +
-        imagePlatforms.level2.barbox.width +
+        imagePlatforms.level2.barwood.width +
         100 +
-        imagePlatforms.level2.barboxlong.width +
+        imagePlatforms.level2.barwood.width +
         100 +
-        imagePlatforms.level2.barboxlong.width +
+        imagePlatforms.level2.barwood.width +
         100 +
         imagePlatforms.level2.pmd.width +
-        200 +
+        300 +
         imagePlatforms.level2.sm.width +
-        200 +
+        300 +
         imagePlatforms.level2.sm.width +
         300,
-      y: 500,
-      image: imagePlatforms.level2.barwood,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        300 +
-        imagePlatforms.level2.barwood.width,
-      y: 500,
-      image: imagePlatforms.level2.barwood,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        300 +
-        imagePlatforms.level2.barwood.width +
-        imagePlatforms.level2.barwood.width +
-        100,
       y: 600,
       image: imagePlatforms.level2.plg,
     }),
@@ -670,26 +626,7 @@ async function initLevel2() {
         imagePlatforms.level2.barbox.width +
         200,
       y: 200,
-      image: imagePlatforms.level2.barbox,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width,
-      y: 250,
-      image: imagePlatforms.level2.barbox,
+      image: imagePlatforms.level2.barboxlong,
     }),
     new Platform({
       x:
