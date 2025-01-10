@@ -281,6 +281,11 @@ async function initLevel1() {
       velocity: { x: -1, y: 0 },
       image: sprites.werewolf.walk.left,
     }),
+    new Enemy({
+      position: { x: 1200, y: 100 },
+      velocity: { x: -1, y: 0 },
+      image: sprites.werewolf.walk.left,
+    }),
   ];
 
   for (let i = 0; i < 10; i++) {
@@ -294,6 +299,11 @@ async function initLevel1() {
   }
 
   platforms = [
+    new Platform({
+      x: 500,
+      y: 300,
+      image: imagePlatforms.level2.barwood,
+    }),
     new Platform({
       x: 0,
       y: 600,
@@ -953,7 +963,7 @@ const animate = () => {
       }, 0);
 
       setTimeout(() => {
-        explosions.splice(index, 1);
+        explosions.splice(0, 1);
       }, 500);
     } else if (
       player.position.x + 50 >= enemy.position.x &&
@@ -966,11 +976,11 @@ const animate = () => {
   });
 
   // put out explosion from array after last frame
-  explosions.forEach((explosion, index) => {
+  explosions.forEach((explosion) => {
     explosion.update();
     if (explosion.frames > explosion.image.width / explosion.height - 1) {
       setTimeout(() => {
-        explosions.splice(index, 1);
+        explosions.splice(0, 1);
       }, 500);
     }
   });
