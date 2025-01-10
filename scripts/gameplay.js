@@ -277,13 +277,33 @@ async function initLevel1() {
 
   enemies = [
     new Enemy({
-      position: { x: 800, y: 100 },
-      velocity: { x: -1, y: 0 },
+      position: { x: 700, y: 100 },
+      velocity: { x: -0.3, y: 0 },
       image: sprites.werewolf.walk.left,
     }),
     new Enemy({
-      position: { x: 1200, y: 100 },
-      velocity: { x: -1, y: 0 },
+      position: { x: imagePlatforms.level1.pmd.width+700, y: 100 },
+      velocity: { x: 0.3, y: 0 },
+      image: sprites.werewolf.walk.right,
+    }),
+    new Enemy({
+      position: { x: imagePlatforms.level1.pmd.width+500, y: 100 },
+      velocity: { x: -0.3, y: 0 },
+      image: sprites.werewolf.walk.left,
+    }),
+    new Enemy({
+      position: { x: 5600, y: 100 },
+      velocity: { x: -0.3, y: 0 },
+      image: sprites.werewolf.walk.left,
+    }),
+    new Enemy({
+      position: { x: 7700, y: 100 },
+      velocity: { x: 0.3, y: 0 },
+      image: sprites.werewolf.walk.right,
+    }),
+    new Enemy({
+      position: { x: 9000, y: 100 },
+      velocity: { x: -0.3, y: 0 },
       image: sprites.werewolf.walk.left,
     }),
   ];
@@ -299,11 +319,6 @@ async function initLevel1() {
   }
 
   platforms = [
-    new Platform({
-      x: 500,
-      y: 300,
-      image: imagePlatforms.level2.barwood,
-    }),
     new Platform({
       x: 0,
       y: 600,
@@ -397,6 +412,26 @@ async function initLevel1() {
         200,
       y: 600,
       image: imagePlatforms.level1.plg,
+    }),
+    new Platform({
+      x: 500,
+      y: 300,
+      image: imagePlatforms.level2.barwood,
+      block: true
+    }),
+    new Platform({
+      x: 1000,
+      y: 350,
+      image: imagePlatforms.level2.barbox,
+      block: true
+    }),
+    new Platform({
+      x:  imagePlatforms.level1.pmd.width +
+      200 +
+      imagePlatforms.level1.sm,
+      y: 350,
+      image: imagePlatforms.level2.barbox,
+      block: true
     }),
   ];
 
@@ -1095,6 +1130,7 @@ const animate = () => {
 
   // WIN condition
   if (scrollOffset > 9000) {
+   
     initLevel2();
   }
 
@@ -1102,6 +1138,7 @@ const animate = () => {
   if (player.position.y > canvas.width) {
     selectLevel(1);
   }
+  console.log('scrollOffset', scrollOffset)
 };
 
 selectLevel(1);
