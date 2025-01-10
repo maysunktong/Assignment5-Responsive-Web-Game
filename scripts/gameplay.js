@@ -1,6 +1,7 @@
 import { imagePlatforms } from "./imagePlatforms.js";
 import { objects } from "./objects.js";
 import { sprites } from "./sprites.js";
+import { collisionTop, createBlock, isOnTop } from "./utils.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -138,7 +139,7 @@ class Enemy {
 }
 
 class Platform {
-  constructor({ x, y, image }) {
+  constructor({ x, y, image, block }) {
     this.position = {
       x,
       y,
@@ -146,10 +147,21 @@ class Platform {
     this.image = image;
     this.width = image.width;
     this.height = image.height;
+
+    this.velocity = {
+      x: 0,
+    };
+
+    this.block = block;
   }
 
   draw() {
     ctx.drawImage(this.image, this.position.x, this.position.y);
+  }
+
+  update() {
+    this.draw();
+    this.position.x += this.velocity.x;
   }
 }
 
@@ -185,12 +197,63 @@ class Background {
   }
 }
 
+class Explosion {
+  constructor({ position, velocity, image }) {
+    this.position = {
+      x: position.x,
+      y: position.y,
+    };
+
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y,
+    };
+
+    this.width = 200;
+    this.height = 200;
+
+    this.image = image;
+
+    this.frames = 0;
+    this.frameInterval = 10;
+    this.frameTimer = 0;
+  }
+
+  draw() {
+    ctx.drawImage(
+      this.image,
+      760 * this.frames,
+      0,
+      760,
+      760,
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    );
+  }
+
+  update() {
+    this.frameTimer++;
+    if (this.frameTimer % this.frameInterval === 0) {
+      this.frames++;
+      if (this.frames >= this.image.width / 760) {
+        this.frames = 0;
+      }
+    }
+    this.draw();
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+  }
+}
+
 /* declare variables for init() */
 let player = new Player();
 let platforms = [];
 let genericObjects = [];
 let backgrounds = [];
 let enemies = [];
+let explosions = [];
 
 let lastKey;
 let keys;
@@ -211,8 +274,6 @@ function selectLevel(currentLevel) {
 
 // initializing Level 1
 async function initLevel1() {
-  player = new Player();
-
   keys = {
     right: {
       pressed: false,
@@ -221,6 +282,17 @@ async function initLevel1() {
       pressed: false,
     },
   };
+
+  player = new Player();
+
+  enemies = [
+    new Enemy({
+      position: { x: 800, y: 100 },
+      velocity: { x: -1, y: 0 },
+      distance: { limit: 300, traveled: 0 },
+      image: sprites.werewolf.walk.left,
+    }),
+  ];
 
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
@@ -837,7 +909,6 @@ async function initLevel2() {
     }),
   ];
 
-  // how far have platform scrolled
   scrollOffset = 0;
 }
 
@@ -856,13 +927,50 @@ const animate = () => {
 
   // render multiple platforms
   platforms.forEach((platform) => {
-    platform.draw();
+    platform.update();
+    platform.velocity.x = 0;
   });
-  
-  // player has to be generated after platforms
+
   player.update();
 
-  // key bindings management, limit player's distance
+  enemies.forEach((enemy, index) => {
+    enemy.update();
+
+    // Enemy stomping
+    if (collisionTop({ object1: player, object2: enemy })) {
+      player.velocity.y -= 15;
+
+      explosions.push(
+        new Explosion({
+          position: { x: enemy.position.x, y: enemy.position.y },
+          velocity: { x: 0, y: 0 },
+          image: sprites.werewolf.walk.explosion,
+        })
+      );
+      // put out enemy from array
+      setTimeout(() => {
+        enemies.splice(index, 1);
+      }, 0);
+    } else if (
+      player.position.x + 50 >= enemy.position.x &&
+      player.position.x <= enemy.position.x + 50 &&
+      player.position.y >= enemy.position.y &&
+      player.position.y <= enemy.position.y
+    ) {
+      initLevel1();
+    }
+  });
+
+  // put out explosion from array after last frame
+  explosions.forEach((explosion, index) => {
+    explosion.update();
+    if (explosion.frames > explosion.image.width / explosion.height - 1) {
+      setTimeout(() => {
+        explosions.splice(index, 1);
+      }, 500);
+    }
+  });
+
   if (keys.right.pressed && player.position.x < 400) {
     player.velocity.x = player.speed;
   } else if (
@@ -885,6 +993,9 @@ const animate = () => {
       backgrounds.forEach((background) => {
         background.position.x -= player.speed * 0.7;
       });
+      enemies.forEach((enemy) => (enemy.position.x -= player.speed));
+
+      explosions.forEach((explosion) => (explosion.position.x -= player.speed));
     } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
       platforms.forEach((platform) => {
@@ -896,21 +1007,47 @@ const animate = () => {
       backgrounds.forEach((background) => {
         background.position.x += player.speed * 0.7;
       });
+      enemies.forEach((enemy) => (enemy.position.x += player.speed));
+      explosions.forEach((explosion) => (explosion.position.x += player.speed));
     }
   }
 
-  // platform collision detection
+  // Platform collision detection
   platforms.forEach((platform) => {
-    if (
-      player.position.y + player.height <= platform.position.y &&
-      player.position.y + player.height + player.velocity.y >=
-        platform.position.y &&
-      player.position.x + player.width >= platform.position.x &&
-      player.position.x <= platform.position.x + platform.width
-    ) {
+    if (isOnTop({ object: player, platform })) {
       player.velocity.y = 0;
       player.jumpCount = 0;
     }
+
+    if (
+      platform.block &&
+      createBlock({
+        object: player,
+        platform,
+      })
+    ) {
+      player.velocity.y = -player.velocity.y;
+    }
+
+    enemies.forEach((enemy) => {
+      if (
+        isOnTop({
+          object: enemy,
+          platform,
+        })
+      )
+        enemy.velocity.y = 0;
+    });
+
+    // growthBites.forEach((growthBite) => {
+    //   if (
+    //     isOnTop({
+    //       object: growthBite,
+    //       platform,
+    //     })
+    //   )
+    //     growthBite.velocity.y = 0;
+    // });
   });
 
   if (player.velocity.y === 0) {
@@ -945,12 +1082,12 @@ const animate = () => {
 
   // WIN condition
   if (scrollOffset > 9000) {
-    initLevel2()
+    initLevel2();
   }
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    selectLevel(1)
+    selectLevel(1);
   }
 };
 
