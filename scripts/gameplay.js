@@ -54,7 +54,7 @@ class Player {
     );
     ctx.font = "30px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(`Score: ${this.score}`, canvas.width-200, 50);
+    ctx.fillText(`Score: ${this.score}`, canvas.width - 200, 50);
   }
 
   update() {
@@ -343,6 +343,8 @@ let lastKey;
 let keys;
 let scrollOffset;
 
+let flagPole;
+
 // initializing Level 1
 async function init() {
   keys = {
@@ -377,6 +379,12 @@ async function init() {
       })
     );
   }
+
+  flagPole = new GenericObject({
+    x: 300,
+    y: 250,
+    image: objects.environments.flagpole,
+  });
 
   enemies = [
     new Enemy({
@@ -1539,6 +1547,8 @@ const animate = () => {
     genericObject.draw();
   });
 
+  flagPole.draw();
+
   // render multiple platforms
   platforms.forEach((platform) => {
     platform.update();
@@ -1617,7 +1627,7 @@ const animate = () => {
   } else {
     player.velocity.x = 0;
 
-    // platform scrolling
+    // Platform scrolling
     if (keys.right.pressed) {
       scrollOffset += player.speed;
 
@@ -1640,6 +1650,8 @@ const animate = () => {
       collectibles.forEach(
         (collectible) => (collectible.position.x -= player.speed)
       );
+
+      flagPole.position.x -= player.speed;
     } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
 
@@ -1662,6 +1674,7 @@ const animate = () => {
       collectibles.forEach(
         (collectible) => (collectible.position.x += player.speed)
       );
+      flagPole.position.x += player.speed;
     }
   }
 
@@ -1751,7 +1764,7 @@ addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
       if (player.jumpCount < 2) {
-        player.velocity.y = -25; // Perform jump
+        player.velocity.y = -25;
         player.jumpCount++;
       }
 
