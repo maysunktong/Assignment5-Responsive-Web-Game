@@ -973,6 +973,144 @@ async function init() {
       y: 200,
       image: objects.trees.brown3,
     }),
+    new GenericObject({
+      x: 8000 + 200,
+      y: 470,
+      image: objects.environments.cart,
+    }),
+    new GenericObject({
+      x: 8000 + 400,
+      y: 430,
+      image: objects.environments.house,
+    }),
+    new GenericObject({
+      x: 8000 + 1000,
+      y: 450,
+      image: objects.environments.furnace,
+    }),
+    new GenericObject({
+      x: 8000 + 1600,
+      y: 360,
+      image: objects.environments.lantern,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        8000,
+      y: 360,
+      image: objects.environments.well,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        8000,
+      y: 360,
+      image: objects.environments.well,
+    }),
+    ,
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        200 +
+        imagePlatforms.level2.barwood.width +
+        450 +
+        8000,
+      y: 440,
+      image: objects.environments.merchant,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        8000,
+      y: 430,
+      image: objects.environments.house,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        400 +
+        8000,
+      y: 560,
+      image: objects.environments.fences,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        8000,
+      y: 430,
+      image: objects.environments.house,
+    }),
+    new GenericObject({
+      x:
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.barwood.width +
+        imagePlatforms.level2.barwood.width +
+        8000,
+      y: 360,
+      image: objects.environments.villa,
+    }),
   ];
 
   collectibles = [
@@ -1295,668 +1433,6 @@ async function init() {
     }),
     new Collectible({
       position: { x: 10000 + 7500, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.redRunes,
-      value: 10,
-      type: "red",
-    }),
-  ];
-}
-
-// initializing Level 2
-async function initLevel2() {
-  for (let i = 0; i < 10; i++) {
-    backgrounds.push(
-      new Background({
-        x: i * objects.backgrounds.desert.width,
-        y: 0,
-        image: objects.backgrounds.desert,
-      })
-    );
-  }
-
-  // enemies = [
-  //   new Enemy({
-  //     position: { x: 1500, y: 100 },
-  //     velocity: { x: -1.5, y: 0 },
-  //     distance: { limit: 300, traveled: 0 },
-  //     image: sprites.werewolf.run.left,
-  //     state: "run",
-  //   }),
-  //   new Enemy({
-  //     position: { x: 2300, y: 100 },
-  //     velocity: { x: -1.5, y: 0 },
-  //     distance: { limit: 300, traveled: 0 },
-  //     image: sprites.werewolf.run.left,
-  //     state: "run",
-  //   }),
-  //   new Enemy({
-  //     position: { x: 4000, y: 100 },
-  //     velocity: { x: -1.5, y: 0 },
-  //     distance: { limit: 200, traveled: 0 },
-  //     image: sprites.werewolf.run.left,
-  //     state: "run",
-  //   }),
-  //   new Enemy({
-  //     position: { x: 4800, y: 100 },
-  //     velocity: { x: -1.5, y: 0 },
-  //     distance: { limit: 200, traveled: 0 },
-  //     image: sprites.werewolf.run.left,
-  //     state: "run",
-  //   }),
-  //   new Enemy({
-  //     position: { x: 5100, y: 100 },
-  //     velocity: { x: 1.5, y: 0 },
-  //     distance: { limit: 300, traveled: 0 },
-  //     image: sprites.werewolf.run.right,
-  //     state: "run",
-  //   }),
-  //   new Enemy({
-  //     position: { x: 6500, y: 100 },
-  //     velocity: { x: 1.5, y: 0 },
-  //     distance: { limit: 300, traveled: 0 },
-  //     image: sprites.werewolf.run.right,
-  //     state: "run",
-  //   }),
-  //   new Enemy({
-  //     position: { x: 7300, y: 100 },
-  //     velocity: { x: 1.5, y: 0 },
-  //     distance: { limit: 200, traveled: 0 },
-  //     image: sprites.werewolf.run.right,
-  //     state: "run",
-  //   }),
-  //   new Enemy({
-  //     position: { x: 8200, y: 100 },
-  //     velocity: { x: -1.5, y: 0 },
-  //     distance: { limit: 200, traveled: 0 },
-  //     image: sprites.werewolf.run.left,
-  //     state: "run",
-  //   }),
-  // ];
-
-  // platforms = [
-  //   new Platform({
-  //     x: 0,
-  //     y: 600,
-  //     image: imagePlatforms.level2.plg,
-  //   }),
-  //   new Platform({
-  //     x: imagePlatforms.level2.plg.width,
-  //     y: 400,
-  //     image: imagePlatforms.level2.barwood,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100,
-  //     y: 300,
-  //     image: imagePlatforms.level2.barwood,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100,
-  //     y: 200,
-  //     image: imagePlatforms.level2.barwood,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100,
-  //     y: 350,
-  //     image: imagePlatforms.level2.barwood,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100,
-  //     y: 600,
-  //     image: imagePlatforms.level2.pmd,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.pmd.width +
-  //       300,
-  //     y: 400,
-  //     image: imagePlatforms.level2.sm,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.pmd.width +
-  //       300 +
-  //       imagePlatforms.level2.sm.width +
-  //       300,
-  //     y: 400,
-  //     image: imagePlatforms.level2.sm,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.pmd.width +
-  //       300 +
-  //       imagePlatforms.level2.sm.width +
-  //       300 +
-  //       imagePlatforms.level2.sm.width +
-  //       300,
-  //     y: 600,
-  //     image: imagePlatforms.level2.plg,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.pmd.width +
-  //       300 +
-  //       imagePlatforms.level2.sm.width +
-  //       300 +
-  //       imagePlatforms.level2.sm.width +
-  //       300 +
-  //       imagePlatforms.level2.plg.width,
-  //     y: 600,
-  //     image: imagePlatforms.level2.pmd,
-  //   }),
-  //   new Platform({
-  //     x: 500,
-  //     y: 300,
-  //     image: imagePlatforms.level2.barbox,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x: 900,
-  //     y: 300,
-  //     image: imagePlatforms.level2.barboxlong,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x: 1500,
-  //     y: 200,
-  //     image: imagePlatforms.level2.barboxlong,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x: imagePlatforms.level2.plg.width + 400,
-  //     y: 600,
-  //     image: imagePlatforms.level2.sm,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       300 +
-  //       imagePlatforms.level2.sm.width +
-  //       300,
-  //     y: 600,
-  //     image: imagePlatforms.level2.sm,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100,
-  //     y: 200,
-  //     image: imagePlatforms.level2.barboxlong,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barboxlong.width +
-  //       200,
-  //     y: 200,
-  //     image: imagePlatforms.level2.barbox,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barboxlong.width +
-  //       200 +
-  //       imagePlatforms.level2.barbox.width +
-  //       200,
-  //     y: 200,
-  //     image: imagePlatforms.level2.barboxlong,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.pmd.width +
-  //       200 +
-  //       imagePlatforms.level2.sm.width +
-  //       200 +
-  //       imagePlatforms.level2.sm.width +
-  //       200 +
-  //       imagePlatforms.level2.barbox.width,
-  //     y: 250,
-  //     image: imagePlatforms.level2.barbox,
-  //     block: true,
-  //   }),
-  //   new Platform({
-  //     x:
-  //       imagePlatforms.level2.plg.width +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.barwood.width +
-  //       100 +
-  //       imagePlatforms.level2.pmd.width +
-  //       200 +
-  //       imagePlatforms.level2.sm.width +
-  //       200 +
-  //       imagePlatforms.level2.sm.width +
-  //       200 +
-  //       imagePlatforms.level2.barbox.width +
-  //       200 +
-  //       imagePlatforms.level2.barbox.width,
-  //     y: 250,
-  //     image: imagePlatforms.level2.barbox,
-  //     block: true,
-  //   }),
-  // ];
-
-  genericObjects = [
-    new GenericObject({ x: 200, y: 470, image: objects.environments.cart }),
-    new GenericObject({ x: 400, y: 430, image: objects.environments.house }),
-    new GenericObject({ x: 1000, y: 450, image: objects.environments.furnace }),
-    new GenericObject({ x: 1600, y: 360, image: objects.environments.lantern }),
-    new GenericObject({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        200 +
-        imagePlatforms.level2.barwood.width +
-        200,
-      y: 360,
-      image: objects.environments.well,
-    }),
-    new GenericObject({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        200 +
-        imagePlatforms.level2.barwood.width +
-        200,
-      y: 360,
-      image: objects.environments.well,
-    }),
-    ,
-    new GenericObject({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        200 +
-        imagePlatforms.level2.barwood.width +
-        450,
-      y: 440,
-      image: objects.environments.merchant,
-    }),
-    new GenericObject({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        300,
-      y: 430,
-      image: objects.environments.house,
-    }),
-    new GenericObject({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        400,
-      y: 560,
-      image: objects.environments.fences,
-    }),
-    new GenericObject({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        300,
-      y: 430,
-      image: objects.environments.house,
-    }),
-    new GenericObject({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        300 +
-        imagePlatforms.level2.barwood.width +
-        imagePlatforms.level2.barwood.width,
-      y: 360,
-      image: objects.environments.villa,
-    }),
-  ];
-
-  collectibles = [
-    new Collectible({
-      position: { x: 300, y: 300 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 400, y: 300 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 700, y: 200 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 800, y: 200 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 900, y: 200 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 1200, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.greenRunes,
-      value: 10,
-      type: "green",
-    }),
-    new Collectible({
-      position: { x: 1300, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.greenRunes,
-      value: 10,
-      type: "green",
-    }),
-    new Collectible({
-      position: { x: 1400, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.greenRunes,
-      value: 10,
-      type: "green",
-    }),
-
-    new Collectible({
-      position: { x: 2600, y: 200 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 2650, y: 200 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 2700, y: 200 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 3400, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.redRunes,
-      value: 10,
-      type: "red",
-    }),
-    new Collectible({
-      position: { x: 3500, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.redRunes,
-      value: 10,
-      type: "red",
-    }),
-    new Collectible({
-      position: { x: 3600, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.diamonds,
-      value: 10,
-      type: "diamond",
-    }),
-    new Collectible({
-      position: { x: 4600, y: 400 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.diamonds,
-      value: 10,
-      type: "diamond",
-    }),
-    new Collectible({
-      position: { x: 4700, y: 400 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.diamonds,
-      value: 10,
-      type: "diamond",
-    }),
-    new Collectible({
-      position: { x: 4800, y: 400 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.diamonds,
-      value: 10,
-      type: "diamond",
-    }),
-    new Collectible({
-      position: { x: 4300, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 4400, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 4500, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 5300, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.diamonds,
-      value: 10,
-      type: "diamond",
-    }),
-    new Collectible({
-      position: { x: 5400, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.greenRunes,
-      value: 10,
-      type: "green",
-    }),
-    new Collectible({
-      position: { x: 5500, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.redRunes,
-      value: 10,
-      type: "red",
-    }),
-    new Collectible({
-      position: { x: 6400, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 6500, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 6600, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.coins,
-      value: 10,
-      type: "coin",
-    }),
-    new Collectible({
-      position: { x: 7300, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.greenRunes,
-      value: 10,
-      type: "green",
-    }),
-    new Collectible({
-      position: { x: 7400, y: 100 },
-      velocity: { x: 0, y: 0 },
-      image: objects.collectibles.redRunes,
-      value: 10,
-      type: "red",
-    }),
-    new Collectible({
-      position: { x: 7500, y: 100 },
       velocity: { x: 0, y: 0 },
       image: objects.collectibles.redRunes,
       value: 10,
