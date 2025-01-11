@@ -410,6 +410,63 @@ async function init() {
       image: sprites.werewolf.walk.left,
       state: "walk",
     }),
+    ,
+    new Enemy({
+      position: { x: 10000 + 1500, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 300, traveled: 0 },
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 10000 + 2300, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 300, traveled: 0 },
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 10000 + 4000, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 200, traveled: 0 },
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 10000 + 4800, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 200, traveled: 0 },
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 10000 + 5100, y: 100 },
+      velocity: { x: 1.5, y: 0 },
+      distance: { limit: 300, traveled: 0 },
+      image: sprites.werewolf.run.right,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 10000 + 6500, y: 100 },
+      velocity: { x: 1.5, y: 0 },
+      distance: { limit: 300, traveled: 0 },
+      image: sprites.werewolf.run.right,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 10000 + 7300, y: 100 },
+      velocity: { x: 1.5, y: 0 },
+      distance: { limit: 200, traveled: 0 },
+      image: sprites.werewolf.run.right,
+      state: "run",
+    }),
+    new Enemy({
+      position: { x: 10000 + 8200, y: 100 },
+      velocity: { x: -1.5, y: 0 },
+      distance: { limit: 200, traveled: 0 },
+      image: sprites.werewolf.run.left,
+      state: "run",
+    }),
   ];
 
   platforms = [
@@ -1258,64 +1315,64 @@ async function initLevel2() {
     );
   }
 
-  enemies = [
-    new Enemy({
-      position: { x: 1500, y: 100 },
-      velocity: { x: -1.5, y: 0 },
-      distance: { limit: 300, traveled: 0 },
-      image: sprites.werewolf.run.left,
-      state: "run",
-    }),
-    new Enemy({
-      position: { x: 2300, y: 100 },
-      velocity: { x: -1.5, y: 0 },
-      distance: { limit: 300, traveled: 0 },
-      image: sprites.werewolf.run.left,
-      state: "run",
-    }),
-    new Enemy({
-      position: { x: 4000, y: 100 },
-      velocity: { x: -1.5, y: 0 },
-      distance: { limit: 200, traveled: 0 },
-      image: sprites.werewolf.run.left,
-      state: "run",
-    }),
-    new Enemy({
-      position: { x: 4800, y: 100 },
-      velocity: { x: -1.5, y: 0 },
-      distance: { limit: 200, traveled: 0 },
-      image: sprites.werewolf.run.left,
-      state: "run",
-    }),
-    new Enemy({
-      position: { x: 5100, y: 100 },
-      velocity: { x: 1.5, y: 0 },
-      distance: { limit: 300, traveled: 0 },
-      image: sprites.werewolf.run.right,
-      state: "run",
-    }),
-    new Enemy({
-      position: { x: 6500, y: 100 },
-      velocity: { x: 1.5, y: 0 },
-      distance: { limit: 300, traveled: 0 },
-      image: sprites.werewolf.run.right,
-      state: "run",
-    }),
-    new Enemy({
-      position: { x: 7300, y: 100 },
-      velocity: { x: 1.5, y: 0 },
-      distance: { limit: 200, traveled: 0 },
-      image: sprites.werewolf.run.right,
-      state: "run",
-    }),
-    new Enemy({
-      position: { x: 8200, y: 100 },
-      velocity: { x: -1.5, y: 0 },
-      distance: { limit: 200, traveled: 0 },
-      image: sprites.werewolf.run.left,
-      state: "run",
-    }),
-  ];
+  // enemies = [
+  //   new Enemy({
+  //     position: { x: 1500, y: 100 },
+  //     velocity: { x: -1.5, y: 0 },
+  //     distance: { limit: 300, traveled: 0 },
+  //     image: sprites.werewolf.run.left,
+  //     state: "run",
+  //   }),
+  //   new Enemy({
+  //     position: { x: 2300, y: 100 },
+  //     velocity: { x: -1.5, y: 0 },
+  //     distance: { limit: 300, traveled: 0 },
+  //     image: sprites.werewolf.run.left,
+  //     state: "run",
+  //   }),
+  //   new Enemy({
+  //     position: { x: 4000, y: 100 },
+  //     velocity: { x: -1.5, y: 0 },
+  //     distance: { limit: 200, traveled: 0 },
+  //     image: sprites.werewolf.run.left,
+  //     state: "run",
+  //   }),
+  //   new Enemy({
+  //     position: { x: 4800, y: 100 },
+  //     velocity: { x: -1.5, y: 0 },
+  //     distance: { limit: 200, traveled: 0 },
+  //     image: sprites.werewolf.run.left,
+  //     state: "run",
+  //   }),
+  //   new Enemy({
+  //     position: { x: 5100, y: 100 },
+  //     velocity: { x: 1.5, y: 0 },
+  //     distance: { limit: 300, traveled: 0 },
+  //     image: sprites.werewolf.run.right,
+  //     state: "run",
+  //   }),
+  //   new Enemy({
+  //     position: { x: 6500, y: 100 },
+  //     velocity: { x: 1.5, y: 0 },
+  //     distance: { limit: 300, traveled: 0 },
+  //     image: sprites.werewolf.run.right,
+  //     state: "run",
+  //   }),
+  //   new Enemy({
+  //     position: { x: 7300, y: 100 },
+  //     velocity: { x: 1.5, y: 0 },
+  //     distance: { limit: 200, traveled: 0 },
+  //     image: sprites.werewolf.run.right,
+  //     state: "run",
+  //   }),
+  //   new Enemy({
+  //     position: { x: 8200, y: 100 },
+  //     velocity: { x: -1.5, y: 0 },
+  //     distance: { limit: 200, traveled: 0 },
+  //     image: sprites.werewolf.run.left,
+  //     state: "run",
+  //   }),
+  // ];
 
   // platforms = [
   //   new Platform({
