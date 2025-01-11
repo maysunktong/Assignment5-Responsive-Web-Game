@@ -9,7 +9,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 1280;
 canvas.height = 720;
 
-let gravity = 1.5;
+let gravity = 1;
 
 class Player {
   constructor() {
