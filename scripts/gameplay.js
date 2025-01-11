@@ -638,6 +638,129 @@ async function initLevel1() {
       image: objects.trees.brown3,
     }),
   ];
+
+  collectibles = [
+    new Collectible({
+      position: { x: 300, y: 300 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 400, y: 300 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 700, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 800, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 900, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 1200, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+    new Collectible({
+      position: { x: 1300, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+    new Collectible({
+      position: { x: 1400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+
+    new Collectible({
+      position: { x: 2600, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 2650, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 2700, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 3400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.redRunes,
+      value: 10,
+      type: "red",
+    }),
+    new Collectible({
+      position: { x: 3500, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.redRunes,
+      value: 10,
+      type: "red",
+    }),
+    new Collectible({
+      position: { x: 3600, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 4600, y: 400 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 4700, y: 400 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 4800, y: 400 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+  ];
 }
 
 // initializing Level 2
@@ -1387,7 +1510,6 @@ const animate = () => {
       player.position.y < collectible.position.y + collectible.height &&
       player.position.y + player.height > collectible.position.y
     ) {
-      // Add the collectible's value to the player's score
       player.score += collectible.value;
 
       setTimeout(() => {
@@ -1528,12 +1650,12 @@ const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    selectLevel(1);
+    initLevel1();
   }
   console.log("scrollOffset", scrollOffset);
 };
 
-initLevel2();
+initLevel1();
 animate();
 
 addEventListener("keydown", (event) => {
