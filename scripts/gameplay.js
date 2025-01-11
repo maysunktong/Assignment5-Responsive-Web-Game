@@ -9,7 +9,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 1280;
 canvas.height = 720;
 
-const gravity = 0.5;
+const gravity = 1.5;
 
 class Player {
   constructor() {
@@ -1752,7 +1752,7 @@ addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
       if (player.jumpCount < 2) {
-        player.velocity.y = -15; // Perform jump
+        player.velocity.y = -25; // Perform jump
         player.jumpCount++;
       }
 
