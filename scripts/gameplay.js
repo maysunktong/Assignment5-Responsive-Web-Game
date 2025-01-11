@@ -338,7 +338,6 @@ let backgrounds = [];
 let enemies = [];
 let explosions = [];
 let collectibles = [];
-let score = 0;
 
 let lastKey;
 let keys;

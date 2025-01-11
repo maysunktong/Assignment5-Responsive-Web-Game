@@ -47,6 +47,8 @@ const pointer6 = "../assets/images/pointers/6.png";
 const pointer7 = "../assets/images/pointers/7.png";
 const pointer8 = "../assets/images/pointers/8.png";
 
+const flagpole = "../assets/images/Environment/flagpole.png";
+
 export const objects = {
   backgrounds: {
     forest: createImage(bgForest),
@@ -88,6 +90,7 @@ export const objects = {
     lantern: createImage(lantern),
     well: createImage(well),
     furnace: createImage(furnace),
+    flagpole: createImage(flagpole),
   },
   pointers: {
     pointer1: createImage(pointer1),
@@ -98,5 +101,5 @@ export const objects = {
     pointer6: createImage(pointer6),
     pointer7: createImage(pointer7),
     pointer8: createImage(pointer8),
-  }
+  },
 };
