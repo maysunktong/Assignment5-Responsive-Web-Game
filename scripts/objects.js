@@ -45,7 +45,6 @@ export const objects = {
     desert: createImage(bgDesert),
   },
   collectibles: {
-    stars: createImage(collectibleStars),
     coins: createImage(collectibleCoins),
     diamonds: createImage(collectibleDiamonds),
     greenRunes: createImage(collectibleGreenRunes),
