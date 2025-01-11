@@ -344,21 +344,8 @@ let lastKey;
 let keys;
 let scrollOffset;
 
-let currentLevel = 1;
-
-function selectLevel(currentLevel) {
-  switch (currentLevel) {
-    case 1:
-      initLevel1();
-      break;
-    case 2:
-      initLevel2;
-      break;
-  }
-}
-
 // initializing Level 1
-async function initLevel1() {
+async function init() {
   keys = {
     right: {
       pressed: false,
@@ -369,14 +356,25 @@ async function initLevel1() {
   };
 
   player = new Player();
+
   scrollOffset = 0;
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 7; i++) {
     backgrounds.push(
       new Background({
         x: i * objects.backgrounds.forest.width,
         y: 0,
         image: objects.backgrounds.forest,
+      })
+    );
+  }
+
+  for (let i = 7; i < 15; i++) {
+    backgrounds.push(
+      new Background({
+        x: i * objects.backgrounds.desert.width,
+        y: 0,
+        image: objects.backgrounds.desert,
       })
     );
   }
@@ -522,8 +520,289 @@ async function initLevel1() {
       block: true,
     }),
     new Platform({
-      x: imagePlatforms.level1.pmd.width + 200 + imagePlatforms.level1.sm,
+      x:
+        10000 +
+        imagePlatforms.level1.pmd.width +
+        200 +
+        imagePlatforms.level1.sm,
       y: 350,
+      image: imagePlatforms.level2.barbox,
+      block: true,
+    }),
+    ,
+    new Platform({
+      x: 10000,
+      y: 600,
+      image: imagePlatforms.level2.plg,
+    }),
+    new Platform({
+      x: 10000 + imagePlatforms.level2.plg.width,
+      y: 400,
+      image: imagePlatforms.level2.barwood,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 300,
+      image: imagePlatforms.level2.barwood,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 200,
+      image: imagePlatforms.level2.barwood,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 350,
+      image: imagePlatforms.level2.barwood,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 600,
+      image: imagePlatforms.level2.pmd,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        300,
+      y: 400,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300,
+      y: 400,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300,
+      y: 600,
+      image: imagePlatforms.level2.plg,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300 +
+        imagePlatforms.level2.plg.width,
+      y: 600,
+      image: imagePlatforms.level2.pmd,
+    }),
+    new Platform({
+      x: 10000 + 500,
+      y: 300,
+      image: imagePlatforms.level2.barbox,
+      block: true,
+    }),
+    new Platform({
+      x: 10000 + 900,
+      y: 300,
+      image: imagePlatforms.level2.barboxlong,
+      block: true,
+    }),
+    new Platform({
+      x: 10000 + 1500,
+      y: 200,
+      image: imagePlatforms.level2.barboxlong,
+      block: true,
+    }),
+    new Platform({
+      x: 10000 + imagePlatforms.level2.plg.width + 400,
+      y: 600,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        300 +
+        imagePlatforms.level2.sm.width +
+        300,
+      y: 600,
+      image: imagePlatforms.level2.sm,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100,
+      y: 200,
+      image: imagePlatforms.level2.barboxlong,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barboxlong.width +
+        200,
+      y: 200,
+      image: imagePlatforms.level2.barbox,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barboxlong.width +
+        200 +
+        imagePlatforms.level2.barbox.width +
+        200,
+      y: 200,
+      image: imagePlatforms.level2.barboxlong,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.barbox.width,
+      y: 250,
+      image: imagePlatforms.level2.barbox,
+      block: true,
+    }),
+    new Platform({
+      x:
+        10000 +
+        imagePlatforms.level2.plg.width +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.barwood.width +
+        100 +
+        imagePlatforms.level2.pmd.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.sm.width +
+        200 +
+        imagePlatforms.level2.barbox.width +
+        200 +
+        imagePlatforms.level2.barbox.width,
+      y: 250,
       image: imagePlatforms.level2.barbox,
       block: true,
     }),
@@ -760,23 +1039,215 @@ async function initLevel1() {
       value: 10,
       type: "diamond",
     }),
+    new Collectible({
+      position: { x: 10000 + 300, y: 300 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 400, y: 300 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 700, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 800, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 900, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 1200, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+    new Collectible({
+      position: { x: 10000 + 1300, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+    new Collectible({
+      position: { x: 10000 + 1400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+
+    new Collectible({
+      position: { x: 10000 + 2600, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 2650, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 2700, y: 200 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 3400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.redRunes,
+      value: 10,
+      type: "red",
+    }),
+    new Collectible({
+      position: { x: 10000 + 3500, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.redRunes,
+      value: 10,
+      type: "red",
+    }),
+    new Collectible({
+      position: { x: 10000 + 3600, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 10000 + 4600, y: 400 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 10000 + 4700, y: 400 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 10000 + 4800, y: 400 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 10000 + 4300, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 4400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 4500, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 5300, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.diamonds,
+      value: 10,
+      type: "diamond",
+    }),
+    new Collectible({
+      position: { x: 10000 + 5400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+    new Collectible({
+      position: { x: 10000 + 5500, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.redRunes,
+      value: 10,
+      type: "red",
+    }),
+    new Collectible({
+      position: { x: 10000 + 6400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 6500, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 6600, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 10000 + 7300, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.greenRunes,
+      value: 10,
+      type: "green",
+    }),
+    new Collectible({
+      position: { x: 10000 + 7400, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.redRunes,
+      value: 10,
+      type: "red",
+    }),
+    new Collectible({
+      position: { x: 10000 + 7500, y: 100 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.redRunes,
+      value: 10,
+      type: "red",
+    }),
   ];
 }
 
 // initializing Level 2
 async function initLevel2() {
-  keys = {
-    right: {
-      pressed: false,
-    },
-    left: {
-      pressed: false,
-    },
-  };
-
-  player = new Player();
-  scrollOffset = 0;
-
   for (let i = 0; i < 10; i++) {
     backgrounds.push(
       new Background({
@@ -846,270 +1317,270 @@ async function initLevel2() {
     }),
   ];
 
-  platforms = [
-    new Platform({
-      x: 0,
-      y: 600,
-      image: imagePlatforms.level2.plg,
-    }),
-    new Platform({
-      x: imagePlatforms.level2.plg.width,
-      y: 400,
-      image: imagePlatforms.level2.barwood,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100,
-      y: 300,
-      image: imagePlatforms.level2.barwood,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100,
-      y: 200,
-      image: imagePlatforms.level2.barwood,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100,
-      y: 350,
-      image: imagePlatforms.level2.barwood,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100,
-      y: 600,
-      image: imagePlatforms.level2.pmd,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        300,
-      y: 400,
-      image: imagePlatforms.level2.sm,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        300 +
-        imagePlatforms.level2.sm.width +
-        300,
-      y: 400,
-      image: imagePlatforms.level2.sm,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        300 +
-        imagePlatforms.level2.sm.width +
-        300 +
-        imagePlatforms.level2.sm.width +
-        300,
-      y: 600,
-      image: imagePlatforms.level2.plg,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        300 +
-        imagePlatforms.level2.sm.width +
-        300 +
-        imagePlatforms.level2.sm.width +
-        300 +
-        imagePlatforms.level2.plg.width,
-      y: 600,
-      image: imagePlatforms.level2.pmd,
-    }),
-    new Platform({
-      x: 500,
-      y: 300,
-      image: imagePlatforms.level2.barbox,
-      block: true,
-    }),
-    new Platform({
-      x: 900,
-      y: 300,
-      image: imagePlatforms.level2.barboxlong,
-      block: true,
-    }),
-    new Platform({
-      x: 1500,
-      y: 200,
-      image: imagePlatforms.level2.barboxlong,
-      block: true,
-    }),
-    new Platform({
-      x: imagePlatforms.level2.plg.width + 400,
-      y: 600,
-      image: imagePlatforms.level2.sm,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        300 +
-        imagePlatforms.level2.sm.width +
-        300,
-      y: 600,
-      image: imagePlatforms.level2.sm,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100,
-      y: 200,
-      image: imagePlatforms.level2.barboxlong,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barboxlong.width +
-        200,
-      y: 200,
-      image: imagePlatforms.level2.barbox,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barboxlong.width +
-        200 +
-        imagePlatforms.level2.barbox.width +
-        200,
-      y: 200,
-      image: imagePlatforms.level2.barboxlong,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.barbox.width,
-      y: 250,
-      image: imagePlatforms.level2.barbox,
-      block: true,
-    }),
-    new Platform({
-      x:
-        imagePlatforms.level2.plg.width +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.barwood.width +
-        100 +
-        imagePlatforms.level2.pmd.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.sm.width +
-        200 +
-        imagePlatforms.level2.barbox.width +
-        200 +
-        imagePlatforms.level2.barbox.width,
-      y: 250,
-      image: imagePlatforms.level2.barbox,
-      block: true,
-    }),
-  ];
+  // platforms = [
+  //   new Platform({
+  //     x: 0,
+  //     y: 600,
+  //     image: imagePlatforms.level2.plg,
+  //   }),
+  //   new Platform({
+  //     x: imagePlatforms.level2.plg.width,
+  //     y: 400,
+  //     image: imagePlatforms.level2.barwood,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100,
+  //     y: 300,
+  //     image: imagePlatforms.level2.barwood,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100,
+  //     y: 200,
+  //     image: imagePlatforms.level2.barwood,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100,
+  //     y: 350,
+  //     image: imagePlatforms.level2.barwood,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100,
+  //     y: 600,
+  //     image: imagePlatforms.level2.pmd,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.pmd.width +
+  //       300,
+  //     y: 400,
+  //     image: imagePlatforms.level2.sm,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.pmd.width +
+  //       300 +
+  //       imagePlatforms.level2.sm.width +
+  //       300,
+  //     y: 400,
+  //     image: imagePlatforms.level2.sm,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.pmd.width +
+  //       300 +
+  //       imagePlatforms.level2.sm.width +
+  //       300 +
+  //       imagePlatforms.level2.sm.width +
+  //       300,
+  //     y: 600,
+  //     image: imagePlatforms.level2.plg,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.pmd.width +
+  //       300 +
+  //       imagePlatforms.level2.sm.width +
+  //       300 +
+  //       imagePlatforms.level2.sm.width +
+  //       300 +
+  //       imagePlatforms.level2.plg.width,
+  //     y: 600,
+  //     image: imagePlatforms.level2.pmd,
+  //   }),
+  //   new Platform({
+  //     x: 500,
+  //     y: 300,
+  //     image: imagePlatforms.level2.barbox,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x: 900,
+  //     y: 300,
+  //     image: imagePlatforms.level2.barboxlong,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x: 1500,
+  //     y: 200,
+  //     image: imagePlatforms.level2.barboxlong,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x: imagePlatforms.level2.plg.width + 400,
+  //     y: 600,
+  //     image: imagePlatforms.level2.sm,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       300 +
+  //       imagePlatforms.level2.sm.width +
+  //       300,
+  //     y: 600,
+  //     image: imagePlatforms.level2.sm,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100,
+  //     y: 200,
+  //     image: imagePlatforms.level2.barboxlong,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barboxlong.width +
+  //       200,
+  //     y: 200,
+  //     image: imagePlatforms.level2.barbox,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barboxlong.width +
+  //       200 +
+  //       imagePlatforms.level2.barbox.width +
+  //       200,
+  //     y: 200,
+  //     image: imagePlatforms.level2.barboxlong,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.pmd.width +
+  //       200 +
+  //       imagePlatforms.level2.sm.width +
+  //       200 +
+  //       imagePlatforms.level2.sm.width +
+  //       200 +
+  //       imagePlatforms.level2.barbox.width,
+  //     y: 250,
+  //     image: imagePlatforms.level2.barbox,
+  //     block: true,
+  //   }),
+  //   new Platform({
+  //     x:
+  //       imagePlatforms.level2.plg.width +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.barwood.width +
+  //       100 +
+  //       imagePlatforms.level2.pmd.width +
+  //       200 +
+  //       imagePlatforms.level2.sm.width +
+  //       200 +
+  //       imagePlatforms.level2.sm.width +
+  //       200 +
+  //       imagePlatforms.level2.barbox.width +
+  //       200 +
+  //       imagePlatforms.level2.barbox.width,
+  //     y: 250,
+  //     image: imagePlatforms.level2.barbox,
+  //     block: true,
+  //   }),
+  // ];
 
   genericObjects = [
     new GenericObject({ x: 200, y: 470, image: objects.environments.cart }),
@@ -1486,7 +1957,7 @@ const animate = () => {
       player.position.y >= enemy.position.y &&
       player.position.y <= enemy.position.y
     ) {
-      initLevel1();
+      init();
     }
   });
 
@@ -1644,18 +2115,18 @@ const animate = () => {
   }
 
   // WIN condition
-  if (scrollOffset > 9000) {
-    initLevel2();
-  }
+  // if (scrollOffset > 9000) {
+  //   initLevel2();
+  // }
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    initLevel1();
+    init();
   }
   console.log("scrollOffset", scrollOffset);
 };
 
-initLevel1();
+init();
 animate();
 
 addEventListener("keydown", (event) => {
