@@ -54,7 +54,7 @@ class Player {
     );
     ctx.font = "30px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(`Score: ${this.score}`, canvas.width - 150, 50);
+    ctx.fillText(`Score: ${this.score}`, canvas.width-200, 50);
   }
 
   update() {
