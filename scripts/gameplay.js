@@ -36,6 +36,8 @@ class Player {
     this.frameTimer = 0;
 
     this.jumpCount = 0;
+
+    this.score = 0;
   }
 
   draw() {
@@ -336,6 +338,7 @@ let backgrounds = [];
 let enemies = [];
 let explosions = [];
 let collectibles = [];
+let score = 0;
 
 let lastKey;
 let keys;
@@ -1081,6 +1084,23 @@ async function initLevel2() {
       image: objects.environments.villa,
     }),
   ];
+
+  collectibles = [
+    new Collectible({
+      position: { x: 300, y: 300 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
+      position: { x: 500, y: 300 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+  ];
 }
 
 const animate = () => {
@@ -1143,6 +1163,25 @@ const animate = () => {
       setTimeout(() => {
         explosions.splice(0, 1);
       }, 500);
+    }
+  });
+
+  // collectibles
+  collectibles.forEach((collectible, index) => {
+    collectible.update();
+
+    if (
+      player.position.x < collectible.position.x + collectible.width &&
+      player.position.x + player.width > collectible.position.x &&
+      player.position.y < collectible.position.y + collectible.height &&
+      player.position.y + player.height > collectible.position.y
+    ) {
+      // Add the collectible's value to the player's score
+      player.score += collectible.value;
+
+      setTimeout(() => {
+        collectibles.splice(index, 1);
+      }, 0);
     }
   });
 
@@ -1229,25 +1268,6 @@ const animate = () => {
         })
       )
         enemy.velocity.y = 0;
-    });
-
-    // collectibles
-    collectibles.forEach((collectible, index) => {
-      collectible.update();
-
-      if (
-        player.position.x < collectible.position.x + collectible.width &&
-        player.position.x + player.width > collectible.position.x &&
-        player.position.y < collectible.position.y + collectible.height &&
-        player.position.y + player.height > collectible.position.y
-      ) {
-        // Add the collectible's value to the player's score
-        player.score += collectible.value;
-
-        setTimeout(() => {
-          collectibles.splice(index, 1);
-        }, 0);
-      }
     });
 
     // growthBites.forEach((growthBite) => {
