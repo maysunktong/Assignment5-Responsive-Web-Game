@@ -371,6 +371,16 @@ async function initLevel1() {
   player = new Player();
   scrollOffset = 0;
 
+  for (let i = 0; i < 10; i++) {
+    backgrounds.push(
+      new Background({
+        x: i * objects.backgrounds.forest.width,
+        y: 0,
+        image: objects.backgrounds.forest,
+      })
+    );
+  }
+
   enemies = [
     new Enemy({
       position: { x: 700, y: 100 },
@@ -403,16 +413,6 @@ async function initLevel1() {
       state: "walk",
     }),
   ];
-
-  for (let i = 0; i < 10; i++) {
-    backgrounds.push(
-      new Background({
-        x: i * objects.backgrounds.forest.width,
-        y: 0,
-        image: objects.backgrounds.forest,
-      })
-    );
-  }
 
   platforms = [
     new Platform({
@@ -654,6 +654,16 @@ async function initLevel2() {
   player = new Player();
   scrollOffset = 0;
 
+  for (let i = 0; i < 10; i++) {
+    backgrounds.push(
+      new Background({
+        x: i * objects.backgrounds.desert.width,
+        y: 0,
+        image: objects.backgrounds.desert,
+      })
+    );
+  }
+
   enemies = [
     new Enemy({
       position: { x: 1900, y: 100 },
@@ -691,16 +701,6 @@ async function initLevel2() {
       state: "run",
     }),
   ];
-
-  for (let i = 0; i < 10; i++) {
-    backgrounds.push(
-      new Background({
-        x: i * objects.backgrounds.desert.width,
-        y: 0,
-        image: objects.backgrounds.desert,
-      })
-    );
-  }
 
   platforms = [
     new Platform({
