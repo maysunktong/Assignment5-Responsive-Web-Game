@@ -1293,6 +1293,13 @@ async function init() {
       type: "ruby",
     }),
     new Collectible({
+      position: { x: 7700, y: 400 },
+      velocity: { x: 0, y: 0 },
+      image: objects.collectibles.coins,
+      value: 10,
+      type: "coin",
+    }),
+    new Collectible({
       position: { x: 7800, y: 400 },
       velocity: { x: 0, y: 0 },
       image: objects.collectibles.coins,
