@@ -50,6 +50,9 @@ class Player {
       this.width,
       this.height
     );
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(`Score: ${this.score}`, canvas.width - 150, 50);
   }
 
   update() {
@@ -273,6 +276,58 @@ class Explosion {
   }
 }
 
+class Collectible {
+  constructor({ position, velocity, image, value = 1, type = "coin" }) {
+    this.position = {
+      x: position.x,
+      y: position.y,
+    };
+
+    this.velocity = {
+      x: velocity.x,
+      y: velocity.y,
+    };
+
+    this.width = 32;
+    this.height = 32;
+
+    this.image = image;
+    this.type = type;
+    this.value = value;
+
+    this.frames = 0;
+    this.frameInterval = 10;
+    this.frameTimer = 0;
+  }
+
+  draw() {
+    ctx.drawImage(
+      this.image,
+      16 * this.frames,
+      0,
+      16,
+      16,
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    );
+  }
+
+  update() {
+    this.frameTimer++;
+    if (this.frameTimer % this.frameInterval === 0) {
+      this.frames++;
+      if (this.frames > this.image.width / this.height - 1) {
+        this.frames = 0;
+      }
+    }
+    this.draw();
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+  }
+}
+
 /* declare variables for init() */
 let player = new Player();
 let platforms = [];
@@ -280,6 +335,7 @@ let genericObjects = [];
 let backgrounds = [];
 let enemies = [];
 let explosions = [];
+let collectibles = [];
 
 let lastKey;
 let keys;
@@ -599,35 +655,35 @@ async function initLevel2() {
     new Enemy({
       position: { x: 1900, y: 100 },
       velocity: { x: -1.5, y: 0 },
-      distance: { limit: 300, traveled: 0},
+      distance: { limit: 300, traveled: 0 },
       image: sprites.werewolf.run.left,
       state: "run",
     }),
     new Enemy({
       position: { x: 4000, y: 100 },
       velocity: { x: -1.5, y: 0 },
-      distance: { limit: 200, traveled: 0},
+      distance: { limit: 200, traveled: 0 },
       image: sprites.werewolf.run.left,
       state: "run",
     }),
     new Enemy({
       position: { x: 4800, y: 100 },
       velocity: { x: -1.5, y: 0 },
-      distance: { limit: 200, traveled: 0},
+      distance: { limit: 200, traveled: 0 },
       image: sprites.werewolf.run.left,
       state: "run",
     }),
     new Enemy({
       position: { x: 5100, y: 100 },
       velocity: { x: 1.5, y: 0 },
-      distance: { limit: 300, traveled: 0},
+      distance: { limit: 300, traveled: 0 },
       image: sprites.werewolf.run.right,
       state: "run",
     }),
     new Enemy({
       position: { x: 7300, y: 100 },
       velocity: { x: 1.5, y: 0 },
-      distance: { limit: 200, traveled: 0},
+      distance: { limit: 200, traveled: 0 },
       image: sprites.werewolf.run.right,
       state: "run",
     }),
@@ -1103,31 +1159,48 @@ const animate = () => {
     // platform scrolling
     if (keys.right.pressed) {
       scrollOffset += player.speed;
+
       platforms.forEach((platform) => {
         platform.position.x -= player.speed;
       });
+
       genericObjects.forEach((genericObject) => {
         genericObject.position.x -= player.speed * 0.8;
       });
+
       backgrounds.forEach((background) => {
         background.position.x -= player.speed * 0.7;
       });
+
       enemies.forEach((enemy) => (enemy.position.x -= player.speed));
 
       explosions.forEach((explosion) => (explosion.position.x -= player.speed));
+
+      collectibles.forEach(
+        (collectible) => (collectible.position.x -= player.speed)
+      );
     } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
+
       platforms.forEach((platform) => {
         platform.position.x += player.speed;
       });
+
       genericObjects.forEach((genericObject) => {
         genericObject.position.x += player.speed * 0.8;
       });
+
       backgrounds.forEach((background) => {
         background.position.x += player.speed * 0.7;
       });
+
       enemies.forEach((enemy) => (enemy.position.x += player.speed));
+
       explosions.forEach((explosion) => (explosion.position.x += player.speed));
+
+      collectibles.forEach(
+        (collectible) => (collectible.position.x += player.speed)
+      );
     }
   }
 
@@ -1156,6 +1229,25 @@ const animate = () => {
         })
       )
         enemy.velocity.y = 0;
+    });
+
+    // collectibles
+    collectibles.forEach((collectible, index) => {
+      collectible.update();
+
+      if (
+        player.position.x < collectible.position.x + collectible.width &&
+        player.position.x + player.width > collectible.position.x &&
+        player.position.y < collectible.position.y + collectible.height &&
+        player.position.y + player.height > collectible.position.y
+      ) {
+        // Add the collectible's value to the player's score
+        player.score += collectible.value;
+
+        setTimeout(() => {
+          collectibles.splice(index, 1);
+        }, 0);
+      }
     });
 
     // growthBites.forEach((growthBite) => {
