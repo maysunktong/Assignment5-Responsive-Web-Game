@@ -38,6 +38,15 @@ const lantern = "../assets/images/Environment/Street_Lantern.png";
 const well = "../assets/images/Environment/Well.png";
 const furnace = "../assets/images/Environment/Furnace.png";
 
+const pointer1 = "../assets/images/pointers/1.png";
+const pointer2 = "../assets/images/pointers/2.png";
+const pointer3 = "../assets/images/pointers/3.png";
+const pointer4 = "../assets/images/pointers/4.png";
+const pointer5 = "../assets/images/pointers/5.png";
+const pointer6 = "../assets/images/pointers/6.png";
+const pointer7 = "../assets/images/pointers/7.png";
+const pointer8 = "../assets/images/pointers/8.png";
+
 export const objects = {
   backgrounds: {
     forest: createImage(bgForest),
@@ -78,6 +87,16 @@ export const objects = {
     barrel: createImage(barrel),
     lantern: createImage(lantern),
     well: createImage(well),
-    furnace: createImage(furnace)
+    furnace: createImage(furnace),
   },
+  pointers: {
+    pointer1: createImage(pointer1),
+    pointer2: createImage(pointer2),
+    pointer3: createImage(pointer3),
+    pointer4: createImage(pointer4),
+    pointer5: createImage(pointer5),
+    pointer6: createImage(pointer6),
+    pointer7: createImage(pointer7),
+    pointer8: createImage(pointer8),
+  }
 };
