@@ -52,9 +52,6 @@ class Player {
       this.width,
       this.height
     );
-    ctx.font = "30px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText(`Score: ${this.score}`, canvas.width - 200, 50);
   }
 
   update() {
@@ -1542,6 +1539,11 @@ const animate = () => {
   backgrounds.forEach((background) => {
     background.draw();
   });
+
+  // score counting
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText(`Score: ${player.score}`, canvas.width - 200, 50);
 
   genericObjects.forEach((genericObject) => {
     genericObject.draw();
