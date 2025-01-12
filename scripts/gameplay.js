@@ -1,15 +1,9 @@
 import { imagePlatforms } from "./imagePlatforms.js";
 import { objects } from "./objects.js";
+import { drawScoreboard } from "./scoreboard.js";
 import { sprites } from "./sprites.js";
-import { collisionTop, createBlock, isOnTop } from "./utils.js";
 import { playerName } from "./startMenu.js";
-let scoreboard = [];
-let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
-
-const saveScoreboard = () => {
-  localStorage.setItem("scoreboard", JSON.stringify(scoreLocalStorage));
-};
-
+import { collisionTop, createBlock, isOnTop } from "./utils.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -343,6 +337,7 @@ let backgrounds = [];
 let enemies = [];
 let explosions = [];
 let collectibles = [];
+let playerScore = player.score;
 
 let lastKey;
 let keys;
@@ -1756,49 +1751,55 @@ const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    drawScoreboard();
+    drawScoreboard(playerName, playerScore);
     return;
   }
 };
 
-const addPlayerScore = (name, score) => {
-  const existingPlayer = scoreLocalStorage.find(entry => entry.name === name);
+// let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
-  if (existingPlayer) {
-    if (existingPlayer.score < score) {
-      existingPlayer.score = score;
-    }
-  } else {
-    scoreLocalStorage.push({ name, score });
-  }
-  scoreLocalStorage.sort((a, b) => b.score - a.score);
+// const saveScoreboard = () => {
+//   localStorage.setItem("scoreboard", JSON.stringify(scoreLocalStorage));
+// };
 
-  saveScoreboard();
-};
+// const addPlayerScore = (name, score) => {
+//   const existingPlayer = scoreLocalStorage.find(entry => entry.name === name);
 
-const drawScoreboard = () => {
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+//   if (existingPlayer) {
+//     if (existingPlayer.score < score) {
+//       existingPlayer.score = score;
+//     }
+//   } else {
+//     scoreLocalStorage.push({ name, score });
+//   }
+//   scoreLocalStorage.sort((a, b) => b.score - a.score);
 
-  ctx.font = "40px Arial";
-  ctx.fillStyle = "white";
-  ctx.fillText("Game Over", canvas.width / 2 - 100, 100);
+//   saveScoreboard();
+// };
 
-  ctx.font = "30px Arial";
-  ctx.fillText("Scoreboard:", canvas.width / 2 - 100, 150);
+// const drawScoreboard = () => {
+//   ctx.fillStyle = "black";
+//   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  addPlayerScore(playerName, player.score);
+//   ctx.font = "40px Arial";
+//   ctx.fillStyle = "white";
+//   ctx.fillText("Game Over", canvas.width / 2 - 100, 100);
 
-  scoreLocalStorage.slice(0, 10).forEach((entry, index) => {
-    ctx.fillText(
-      `${index + 1}. ${entry.name}: ${entry.score}`,
-      canvas.width / 2 - 100,
-      200 + index * 30
-    );
-  });
+//   ctx.font = "30px Arial";
+//   ctx.fillText("Scoreboard:", canvas.width / 2 - 100, 150);
 
-  ctx.font = "20px Arial";
-};
+//   addPlayerScore(playerName, player.score);
+
+//   scoreLocalStorage.slice(0, 10).forEach((entry, index) => {
+//     ctx.fillText(
+//       `${index + 1}. ${entry.name}: ${entry.score}`,
+//       canvas.width / 2 - 100,
+//       200 + index * 30
+//     );
+//   });
+
+//   ctx.font = "20px Arial";
+// };
 
 init();
 animate();
