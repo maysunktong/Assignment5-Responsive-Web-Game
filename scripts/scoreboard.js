@@ -1,5 +1,5 @@
-import { playerScore } from './gameplay.js';
-import { playerName } from "./startMenu.js";
+import { playerScore } from "./gameplay.js";
+import { playerName } from "./mainMenu.js";
 
 const gameCanvas = document.getElementById("game-canvas");
 
@@ -26,7 +26,7 @@ const addPlayerScore = (name, score) => {
 
 const clearScoreboard = () => {
   localStorage.removeItem("scoreboard");
-  scoreLocalStorage = []
+  scoreLocalStorage = [];
   console.log("Scoreboard cleared!");
   drawScoreboard();
 };

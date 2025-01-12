@@ -1,8 +1,8 @@
 import { imagePlatforms } from "./imagePlatforms.js";
+import { playerName } from "./mainMenu.js";
 import { objects } from "./objects.js";
 import { drawScoreboard } from "./scoreboard.js";
 import { sprites } from "./sprites.js";
-import { playerName } from "./startMenu.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";
 
 const canvas = document.querySelector("canvas");
@@ -1543,7 +1543,7 @@ const animate = () => {
     background.draw();
   });
 
-  playerScore = player.score
+  playerScore = player.score;
 
   // score counting
   ctx.font = "30px Arial";
