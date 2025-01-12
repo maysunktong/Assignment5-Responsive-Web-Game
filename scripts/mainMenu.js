@@ -16,9 +16,14 @@ const toggleVisibility = (element, isVisible) => {
 const handleGameStart = () => {
   const enteredName = playerNameInput.value.trim();
 
+  if (enteredName === "") {
+    errorInputMessage.textContent = "Please input your name.";
+    return;
+  }
+
   if (!LETTER_REGEX.test(enteredName)) {
     errorInputMessage.textContent =
-      "Your name should only contain letters. Please try again.";
+      "Your name should only contain letters.";
     return;
   }
 

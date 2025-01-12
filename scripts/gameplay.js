@@ -1748,7 +1748,7 @@ const animate = () => {
 
   // WIN condition
   if (scrollOffset > 20000) {
-    player.velocity.x = 0
+    player.velocity.x = 0;
     drawScoreboard();
     return;
   }
