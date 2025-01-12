@@ -2,6 +2,7 @@ import { imagePlatforms } from "./imagePlatforms.js";
 import { objects } from "./objects.js";
 import { sprites } from "./sprites.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";
+import { playerName } from './startMenu.js';
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -1544,6 +1545,10 @@ const animate = () => {
   ctx.font = "30px Arial";
   ctx.fillStyle = "white";
   ctx.fillText(`Score: ${player.score}`, canvas.width - 200, 50);
+
+  ctx.font = "30px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText(`Player: ${playerName}`, 50, 50);
 
   genericObjects.forEach((genericObject) => {
     genericObject.draw();
