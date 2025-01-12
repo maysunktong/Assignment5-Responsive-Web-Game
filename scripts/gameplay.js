@@ -337,7 +337,7 @@ let backgrounds = [];
 let enemies = [];
 let explosions = [];
 let collectibles = [];
-let playerScore = player.score;
+let playerScore = 0;
 
 let lastKey;
 let keys;
@@ -1543,6 +1543,8 @@ const animate = () => {
     background.draw();
   });
 
+  playerScore = player.score
+
   // score counting
   ctx.font = "30px Arial";
   ctx.fillStyle = "white";
@@ -1751,7 +1753,7 @@ const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    drawScoreboard(playerName, playerScore);
+    drawScoreboard();
     return;
   }
 };
@@ -1840,3 +1842,5 @@ addEventListener("keyup", (event) => {
       break;
   }
 });
+
+export { playerScore };

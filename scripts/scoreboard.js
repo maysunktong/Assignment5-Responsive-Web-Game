@@ -1,3 +1,6 @@
+import { playerScore } from './gameplay.js';
+import { playerName } from "./startMenu.js";
+
 const gameCanvas = document.getElementById("game-canvas");
 
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
@@ -28,7 +31,7 @@ const clearScoreboard = () => {
   drawScoreboard(); // Redraw the scoreboard after clearing it
 };
 
-export const drawScoreboard = (playerName, playerScore) => {
+export const drawScoreboard = () => {
   const scoreboardContainer = document.getElementById("scoreboard");
   console.log("Drawing scoreboard...");
 
