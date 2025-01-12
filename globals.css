@@ -43,6 +43,10 @@ button:hover {
   background-color: #c0392b;
 }
 
+.error-input-message {
+  color: white;
+}
+
 #scoreboard {
   display: none; /* Hide initially */
   position: fixed; /* Fix it in place */

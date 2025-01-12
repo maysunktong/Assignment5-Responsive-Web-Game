@@ -6,18 +6,19 @@ const gameCanvas = document.getElementById("game-canvas");
 const playerNameInput = document.getElementById("player-name");
 const viewScoreboardButton = document.getElementById("scoreboard-button");
 const scoreboardPanel = document.getElementById("scoreboard");
+const errorInputMessage = document.querySelector(".error-input-message");
+const LETTER_REGEX = /^[a-zæøåäöÆØÅÄÖ]+$/i;
 
 const toggleVisibility = (element, isVisible) => {
   element.style.display = isVisible ? "block" : "none";
 };
 
-export let playerName = "";
-
 const handleGameStart = () => {
   const enteredName = playerNameInput.value.trim();
 
-  if (!enteredName) {
-    alert("Please enter your name to start the game.");
+  if (!LETTER_REGEX.test(enteredName)) {
+    errorInputMessage.textContent =
+      "Your name should only contain letters. Please try again.";
     return;
   }
 
@@ -26,6 +27,8 @@ const handleGameStart = () => {
   toggleVisibility(mainMenu, false);
   toggleVisibility(gameCanvas, true);
 };
+
+export let playerName = "";
 
 startGameButton.addEventListener("click", handleGameStart);
 

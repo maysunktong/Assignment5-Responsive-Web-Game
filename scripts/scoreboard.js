@@ -4,7 +4,6 @@ import { playerName } from "./mainMenu.js";
 const gameCanvas = document.getElementById("game-canvas");
 
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
-
 const saveScoreboard = () => {
   localStorage.setItem("scoreboard", JSON.stringify(scoreLocalStorage));
 };
@@ -32,14 +31,9 @@ const clearScoreboard = () => {
 };
 
 export const drawScoreboard = () => {
-  const scoreboardContainer = document.getElementById("scoreboard");
+  const scoreboardPanel = document.getElementById("scoreboard");
 
-  if (!scoreboardContainer) {
-    console.error("Scoreboard container not found!");
-    return;
-  }
-
-  scoreboardContainer.innerHTML = "";
+  scoreboardPanel.innerHTML = "";
 
   const clearScoreButton = document.createElement("button");
   clearScoreButton.innerText = "Clear score";
@@ -51,8 +45,8 @@ export const drawScoreboard = () => {
   const scoreboardText = document.createElement("h2");
   scoreboardText.innerText = "Scoreboard:";
 
-  scoreboardContainer.appendChild(clearScoreButton);
-  scoreboardContainer.appendChild(scoreboardText);
+  scoreboardPanel.appendChild(clearScoreButton);
+  scoreboardPanel.appendChild(scoreboardText);
 
   addPlayerScore(playerName, playerScore);
 
@@ -62,8 +56,8 @@ export const drawScoreboard = () => {
     listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
     scoreList.appendChild(listItem);
   });
-  scoreboardContainer.appendChild(scoreList);
+  scoreboardPanel.appendChild(scoreList);
 
   gameCanvas.style.display = "none";
-  scoreboardContainer.style.display = "block";
+  scoreboardPanel.style.display = "block";
 };
