@@ -3,65 +3,96 @@
 }
 
 body {
-  height: 100dvh;
   margin: 0;
   padding: 0;
   background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.game-title {
+  font-family: "Chelsea Market", serif;
+  font-size: 5rem;
+  color: #220401;
+  text-transform: uppercase;
+  background-color: rgba(235, 233, 233, 0.5);
 }
 
 #front-page {
+  width: 100%;
+  height: 100%;
   display: block;
   text-align: center;
   margin-top: 50px;
+  background-image: url("./assets/images/backgrounds/main-menu-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 input {
   padding: 10px;
-  font-size: 16px;
+  font-size: 2rem;
   margin-bottom: 10px;
-  width: 200px;
+  width: 350px;
+  height: 80px;
   text-align: center;
-  border: 1px solid #34495e;
-  border-radius: 5px;
+  border: 5px solid #000000;
+  border-radius: 12px;
 }
 
 button {
   padding: 10px 20px;
-  font-size: 18px;
-  background-color: #e74c3c;
+  font-size: 1.5rem;
+  background-color: #3a0601;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: "Jersey 20", serif;
+  margin: 12px 0;
 }
 
 button:hover {
   background-color: #c0392b;
 }
 
+#play-button {
+  font-size: 4rem;
+  width: 200px;
+}
+
 .error-input-message {
+  height: 20px;
   color: white;
+  display: block;
+  font-size: 1.4rem;
 }
 
 #scoreboard {
-  display: none; /* Hide initially */
-  position: fixed; /* Fix it in place */
+  display: none;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  color: white; /* Ensure text is white */
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
   text-align: center;
   padding: 20px;
-  z-index: 1000; /* Ensure it appears above everything else */
+  z-index: 1000;
 }
 
 #game-canvas {
-  z-index: 1; /* Canvas should be below the scoreboard */
+  z-index: 1;
   display: none;
 }
