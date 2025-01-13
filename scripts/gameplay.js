@@ -4,6 +4,8 @@ import { objects } from "./objects.js";
 import { drawScoreboard } from "./scoreboard.js";
 import { sprites } from "./sprites.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";
+import { showModal } from "./modal.js";
+const gameCanvas = document.getElementById("game-canvas");
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -1755,7 +1757,8 @@ const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    drawScoreboard();
+    showModal();
+    gameCanvas.style.display = "none";
     return;
   }
 };

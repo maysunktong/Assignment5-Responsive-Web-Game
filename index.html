@@ -12,6 +12,7 @@
     <script src="./scripts/gameplay.js" type="module" defer></script>
     <script src="./scripts/startMenu.js" type="module" defer></script>
     <script src="./scripts/scoreboard.js" type="module" defer></script>
+    <script src="./scripts/modal.js" type="module" defer></script>
     <link rel="stylesheet" href="./globals.css" />
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png" />
     <title>Gustaf, the wolf killer</title>
@@ -21,7 +22,12 @@
       <header class="header">
         <h1 class="game-title">Gustaf, the werewolf slayer</h1>
       </header>
-      <input type="text" id="player-name" placeholder="Enter name to play" required />
+      <input
+        type="text"
+        id="player-name"
+        placeholder="Enter name to play"
+        required
+      />
       <p class="error-input-message"></p>
       <button id="play-button">Play</button>
       <button id="scoreboard-button">Scoreboard</button>
@@ -31,6 +37,12 @@
       <button class="clear-button">Clear</button>
       <h2>Scoreboard</h2>
       <div id="scoreboard-data"></div>
+    </div>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <p>This is a simple modal pop-up.</p>
+        <button class="modal-close" id="closeModal">Close</button>
+      </div>
     </div>
     <canvas id="game-canvas"></canvas>
   </body>
