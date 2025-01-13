@@ -3,9 +3,10 @@ import { playerName } from "./mainMenu.js";
 
 const gameCanvas = document.getElementById("game-canvas");
 
-let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
+let scoreLocalStorage =
+  JSON.parse(localStorage.getItem("scoreboardPanel")) || [];
 const saveScoreboard = () => {
-  localStorage.setItem("scoreboard", JSON.stringify(scoreLocalStorage));
+  localStorage.setItem("scoreboardPanel", JSON.stringify(scoreLocalStorage));
 };
 
 const addPlayerScore = (name, score) => {
@@ -24,9 +25,8 @@ const addPlayerScore = (name, score) => {
 };
 
 const clearScoreboard = () => {
-  localStorage.removeItem("scoreboard");
+  localStorage.removeItem("scoreboardPanel");
   scoreLocalStorage = [];
-  console.log("Scoreboard cleared!");
   drawScoreboard();
 };
 
@@ -51,7 +51,7 @@ export const drawScoreboard = () => {
   addPlayerScore(playerName, playerScore);
 
   const scoreList = document.createElement("ul");
-  scoreLocalStorage.slice(0, 100).forEach((entry, index) => {
+  scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
     const listItem = document.createElement("li");
     listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
     scoreList.appendChild(listItem);

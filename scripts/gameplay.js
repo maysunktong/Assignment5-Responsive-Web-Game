@@ -1755,7 +1755,7 @@ const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    init();
+    drawScoreboard();
     return;
   }
   console.log(scrollOffset);
