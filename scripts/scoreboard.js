@@ -24,28 +24,13 @@ const addPlayerScore = (name, score) => {
   saveScoreboard();
 };
 
-const clearScoreboard = () => {
-  localStorage.removeItem("scoreboardPanel");
-  scoreLocalStorage = [];
-  drawScoreboard();
-};
-
 export const drawScoreboard = () => {
   const scoreboardPanel = document.getElementById("scoreboard");
 
   scoreboardPanel.innerHTML = "";
 
-  const clearScoreButton = document.createElement("button");
-  clearScoreButton.innerText = "Clear score";
-
-  clearScoreButton.addEventListener("click", () => {
-    clearScoreboard();
-  });
-
   const scoreboardText = document.createElement("h2");
   scoreboardText.innerText = "Scoreboard:";
-
-  scoreboardPanel.appendChild(clearScoreButton);
   scoreboardPanel.appendChild(scoreboardText);
 
   addPlayerScore(playerName, playerScore);
