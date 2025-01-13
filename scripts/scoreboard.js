@@ -1,13 +1,12 @@
-import { playerScore } from "./gameplay.js";
-import { playerName } from "./mainMenu.js";
-const mainMenu = document.getElementById("front-page");
+import { playerScore } from './gameplay.js';
+import { playerName } from './mainMenu.js';
 
 const gameCanvas = document.getElementById("game-canvas");
 
-let scoreLocalStorage =
-  JSON.parse(localStorage.getItem("scoreboardPanel")) || [];
+let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
+
 const saveScoreboard = () => {
-  localStorage.setItem("scoreboardPanel", JSON.stringify(scoreLocalStorage));
+  localStorage.setItem("scoreboard", JSON.stringify(scoreLocalStorage));
 };
 
 const addPlayerScore = (name, score) => {
@@ -25,31 +24,56 @@ const addPlayerScore = (name, score) => {
   saveScoreboard();
 };
 
-
-const closeButton = document.querySelector(".close-button");
-closeButton.addEventListener("click", () => {
-  window.location.href = "index.html";
-  gameCanvas.style.display = "none";
-  scoreboardPanel.style.display = "none";
-});
+const clearScoreboard = () => {
+  localStorage.removeItem("scoreboard"); // Remove the scoreboard from localStorage
+  scoreLocalStorage = []; // Optionally clear the in-memory scoreboard array
+  console.log("Scoreboard cleared!");
+  drawScoreboard(); // Redraw the scoreboard after clearing it
+};
 
 export const drawScoreboard = () => {
-  const scoreboardPanel = document.getElementById("scoreboard");
+  const scoreboardContainer = document.getElementById("scoreboard");
+  console.log("Drawing scoreboard...");
 
+  if (!scoreboardContainer) {
+    console.error("Scoreboard container not found!");
+    return;
+  }
+
+  scoreboardContainer.innerHTML = ""; // Clear any previous content
+
+  // Create and add the "Clear score" button
+  const clearScoreButton = document.createElement("button");
+  clearScoreButton.innerText = "Clear score";
+
+  // Add the event listener to the button
+  clearScoreButton.addEventListener("click", () => {
+    clearScoreboard();
+  });
+
+  // Add "Scoreboard" heading
   const scoreboardText = document.createElement("h2");
   scoreboardText.innerText = "Scoreboard:";
-  scoreboardPanel.appendChild(scoreboardText);
 
+  // Append the button and the heading to the scoreboard container
+  scoreboardContainer.appendChild(clearScoreButton);
+  scoreboardContainer.appendChild(scoreboardText);
+
+  // Add player score
   addPlayerScore(playerName, playerScore);
 
-  gameCanvas.style.display = "none";
-  scoreboardPanel.style.display = "block";
+  // Create and append score list
   const scoreList = document.createElement("ul");
-  scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
+  scoreLocalStorage.slice(0, 100).forEach((entry, index) => {
     const listItem = document.createElement("li");
     listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
     scoreList.appendChild(listItem);
   });
-  scoreboardPanel.appendChild(scoreList);
-  scoreboardPanel.appendChild(closeButton);
+  scoreboardContainer.appendChild(scoreList);
+
+  // Hide canvas and show scoreboard
+  gameCanvas.style.display = "none";
+  scoreboardContainer.style.display = "block";
+
+  console.log("Scoreboard drawn!");
 };
