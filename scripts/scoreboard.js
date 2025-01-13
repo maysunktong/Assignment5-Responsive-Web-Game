@@ -33,36 +33,29 @@ const clearScoreboard = () => {
 
 export const drawScoreboard = () => {
   const scoreboardContainer = document.getElementById("scoreboard");
-  console.log("Drawing scoreboard...");
 
   if (!scoreboardContainer) {
     console.error("Scoreboard container not found!");
     return;
   }
 
-  scoreboardContainer.innerHTML = ""; // Clear any previous content
+  scoreboardContainer.innerHTML = ""; 
 
-  // Create and add the "Clear score" button
   const clearScoreButton = document.createElement("button");
   clearScoreButton.innerText = "Clear score";
 
-  // Add the event listener to the button
   clearScoreButton.addEventListener("click", () => {
     clearScoreboard();
   });
 
-  // Add "Scoreboard" heading
   const scoreboardText = document.createElement("h2");
   scoreboardText.innerText = "Scoreboard:";
 
-  // Append the button and the heading to the scoreboard container
   scoreboardContainer.appendChild(clearScoreButton);
   scoreboardContainer.appendChild(scoreboardText);
 
-  // Add player score
   addPlayerScore(playerName, playerScore);
 
-  // Create and append score list
   const scoreList = document.createElement("ul");
   scoreLocalStorage.slice(0, 100).forEach((entry, index) => {
     const listItem = document.createElement("li");
@@ -71,9 +64,6 @@ export const drawScoreboard = () => {
   });
   scoreboardContainer.appendChild(scoreList);
 
-  // Hide canvas and show scoreboard
   gameCanvas.style.display = "none";
   scoreboardContainer.style.display = "block";
-
-  console.log("Scoreboard drawn!");
 };
