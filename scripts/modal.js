@@ -1,22 +1,22 @@
-
-const modalOverlay = document.querySelector('.modal-overlay');
-const closeModalBtn = document.querySelector(".modal-close")
+import { init } from "./gameplay.js";
+const modalOverlay = document.querySelector(".modal-overlay");
+const closeModalBtn = document.querySelector(".modal-close");
+const gameCanvas = document.getElementById("game-canvas");
 
 export function showModal() {
-  modalOverlay.style.display = 'block';
+  modalOverlay.style.display = "block";
+  gameCanvas.style.display = "block";
 }
 
-// Function to hide the modal
 function hideModal() {
-  modalOverlay.style.display = 'none';
-  window.location.href = '/index.html';
+  modalOverlay.style.display = "none";
+  gameCanvas.style.display = "block";
+  init();
 }
 
-// Attach close button functionality
-closeModalBtn.addEventListener('click', hideModal);
+closeModalBtn.addEventListener("click", hideModal);
 
-// Close modal when clicking outside the modal content
-modalOverlay.addEventListener('click', (event) => {
+modalOverlay.addEventListener("click", (event) => {
   if (event.target === modalOverlay) {
     hideModal();
   }

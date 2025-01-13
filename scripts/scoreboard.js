@@ -29,41 +29,41 @@ const clearScoreboard = () => {
   scoreLocalStorage = [];
   console.log("Scoreboard cleared!");
   drawScoreboard();
-  };
+};
 
-  export const drawScoreboard = () => {
-    const scoreboardContainer = document.getElementById("scoreboard");
+export const drawScoreboard = () => {
+  const scoreboardContainer = document.getElementById("scoreboard");
 
-    if (!scoreboardContainer) {
-      console.error("Scoreboard container not found!");
-      return;
-    }
+  if (!scoreboardContainer) {
+    console.error("Scoreboard container not found!");
+    return;
+  }
 
-    scoreboardContainer.innerHTML = "";
+  scoreboardContainer.innerHTML = "";
 
-    const clearScoreButton = document.createElement("button");
-    clearScoreButton.innerText = "Clear score";
+  const clearScoreButton = document.createElement("button");
+  clearScoreButton.innerText = "Clear score";
 
-    clearScoreButton.addEventListener("click", () => {
-      clearScoreboard();
-    });
+  clearScoreButton.addEventListener("click", () => {
+    clearScoreboard();
+  });
 
-    const scoreboardText = document.createElement("h2");
-    scoreboardText.innerText = "Scoreboard:";
+  const scoreboardText = document.createElement("h2");
+  scoreboardText.innerText = "Scoreboard:";
 
-    scoreboardContainer.appendChild(clearScoreButton);
-    scoreboardContainer.appendChild(scoreboardText);
+  scoreboardContainer.appendChild(clearScoreButton);
+  scoreboardContainer.appendChild(scoreboardText);
 
-    addPlayerScore(playerName, playerScore);
+  addPlayerScore(playerName, playerScore);
 
-    const scoreList = document.createElement("ul");
-    scoreLocalStorage.slice(0, 100).forEach((entry, index) => {
-      const listItem = document.createElement("li");
-      listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
-      scoreList.appendChild(listItem);
-    });
-    scoreboardContainer.appendChild(scoreList);
+  const scoreList = document.createElement("ul");
+  scoreLocalStorage.slice(0, 100).forEach((entry, index) => {
+    const listItem = document.createElement("li");
+    listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
+    scoreList.appendChild(listItem);
+  });
+  scoreboardContainer.appendChild(scoreList);
 
-    gameCanvas.style.display = "none";
-    scoreboardContainer.style.display = "block";
-  };
+  gameCanvas.style.display = "none";
+  scoreboardContainer.style.display = "block";
+};

@@ -1,8 +1,8 @@
 import { drawScoreboard } from "./scoreboard.js";
-import { animate } from "./gameplay.js";
+import { animate, init } from "./gameplay.js";
 
 const startGameButton = document.getElementById("play-button");
-const mainMenu = document.getElementById("front-page");
+const mainMenu = document.getElementById("main-menu");
 const gameCanvas = document.getElementById("game-canvas");
 const playerNameInput = document.getElementById("player-name");
 const viewScoreboardButton = document.getElementById("scoreboard-button");
@@ -31,6 +31,7 @@ const handleGameStart = () => {
 
   toggleVisibility(mainMenu, false);
   toggleVisibility(gameCanvas, true);
+  init()
   animate();
 };
 

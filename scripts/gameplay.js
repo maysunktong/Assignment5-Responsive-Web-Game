@@ -1,10 +1,9 @@
 import { imagePlatforms } from "./imagePlatforms.js";
 import { playerName } from "./mainMenu.js";
+import { showModal } from "./modal.js";
 import { objects } from "./objects.js";
-import { drawScoreboard } from "./scoreboard.js";
 import { sprites } from "./sprites.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";
-import { showModal } from "./modal.js";
 const gameCanvas = document.getElementById("game-canvas");
 
 const canvas = document.querySelector("canvas");
@@ -13,7 +12,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 1280;
 canvas.height = 720;
 
-let gravity = 1;
+let gravity = 0.5;
 
 class Player {
   constructor() {
@@ -28,7 +27,7 @@ class Player {
       x: 0,
       y: 0,
     };
-    this.speed = 10;
+    this.speed = 5;
 
     this.image = sprites.swordsman.idle.right;
     this.currentSprite = sprites.swordsman.idle.right;
@@ -104,7 +103,7 @@ class Enemy {
     this.height = 128;
 
     this.frames = 0;
-    this.frameInterval = 10;
+    this.frameInterval = 20;
     this.frameTimer = 0;
 
     this.sprites = 0;
@@ -299,7 +298,7 @@ class Collectible {
     this.value = value;
 
     this.frames = 0;
-    this.frameInterval = 10;
+    this.frameInterval = 20;
     this.frameTimer = 0;
   }
 
@@ -348,7 +347,7 @@ let scrollOffset;
 let flagPole;
 
 // initializing Level 1
-async function init() {
+export async function init() {
   keys = {
     right: {
       pressed: false,
@@ -1598,7 +1597,9 @@ export const animate = () => {
       player.position.y >= enemy.position.y &&
       player.position.y <= enemy.position.y
     ) {
-      init();
+      // die when touch enemy
+      player.position.y = 500;
+      showModal();
     }
   });
 
@@ -1751,15 +1752,13 @@ export const animate = () => {
   // WIN condition
   if (scrollOffset > 19500) {
     player.velocity.x = 0;
-    drawScoreboard();
-    return;
+    showModal();
   }
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    showModal();
     gameCanvas.style.display = "none";
-    return;
+    showModal();
   }
 };
 
@@ -1770,7 +1769,7 @@ addEventListener("keydown", (event) => {
   switch (event.code) {
     case "KeyW":
       if (player.jumpCount < 2) {
-        player.velocity.y = -25;
+        player.velocity.y = -20;
         player.jumpCount++;
       }
 
