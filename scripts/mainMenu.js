@@ -1,4 +1,5 @@
 import { drawScoreboard } from "./scoreboard.js";
+import { animate } from "./gameplay.js";
 
 const startGameButton = document.getElementById("play-button");
 const mainMenu = document.getElementById("front-page");
@@ -22,8 +23,7 @@ const handleGameStart = () => {
   }
 
   if (!LETTER_REGEX.test(enteredName)) {
-    errorInputMessage.textContent =
-      "Your name should only contain letters.";
+    errorInputMessage.textContent = "Your name should only contain letters.";
     return;
   }
 
@@ -31,6 +31,7 @@ const handleGameStart = () => {
 
   toggleVisibility(mainMenu, false);
   toggleVisibility(gameCanvas, true);
+  animate();
 };
 
 export let playerName = "";

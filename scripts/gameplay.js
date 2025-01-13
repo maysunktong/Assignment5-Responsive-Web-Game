@@ -1536,7 +1536,7 @@ async function init() {
   ];
 }
 
-const animate = () => {
+export const animate = () => {
   requestAnimationFrame(animate);
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);

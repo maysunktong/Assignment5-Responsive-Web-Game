@@ -38,15 +38,14 @@ body {
 }
 
 input {
-  padding: 10px;
   font-size: 2rem;
-  margin-bottom: 10px;
   width: 350px;
   height: 80px;
   text-align: center;
   border: 3px solid #c1c1c1;
   border-radius: 12px;
   font-family: "Jersey 20", serif;
+  background-color: #f3f4f5;
 }
 
 input:focus {
@@ -76,7 +75,7 @@ button:hover {
 }
 
 .error-input-message {
-  height: 20px;
+  height: 10px;
   color: white;
   display: block;
   font-size: 1.4rem;
