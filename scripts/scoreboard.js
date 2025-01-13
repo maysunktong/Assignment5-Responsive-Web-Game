@@ -1,5 +1,6 @@
 import { playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
+const mainMenu = document.getElementById("front-page");
 
 const gameCanvas = document.getElementById("game-canvas");
 
@@ -35,6 +36,8 @@ export const drawScoreboard = () => {
 
   addPlayerScore(playerName, playerScore);
 
+  gameCanvas.style.display = "none";
+  scoreboardPanel.style.display = "block";
   const scoreList = document.createElement("ul");
   scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
     const listItem = document.createElement("li");
@@ -42,7 +45,12 @@ export const drawScoreboard = () => {
     scoreList.appendChild(listItem);
   });
   scoreboardPanel.appendChild(scoreList);
-
-  gameCanvas.style.display = "none";
-  scoreboardPanel.style.display = "block";
+  scoreboardPanel.appendChild(closeButton);
 };
+
+const closeButton = document.querySelector(".close-button");
+closeButton.addEventListener("click", () => {
+  window.location.href = "index.html";
+  gameCanvas.style.display = "none";
+  scoreboardPanel.style.display = "none";
+});
