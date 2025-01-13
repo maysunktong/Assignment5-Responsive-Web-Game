@@ -1747,7 +1747,7 @@ const animate = () => {
   }
 
   // WIN condition
-  if (scrollOffset > 20000) {
+  if (scrollOffset > 19500) {
     player.velocity.x = 0;
     drawScoreboard();
     return;
@@ -1755,7 +1755,7 @@ const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    drawScoreboard();
+    init();
     return;
   }
   console.log(scrollOffset);
