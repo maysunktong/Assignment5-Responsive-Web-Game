@@ -16,9 +16,10 @@ body {
 .game-title {
   font-family: "Chelsea Market", serif;
   font-size: 5rem;
-  color: #220401;
+  font-weight: 800;
+  color: #000000;
   text-transform: uppercase;
-  background-color: rgba(235, 233, 233, 0.5);
+  background-color: rgba(204, 239, 246, 0.4);
 }
 
 #front-page {
@@ -47,6 +48,11 @@ input {
   text-align: center;
   border: 5px solid #000000;
   border-radius: 12px;
+  font-family: "Jersey 20", serif;
+}
+
+input:focus {
+  outline: none;
 }
 
 button {
