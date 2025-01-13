@@ -25,10 +25,16 @@ const addPlayerScore = (name, score) => {
   saveScoreboard();
 };
 
+
+const closeButton = document.querySelector(".close-button");
+closeButton.addEventListener("click", () => {
+  window.location.href = "index.html";
+  gameCanvas.style.display = "none";
+  scoreboardPanel.style.display = "none";
+});
+
 export const drawScoreboard = () => {
   const scoreboardPanel = document.getElementById("scoreboard");
-
-  scoreboardPanel.innerHTML = "";
 
   const scoreboardText = document.createElement("h2");
   scoreboardText.innerText = "Scoreboard:";
@@ -47,10 +53,3 @@ export const drawScoreboard = () => {
   scoreboardPanel.appendChild(scoreList);
   scoreboardPanel.appendChild(closeButton);
 };
-
-const closeButton = document.querySelector(".close-button");
-closeButton.addEventListener("click", () => {
-  window.location.href = "index.html";
-  gameCanvas.style.display = "none";
-  scoreboardPanel.style.display = "none";
-});
