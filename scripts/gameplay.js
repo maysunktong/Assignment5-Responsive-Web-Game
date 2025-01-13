@@ -371,7 +371,7 @@ export async function init() {
     );
   }
 
-  for (let i = 7; i < 15; i++) {
+  for (let i = 7; i < 16; i++) {
     backgrounds.push(
       new Background({
         x: i * objects.backgrounds.desert.width,
@@ -1751,7 +1751,7 @@ export const animate = () => {
 
   // WIN condition
   if (scrollOffset > 19500) {
-    player.velocity.x = 0;
+    player.position.x = scrollOffset;
     showModal();
   }
 
