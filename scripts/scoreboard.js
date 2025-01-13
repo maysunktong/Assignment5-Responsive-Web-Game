@@ -25,11 +25,10 @@ const addPlayerScore = (name, score) => {
 };
 
 const clearScoreboard = () => {
-  localStorage.removeItem("scoreboard"); // Remove the scoreboard from localStorage
-  scoreLocalStorage = []; // Optionally clear the in-memory scoreboard array
+  localStorage.removeItem("scoreboard");
+  scoreLocalStorage = []; 
   console.log("Scoreboard cleared!");
-  drawScoreboard(); // Redraw the scoreboard after clearing it
-};
+  drawScoreboard(); 
 
 export const drawScoreboard = () => {
   const scoreboardContainer = document.getElementById("scoreboard");
