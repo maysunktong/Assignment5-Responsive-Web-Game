@@ -9,16 +9,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .game-title {
-  font-family: "Chelsea Market", serif;
-  font-size: 3rem;
+  font-family: "Henny Penny", serif;
+  font-size: 5em;
   font-weight: 800;
-  color: #000000;
-  text-transform: uppercase;
+  color: #f3f5f0;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+  text-stroke: 1px #000000;
+  padding: 10px;
+  letter-spacing: 4px;
 }
 
 #main-menu {
@@ -28,8 +31,15 @@ body {
   text-align: center;
   background-image: url("./assets/images/backgrounds/main-menu-bg.jpg");
   background-repeat: no-repeat;
-  background-size: 80%;
+  background-size: 100%;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-button-wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +63,8 @@ input:focus {
 
 button {
   padding: 10px 20px;
-  font-size: 1.5rem;
+  width: 200px;
+  font-size: 2rem;
   background-color: #3a0601;
   color: white;
   border: none;
@@ -70,14 +81,19 @@ button:hover {
 
 #play-button {
   font-size: 4rem;
-  width: 200px;
+  width: 300px;
+}
+
+#play-button:hover {
+  color: black;
+  background-color: rgb(105, 245, 105);
 }
 
 .error-input-message {
   height: 10px;
   color: white;
   display: block;
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-family: "Jersey 20", serif;
 }
 
@@ -110,7 +126,8 @@ button:hover {
 }
 
 .modal-overlay,
-.modal-scoreboard-overlay, .modal-credits-overlay {
+.modal-scoreboard-overlay,
+.modal-credits-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -121,4 +138,85 @@ button:hover {
   justify-content: center;
   align-items: center;
   z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .error-input-message {
+    height: 12px;
+    font-size: 12px;
+  }
+
+  #main-menu {
+    background-size: 100%;
+    padding: 20px;
+  }
+
+  input {
+    width: 200px;
+    font-size: 24px;
+    height: 40px;
+  }
+
+  button {
+    font-size: 20px;
+    width: 180px;
+    margin: 8px 0;
+  }
+
+  #play-button {
+    font-size: 3rem;
+    width: 180px;
+  }
+
+  .modal {
+    width: 80%;
+    height: 150px;
+  }
+
+  #scoreboard {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .game-title {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .error-input-message {
+    height: 12px;
+    font-size: 12px;
+  }
+
+  input {
+    width: 150px;
+    font-size: 12px;
+    height: 30px;
+  }
+
+  button {
+    font-size: 12px;
+    width: 100px;
+    margin: 4px 0;
+  }
+
+  #play-button {
+    font-size: 24px;
+    width: 120px;
+  }
+
+  .modal {
+    width: 90%;
+    height: 120px;
+  }
+
+  #scoreboard {
+    padding: 10px;
+  }
 }

@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Jersey+20&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Jersey+20&display=swap"
       rel="stylesheet"
     />
     <script src="./scripts/gameplay.js" type="module" defer></script>
@@ -29,15 +29,19 @@
         required
       />
       <p class="error-input-message"></p>
-      <button id="play-button">Play</button>
-      <button id="scoreboard-button">Scoreboard</button>
-      <button id="credits-button">Credits</button>
+      <div class="main-button-wrapper">
+        <button id="play-button">Play</button>
+        <button id="scoreboard-button">Scoreboard</button>
+        <button id="credits-button">Credits</button>
+      </div>
     </div>
     <div class="modal-scoreboard-overlay">
       <div class="modal">
         <div id="scoreboard"></div>
-        <button class="clear-score-button">Clear score</button>
-        <button class="scoreboard-close-button">Close</button>
+        <div class="button-wrapper">
+          <button class="clear-score-button">Clear score</button>43e
+          <button class="scoreboard-close-button">Close</button>
+        </div>
       </div>
     </div>
     <div class="modal-credits-overlay">
@@ -48,10 +52,15 @@
     </div>
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal">
-        <p class="modal-message">This is a simple modal pop-up.</p>
-        <p class="total-score">score:</p>
-        <button class="retry-button">Retry</button>
-        <button class="home-button">Save & Quit</button>
+        <div class="summary-modal">
+          <p class="modal-message">This is a simple modal pop-up.</p>
+          <p class="total-score">score:</p>
+        </div>
+        '
+        <div class="button-wrapper">
+          <button class="retry-button">Retry</button>
+          <button class="home-button">Save & Quit</button>
+        </div>
       </div>
     </div>
 
