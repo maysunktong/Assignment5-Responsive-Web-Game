@@ -1,7 +1,12 @@
 import { playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
+
 const modalScoreboardOverlay = document.querySelector(
   ".modal-scoreboard-overlay"
+);
+const clearScoreButton = document.querySelector(".clear-score-button");
+const closeScoreboardButton = document.querySelector(
+  ".scoreboard-close-button"
 );
 
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
@@ -44,14 +49,14 @@ export const drawScoreboard = () => {
 
   scoreboard.innerHTML = "";
 
-  const clearScoreButton = document.createElement("button");
-  const closeScoreboardButton = document.createElement("button");
+  // const clearScoreButton = document.createElement("button");
+  // const closeScoreboardButton = document.createElement("button");
   const scoreboardText = document.createElement("h2");
   const scoreList = document.createElement("ul");
 
-  clearScoreButton.innerText = "Clear score";
+  // closeScoreboardButton.innerText = "Close";
+  // clearScoreButton.innerText = "Clear score";
   scoreboardText.innerText = "Scoreboard:";
-  closeScoreboardButton.innerText = "Close";
 
   clearScoreButton.addEventListener("click", () => {
     clearScoreboard();
@@ -65,14 +70,15 @@ export const drawScoreboard = () => {
     scoreList.appendChild(listItem);
   });
 
-  scoreboard.appendChild(clearScoreButton);
+  // scoreboard.appendChild(closeScoreboardButton);
+  // scoreboard.appendChild(clearScoreButton);
   scoreboard.appendChild(scoreboardText);
   scoreboard.appendChild(scoreList);
-  scoreboard.appendChild(closeScoreboardButton);
 
   function hideModal() {
     scoreboard.style.display = "none";
     window.location.href = "/index.html";
   }
+
   closeScoreboardButton.addEventListener("click", hideModal);
 };

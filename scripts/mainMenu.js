@@ -51,7 +51,6 @@ playerNameInput.addEventListener("keydown", (event) => {
 });
 
 const showScoreboard = () => {
-  toggleVisibility(mainMenu, false);
   toggleVisibility(scoreboardPanel, true);
 
   drawScoreboard();
