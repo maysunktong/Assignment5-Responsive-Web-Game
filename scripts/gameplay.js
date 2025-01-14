@@ -1752,7 +1752,7 @@ export const animate = () => {
   // WIN condition
   if (scrollOffset > 19500) {
     player.position.x = scrollOffset;
-    showModal();
+    showModal("win");
   }
 
   // LOSE condition: death pits

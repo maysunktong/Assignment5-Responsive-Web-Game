@@ -1,5 +1,6 @@
 import { playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
+const modalScoreboardOverlay = document.querySelector(".modal-scoreboard-overlay");
 
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
@@ -30,14 +31,16 @@ const clearScoreboard = () => {
 };
 
 export const drawScoreboard = () => {
-  const scoreboardContainer = document.getElementById("scoreboard");
+  modalScoreboardOverlay.style.display = "block";
+  
+  const scoreboard = document.getElementById("scoreboard");
 
-  if (!scoreboardContainer) {
+  if (!scoreboard) {
     console.error("Scoreboard container not found!");
     return;
   }
 
-  scoreboardContainer.innerHTML = "";
+  scoreboard.innerHTML = "";
 
   const clearScoreButton = document.createElement("button");
   const closeScoreboardButton = document.createElement("button");
@@ -60,15 +63,13 @@ export const drawScoreboard = () => {
     scoreList.appendChild(listItem);
   });
 
-  scoreboardContainer.appendChild(clearScoreButton);
-  scoreboardContainer.appendChild(scoreboardText);
-  scoreboardContainer.appendChild(scoreList);
-  scoreboardContainer.appendChild(closeScoreboardButton);
-
-
+  scoreboard.appendChild(clearScoreButton);
+  scoreboard.appendChild(scoreboardText);
+  scoreboard.appendChild(scoreList);
+  scoreboard.appendChild(closeScoreboardButton);
 
   function hideModal() {
-    scoreboardContainer.style.display = "none";
+    scoreboard.style.display = "none";
     window.location.href = "/index.html";
   }
   closeScoreboardButton.addEventListener("click", hideModal);
