@@ -84,8 +84,6 @@ button:hover {
 
 #scoreboard {
   display: none;
-  width: 80%;
-  height: 80%;
   color: white;
   text-align: center;
   padding: 20px;
@@ -110,7 +108,7 @@ button:hover {
   z-index: 3;
 }
 
-.modal-overlay {
+.modal-overlay  {
   position: fixed;
   top: 0;
   left: 0;

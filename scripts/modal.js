@@ -16,8 +16,8 @@ function hideModal() {
 
 closeModalBtn.addEventListener("click", hideModal);
 
-modalOverlay.addEventListener("click", (event) => {
-  if (event.target === modalOverlay) {
-    hideModal();
-  }
-});
+// modalOverlay.addEventListener("click", (event) => {
+//   if (event.target === modalOverlay) {
+//     hideModal();
+//   }
+// });

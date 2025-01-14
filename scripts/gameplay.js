@@ -1757,7 +1757,6 @@ export const animate = () => {
 
   // LOSE condition: death pits
   if (player.position.y > canvas.width) {
-    gameCanvas.style.display = "none";
     showModal();
   }
 };
