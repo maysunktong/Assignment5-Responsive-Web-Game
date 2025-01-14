@@ -6,7 +6,6 @@ const mainMenu = document.getElementById("main-menu");
 const gameCanvas = document.getElementById("game-canvas");
 const playerNameInput = document.getElementById("player-name");
 const viewScoreboardButton = document.getElementById("scoreboard-button");
-const scoreboardPanel = document.querySelector(".modal-credits-overlay");
 const scoreboard = document.getElementById("scoreboard");
 const errorInputMessage = document.querySelector(".error-input-message");
 const viewCreditsButton = document.getElementById("credits-button");
@@ -47,7 +46,6 @@ export let playerName = "";
 
 startGameButton.addEventListener("click", handleGameStart);
 
-// click enter after entering name
 playerNameInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     handleGameStart();
