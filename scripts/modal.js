@@ -1,6 +1,7 @@
 import { init } from "./gameplay.js";
+import { drawScoreboard } from "./scoreboard.js";
 const modalOverlay = document.querySelector(".modal-overlay");
-const retryButton = document.querySelector(".modal-retry");
+const retryButton = document.querySelector(".retry-button");
 const gameCanvas = document.getElementById("game-canvas");
 const homeButton = document.querySelector(".home-button");
 
@@ -18,6 +19,8 @@ export function showModal(status) {
       modalMessage.style.color = "red"; // Optional: set color for lose
     }
   }
+
+
 }
 
 function retry() {
@@ -27,6 +30,7 @@ function retry() {
 }
 
 function navigateToHome() {
+  drawScoreboard()
   modalOverlay.style.display = "none";
   gameCanvas.style.display = "none";
   window.location.href = "/index.html";
@@ -35,8 +39,8 @@ function navigateToHome() {
 retryButton.addEventListener("click", retry);
 homeButton.addEventListener("click", navigateToHome);
 
-// modalOverlay.addEventListener("click", (event) => {
-//   if (event.target === modalOverlay) {
-//     hideModal();
-//   }
-// });
+modalOverlay.addEventListener("click", (event) => {
+  if (event.target === modalOverlay) {
+    retry();
+  }
+});

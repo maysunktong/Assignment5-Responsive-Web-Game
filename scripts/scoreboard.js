@@ -1,6 +1,8 @@
 import { playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
-const modalScoreboardOverlay = document.querySelector(".modal-scoreboard-overlay");
+const modalScoreboardOverlay = document.querySelector(
+  ".modal-scoreboard-overlay"
+);
 
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
@@ -32,7 +34,7 @@ const clearScoreboard = () => {
 
 export const drawScoreboard = () => {
   modalScoreboardOverlay.style.display = "block";
-  
+
   const scoreboard = document.getElementById("scoreboard");
 
   if (!scoreboard) {

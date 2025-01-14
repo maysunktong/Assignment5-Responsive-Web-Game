@@ -8,6 +8,10 @@ const playerNameInput = document.getElementById("player-name");
 const viewScoreboardButton = document.getElementById("scoreboard-button");
 const scoreboardPanel = document.getElementById("scoreboard");
 const errorInputMessage = document.querySelector(".error-input-message");
+const viewCreditsButton = document.getElementById("credits-button");
+const creditsPanel = document.querySelector(".modal-credits-overlay");
+const closeCreditsButton = document.querySelector(".credits-close-button");
+
 const LETTER_REGEX = /^[a-zæøåäöÆØÅÄÖ]+$/i;
 
 const toggleVisibility = (element, isVisible) => {
@@ -31,7 +35,7 @@ const handleGameStart = () => {
 
   toggleVisibility(mainMenu, false);
   toggleVisibility(gameCanvas, true);
-  init()
+  init();
   animate();
 };
 
@@ -53,4 +57,20 @@ const showScoreboard = () => {
   drawScoreboard();
 };
 
+const showCreditsPanel = () => {
+  toggleVisibility(creditsPanel, true);
+};
+
+const closeCreditsPandel = () => {
+  toggleVisibility(creditsPanel, false);
+};
+
+creditsPanel.addEventListener("click", (event) => {
+  if (event.target === creditsPanel) {
+    toggleVisibility(creditsPanel, false);
+  }
+});
+
+closeCreditsButton.addEventListener("click", closeCreditsPandel);
+viewCreditsButton.addEventListener("click", showCreditsPanel);
 viewScoreboardButton.addEventListener("click", showScoreboard);
