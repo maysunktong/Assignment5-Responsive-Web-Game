@@ -5,9 +5,6 @@ const modalScoreboardOverlay = document.querySelector(
   ".modal-scoreboard-overlay"
 );
 const clearScoreButton = document.querySelector(".clear-score-button");
-const closeScoreboardButton = document.querySelector(
-  ".scoreboard-close-button"
-);
 
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
@@ -75,10 +72,9 @@ export const drawScoreboard = () => {
   scoreboard.appendChild(scoreboardText);
   scoreboard.appendChild(scoreList);
 
-  function hideModal() {
-    scoreboard.style.display = "none";
-    window.location.href = "/index.html";
-  }
+  // function hideModal() {
+  //   scoreboard.style.display = "none";
+  //   window.location.href = "/index.html";
+  // }
 
-  closeScoreboardButton.addEventListener("click", hideModal);
 };

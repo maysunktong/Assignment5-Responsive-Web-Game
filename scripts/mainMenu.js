@@ -1,5 +1,5 @@
-import { drawScoreboard } from "./scoreboard.js";
 import { animate, init } from "./gameplay.js";
+import { drawScoreboard } from "./scoreboard.js";
 
 const startGameButton = document.getElementById("play-button");
 const mainMenu = document.getElementById("main-menu");
@@ -11,6 +11,9 @@ const errorInputMessage = document.querySelector(".error-input-message");
 const viewCreditsButton = document.getElementById("credits-button");
 const creditsPanel = document.querySelector(".modal-credits-overlay");
 const closeCreditsButton = document.querySelector(".credits-close-button");
+const closeScoreboardButton = document.querySelector(
+  ".scoreboard-close-button"
+);
 
 const LETTER_REGEX = /^[a-zæøåäöÆØÅÄÖ]+$/i;
 
@@ -60,8 +63,12 @@ const showCreditsPanel = () => {
   toggleVisibility(creditsPanel, true);
 };
 
-const closeCreditsPandel = () => {
+const closeCreditsPanel = () => {
   toggleVisibility(creditsPanel, false);
+};
+
+const closeScoreboardPanel = () => {
+  window.location.href = "/index.html";
 };
 
 creditsPanel.addEventListener("click", (event) => {
@@ -70,6 +77,8 @@ creditsPanel.addEventListener("click", (event) => {
   }
 });
 
-closeCreditsButton.addEventListener("click", closeCreditsPandel);
 viewCreditsButton.addEventListener("click", showCreditsPanel);
+closeCreditsButton.addEventListener("click", closeCreditsPanel);
+
 viewScoreboardButton.addEventListener("click", showScoreboard);
+closeScoreboardButton.addEventListener("click", closeScoreboardPanel);
