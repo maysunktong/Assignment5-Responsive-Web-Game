@@ -6,7 +6,8 @@ const mainMenu = document.getElementById("main-menu");
 const gameCanvas = document.getElementById("game-canvas");
 const playerNameInput = document.getElementById("player-name");
 const viewScoreboardButton = document.getElementById("scoreboard-button");
-const scoreboardPanel = document.getElementById("scoreboard");
+const scoreboardPanel = document.querySelector(".modal-credits-overlay");
+const scoreboard = document.getElementById("scoreboard");
 const errorInputMessage = document.querySelector(".error-input-message");
 const viewCreditsButton = document.getElementById("credits-button");
 const creditsPanel = document.querySelector(".modal-credits-overlay");
@@ -53,12 +54,6 @@ playerNameInput.addEventListener("keydown", (event) => {
   }
 });
 
-const showScoreboard = () => {
-  toggleVisibility(scoreboardPanel, true);
-
-  drawScoreboard();
-};
-
 const showCreditsPanel = () => {
   toggleVisibility(creditsPanel, true);
 };
@@ -67,15 +62,15 @@ const closeCreditsPanel = () => {
   toggleVisibility(creditsPanel, false);
 };
 
+const showScoreboard = () => {
+  toggleVisibility(scoreboard, true);
+
+  drawScoreboard();
+};
+
 const closeScoreboardPanel = () => {
   window.location.href = "/index.html";
 };
-
-creditsPanel.addEventListener("click", (event) => {
-  if (event.target === creditsPanel) {
-    toggleVisibility(creditsPanel, false);
-  }
-});
 
 viewCreditsButton.addEventListener("click", showCreditsPanel);
 closeCreditsButton.addEventListener("click", closeCreditsPanel);
