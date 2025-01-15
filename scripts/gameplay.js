@@ -1,6 +1,6 @@
 import { imagePlatforms } from "./imagePlatforms.js";
 import { playerName } from "./mainMenu.js";
-import { showModal } from "./modal.js";
+import { showModal } from "./gameSummaryModal.js";
 import { objects } from "./objects.js";
 import { sprites } from "./sprites.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";

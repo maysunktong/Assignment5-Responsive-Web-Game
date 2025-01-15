@@ -1,5 +1,8 @@
 import { init } from "./gameplay.js";
 import { drawScoreboard } from "./scoreboard.js";
+import { playerScore } from "./gameplay.js";
+import { playerName } from "./mainMenu.js";
+
 const modalOverlay = document.querySelector(".modal-overlay");
 const retryButton = document.querySelector(".retry-button");
 const gameCanvas = document.getElementById("game-canvas");
@@ -13,14 +16,10 @@ export function showModal(status) {
   if (modalMessage) {
     if (status === "win") {
       modalMessage.textContent = "Congratulations! You won!";
-      modalMessage.style.color = "green"; // Optional: set color for win
     } else {
       modalMessage.textContent = "Oh no! You lost.";
-      modalMessage.style.color = "red"; // Optional: set color for lose
     }
   }
-
-
 }
 
 function retry() {
