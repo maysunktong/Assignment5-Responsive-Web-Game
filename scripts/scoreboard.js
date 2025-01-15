@@ -14,7 +14,7 @@ const modalScoreboardOverlay = document.querySelector(
 // Local storage for scoreboard
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
-const saveScoreboard = () => {
+export const saveScoreboard = () => {
   localStorage.setItem("scoreboard", JSON.stringify(scoreLocalStorage));
 };
 
