@@ -10,7 +10,6 @@ export const saveScoreboard = () => {
 
 const addPlayerScore = (name, score) => {
   const existingPlayer = scoreLocalStorage.find((entry) => entry.name === name);
-
   if (existingPlayer) {
     if (existingPlayer.score < score) {
       existingPlayer.score = score;
@@ -20,7 +19,6 @@ const addPlayerScore = (name, score) => {
     scoreLocalStorage.push({ name, score, date: new Date().toISOString() });
   }
   scoreLocalStorage.sort((a, b) => b.score - a.score);
-
   saveScoreboard();
 };
 
