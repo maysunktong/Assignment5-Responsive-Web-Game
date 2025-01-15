@@ -24,9 +24,10 @@ const addPlayerScore = (name, score) => {
   if (existingPlayer) {
     if (existingPlayer.score < score) {
       existingPlayer.score = score;
+      existingPlayer.date = new Date().toISOString();
     }
   } else {
-    scoreLocalStorage.push({ name, score });
+    scoreLocalStorage.push({ name, score, date: new Date().toISOString() });
   }
   scoreLocalStorage.sort((a, b) => b.score - a.score);
 
@@ -63,7 +64,10 @@ export const drawScoreboard = () => {
 
   scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
     const listItem = document.createElement("li");
-    listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
+    const formattedDate = new Date(entry.date).toLocaleDateString(); // Format the date
+    listItem.innerText = `${index + 1}. ${entry.name}: ${
+      entry.score
+    } --- (Date: ${formattedDate})`;
     scoreList.appendChild(listItem);
   });
 
