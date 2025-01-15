@@ -61,17 +61,11 @@ export const drawScoreboard = () => {
 
   addPlayerScore(playerName, playerScore);
 
-  if (scoreLocalStorage.length === 0) {
-    const placeholder = document.createElement("li");
-    placeholder.innerText = "No scores recorded.";
-    scoreList.appendChild(placeholder);
-  } else {
-    scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
-      const listItem = document.createElement("li");
-      listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
-      scoreList.appendChild(listItem);
-    });
-  }
+  scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
+    const listItem = document.createElement("li");
+    listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
+    scoreList.appendChild(listItem);
+  });
 
   if (!scoreboard) {
     console.error("Scoreboard container not found!");
