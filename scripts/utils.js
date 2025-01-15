@@ -48,5 +48,9 @@ export function createBlock({ object, platform }) {
 }
 
 export const toggleVisibility = (element, isVisible) => {
-  element.style.display = isVisible ? "block" : "none";
+  if (isVisible) {
+    $(element).show();
+  } else {
+    $(element).hide();
+  }
 };

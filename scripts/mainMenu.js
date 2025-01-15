@@ -1,66 +1,52 @@
 import { animate, init } from "./gameplay.js";
 import { drawScoreboard } from "./scoreboard.js";
-import { toggleVisibility } from './utils.js';
-
-const startGameButton = document.querySelector(".play-button");
-const mainMenu = document.getElementById("main-menu");
-const gameCanvas = document.getElementById("game-canvas");
-const playerNameInput = document.getElementById("player-name");
-const viewScoreboardButton = document.querySelector(".scoreboard-button");
-const scoreboard = document.getElementById("scoreboard");
-const errorInputMessage = document.querySelector(".error-input-message");
-const viewCreditsButton = document.querySelector(".credits-button");
-const creditsPanel = document.querySelector(".modal-credits-overlay");
-const closeCreditsButton = document.querySelector(".credits-close-button");
+import { toggleVisibility } from "./utils.js";
 
 const LETTER_REGEX = /^[a-zæøåäöÆØÅÄÖ]+$/i;
 
 const handleGameStart = () => {
-  const enteredName = playerNameInput.value.trim();
-
+  const enteredName = $.trim($("#player-name").val());
   if (enteredName === "") {
-    errorInputMessage.textContent = "Please input your name.";
+    $(".error-input-message").text("Please input your name.");
     return;
   }
 
   if (!LETTER_REGEX.test(enteredName)) {
-    errorInputMessage.textContent = "Your name should only contain letters.";
+    $(".error-input-message").text("Your name should only contain letters.");
     return;
   }
 
   playerName = enteredName;
 
-  toggleVisibility(mainMenu, false);
-  toggleVisibility(gameCanvas, true);
+  toggleVisibility("#main-menu", false);
+  toggleVisibility("#game-canvas", true);
   init();
   animate();
 };
 
-
-
 const showCreditsPanel = () => {
-  toggleVisibility(creditsPanel, true);
+  toggleVisibility(".modal-credits-overlay", true);
 };
 
 const closeCreditsPanel = () => {
-  toggleVisibility(creditsPanel, false);
+  toggleVisibility(".modal-credits-overlay", false);
 };
 
 const showScoreboard = () => {
-  toggleVisibility(scoreboard, true);
+  toggleVisibility("#scoreboard", true);
   drawScoreboard();
 };
 
-startGameButton.addEventListener("click", handleGameStart);
+$(".play-button").on("click", handleGameStart);
 
-playerNameInput.addEventListener("keydown", (event) => {
+$("#player-name").on("keydown", (event) => {
   if (event.key === "Enter") {
     handleGameStart();
   }
 });
 
-viewCreditsButton.addEventListener("click", showCreditsPanel);
-closeCreditsButton.addEventListener("click", closeCreditsPanel);
-viewScoreboardButton.addEventListener("click", showScoreboard);
+$(".credits-button").on("click", showCreditsPanel);
+$(".credits-close-button").on("click", closeCreditsPanel);
+$(".scoreboard-button").on("click", showScoreboard);
 
 export let playerName = "";
