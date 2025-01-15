@@ -2,16 +2,6 @@ import { playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
 import { toggleVisibility } from "./utils.js";
 
-const scoreboard = document.getElementById("scoreboard");
-const clearScoreButton = document.querySelector(".clear-score-button");
-const closeScoreboardButton = document.querySelector(
-  ".scoreboard-close-button"
-);
-const modalScoreboardOverlay = document.querySelector(
-  ".modal-scoreboard-overlay"
-);
-
-// Local storage for scoreboard
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
 export const saveScoreboard = () => {
@@ -37,7 +27,6 @@ const addPlayerScore = (name, score) => {
 const clearScoreboard = () => {
   localStorage.removeItem("scoreboard");
   scoreLocalStorage = [];
-  console.log("Scoreboard cleared!");
   drawScoreboard();
 };
 
@@ -45,33 +34,33 @@ const closeScoreboardPanel = () => {
   window.location.href = "/index.html";
 };
 
-clearScoreButton.addEventListener("click", clearScoreboard);
-closeScoreboardButton.addEventListener("click", closeScoreboardPanel);
+$(".clear-score-button").on("click", clearScoreboard);
+$(".scoreboard-close-button").on("click", closeScoreboardPanel);
 
 // executing scoreboard
 export const drawScoreboard = () => {
-  toggleVisibility(modalScoreboardOverlay, true);
-  scoreboard.innerHTML = "";
+  const $scoreboard = $("#scoreboard");
+  $scoreboard.empty();
+  
+  toggleVisibility(".modal-scoreboard-overlay", true);
 
-  const scoreboardText = document.createElement("h2");
-  const scoreList = document.createElement("ul");
+  const $scoreboardText = $("<h2>").text("Your top 5 best scores");
+  const $scoreList = $("<ul>");
 
-  scoreboardText.innerText = "Your top 5 best scores";
-  scoreboard.appendChild(scoreboardText);
-  scoreboard.appendChild(scoreList);
+  $scoreboard.append($scoreboardText);
+  $scoreboard.append($scoreList);
 
   addPlayerScore(playerName, playerScore);
 
   scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
-    const listItem = document.createElement("li");
-    const formattedDate = new Date(entry.date).toLocaleDateString(); // Format the date
-    listItem.innerText = `${index + 1}. ${entry.name}: ${
-      entry.score
-    } --- (Date: ${formattedDate})`;
-    scoreList.appendChild(listItem);
+    const formattedDate = new Date(entry.date).toLocaleDateString();
+    const $listItem = $("<li>").text(
+      `${index + 1}. ${entry.name}: ${entry.score} --- (Date: ${formattedDate})`
+    );
+    $scoreList.append($listItem);
   });
 
-  if (!scoreboard) {
+  if ($scoreboard.length === 0) {
     console.error("Scoreboard container not found!");
     return;
   }
