@@ -1547,12 +1547,9 @@ export const animate = () => {
   playerScore = player.score;
 
   // score counting
-  ctx.font = "30px Arial";
+  ctx.font = "40px 'Jersey 20', Arial";
   ctx.fillStyle = "white";
   ctx.fillText(`Score: ${player.score}`, canvas.width - 200, 50);
-
-  ctx.font = "30px Arial";
-  ctx.fillStyle = "white";
   ctx.fillText(`Player: ${playerName}`, 50, 50);
 
   genericObjects.forEach((genericObject) => {
