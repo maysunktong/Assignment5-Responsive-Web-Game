@@ -1,6 +1,7 @@
 import { init, playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
 import { drawScoreboard } from "./scoreboard.js";
+import { toggleVisibility } from "./utils.js";
 
 const modalOverlay = document.querySelector(".modal-overlay");
 const retryButton = document.querySelector(".retry-button");
@@ -11,8 +12,8 @@ const totalScore = document.querySelector(".total-score");
 const gameSummaryContainer = document.querySelector(".game-summary");
 
 export function showModal(status) {
-  modalOverlay.style.display = "block";
-  gameCanvas.style.display = "block";
+  toggleVisibility(modalOverlay, true);
+  toggleVisibility(gameCanvas, true);
 
   if (modalMessage) {
     if (status === "win") {
@@ -28,8 +29,8 @@ export function showModal(status) {
 }
 
 function retry() {
-  modalOverlay.style.display = "none";
-  gameCanvas.style.display = "block";
+  toggleVisibility(modalOverlay, false);
+  toggleVisibility(gameCanvas, true);
   init();
 }
 
