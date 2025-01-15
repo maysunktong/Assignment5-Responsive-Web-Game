@@ -7,21 +7,6 @@ const swordsManRunRight = "../assets/sprites/Swordsman/Run.png";
 const swordsManJumpLeft = "../assets/sprites/Swordsman/left/Jump_left.png";
 const swordsManJumpRight = "../assets/sprites/Swordsman/Jump.png";
 
-const wizardIdleRight = "../assets/sprites/Wizard/Idle.png";
-const wizardIdleLeft = "../assets/sprites/Wizard/left/Idle_left.png";
-const wizardRunLeft = "../assets/sprites/Wizard/left/Run_left.png";
-const wizardRunRight = "../assets/sprites/Wizard/Run.png";
-
-const musketeerIdleRight = "../assets/sprites/Musketeer/Idle.png";
-const musketeerIdleLeft = "../assets/sprites/Musketeer/left/Idle_left.png";
-const musketeerRunLeft = "../assets/sprites/Musketeer/left/Run_left.png";
-const musketeerRunRight = "../assets/sprites/Musketeer/Run.png";
-
-const archerIdleRight = "../assets/sprites/Archer/Idle.png";
-const archerIdleLeft = "../assets/sprites/Archer/left/Idle_left.png";
-const archerRunLeft = "../assets/sprites/Archer/left/Run_left.png";
-const archerRunRight = "../assets/sprites/Archer/Run.png";
-
 const blackWolfWalkLeft = "../assets/sprites/Werewolf/walk_left.png";
 const blackWolfWalkRight = "../assets/sprites/Werewolf/walk_right.png";
 
@@ -49,39 +34,6 @@ export const sprites = {
       right: createImage(swordsManJumpRight),
       left: createImage(swordsManJumpLeft),
     },
-  },
-  wizard: {
-    idle: {
-      right: createImage(wizardIdleRight),
-      left: createImage(wizardIdleLeft),
-    },
-    run: {
-      right: createImage(wizardRunRight),
-      left: createImage(wizardRunLeft),
-    },
-    jump: {},
-  },
-  musketeer: {
-    idle: {
-      right: createImage(musketeerIdleRight),
-      left: createImage(musketeerIdleLeft),
-    },
-    run: {
-      right: createImage(musketeerRunRight),
-      left: createImage(musketeerRunLeft),
-    },
-    jump: {},
-  },
-  archer: {
-    idle: {
-      right: createImage(archerIdleRight),
-      left: createImage(archerIdleLeft),
-    },
-    run: {
-      right: createImage(archerRunRight),
-      left: createImage(archerRunLeft),
-    },
-    jump: {},
   },
   werewolf: {
     walk: {
