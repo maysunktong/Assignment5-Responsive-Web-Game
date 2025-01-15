@@ -4,7 +4,6 @@ import { playerName } from "./mainMenu.js";
 import { objects } from "./objects.js";
 import { sprites } from "./sprites.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";
-const gameCanvas = document.getElementById("game-canvas");
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
