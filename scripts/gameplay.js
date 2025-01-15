@@ -1,6 +1,6 @@
+import { showModal } from "./gameSummaryModal.js";
 import { imagePlatforms } from "./imagePlatforms.js";
 import { playerName } from "./mainMenu.js";
-import { showModal } from "./gameSummaryModal.js";
 import { objects } from "./objects.js";
 import { sprites } from "./sprites.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";
@@ -1751,7 +1751,7 @@ export const animate = () => {
 
   // WIN condition
   if (scrollOffset > 19500) {
-    player.position.x = scrollOffset;
+    player.speed = 0;
     showModal("win");
   }
 
