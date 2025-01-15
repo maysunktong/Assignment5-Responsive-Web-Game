@@ -1,15 +1,17 @@
 import { playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
-import { toggleVisibility } from './utils.js';
+import { toggleVisibility } from "./utils.js";
 
-const modalScoreboardOverlay = document.querySelector(
-  ".modal-scoreboard-overlay"
-);
+const scoreboard = document.getElementById("scoreboard");
 const clearScoreButton = document.querySelector(".clear-score-button");
 const closeScoreboardButton = document.querySelector(
   ".scoreboard-close-button"
 );
+const modalScoreboardOverlay = document.querySelector(
+  ".modal-scoreboard-overlay"
+);
 
+// Local storage for scoreboard
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
 const saveScoreboard = () => {
@@ -38,51 +40,41 @@ const clearScoreboard = () => {
   drawScoreboard();
 };
 
-export const drawScoreboard = () => {
-  toggleVisibility(modalScoreboardOverlay, true)
+const closeScoreboardPanel = () => {
+  window.location.href = "/index.html";
+};
 
-  const scoreboard = document.getElementById("scoreboard");
+clearScoreButton.addEventListener("click", clearScoreboard);
+closeScoreboardButton.addEventListener("click", closeScoreboardPanel);
+
+// executing scoreboard
+export const drawScoreboard = () => {
+  toggleVisibility(modalScoreboardOverlay, true);
+  scoreboard.innerHTML = "";
+
+  const scoreboardText = document.createElement("h2");
+  const scoreList = document.createElement("ul");
+
+  scoreboardText.innerText = "Your top 5 best scores";
+  scoreboard.appendChild(scoreboardText);
+  scoreboard.appendChild(scoreList);
+
+  addPlayerScore(playerName, playerScore);
+
+  if (scoreLocalStorage.length === 0) {
+    const placeholder = document.createElement("li");
+    placeholder.innerText = "No scores recorded.";
+    scoreList.appendChild(placeholder);
+  } else {
+    scoreLocalStorage.slice(0, 5).forEach((entry, index) => {
+      const listItem = document.createElement("li");
+      listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
+      scoreList.appendChild(listItem);
+    });
+  }
 
   if (!scoreboard) {
     console.error("Scoreboard container not found!");
     return;
   }
-
-  scoreboard.innerHTML = "";
-
-  // const clearScoreButton = document.createElement("button");
-  // const closeScoreboardButton = document.createElement("button");
-  const scoreboardText = document.createElement("h2");
-  const scoreList = document.createElement("ul");
-
-  // closeScoreboardButton.innerText = "Close";
-  // clearScoreButton.innerText = "Clear score";
-  scoreboardText.innerText = "Scoreboard:";
-
-  addPlayerScore(playerName, playerScore);
-
-  scoreLocalStorage.slice(0, 100).forEach((entry, index) => {
-    const listItem = document.createElement("li");
-    listItem.innerText = `${index + 1}. ${entry.name}: ${entry.score}`;
-    scoreList.appendChild(listItem);
-  });
-
-  // scoreboard.appendChild(closeScoreboardButton);
-  // scoreboard.appendChild(clearScoreButton);
-  scoreboard.appendChild(scoreboardText);
-  scoreboard.appendChild(scoreList);
-
-  // function hideModal() {
-  //   scoreboard.style.display = "none";
-  //   window.location.href = "/index.html";
-  // }
-
-  const closeScoreboardPanel = () => {
-    window.location.href = "/index.html";
-  };
-
-  clearScoreButton.addEventListener("click", () => {
-    clearScoreboard();
-  });
-  closeScoreboardButton.addEventListener("click", closeScoreboardPanel);
 };
