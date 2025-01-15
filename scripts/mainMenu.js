@@ -49,4 +49,5 @@ $(".credits-button").on("click", showCreditsPanel);
 $(".credits-close-button").on("click", closeCreditsPanel);
 $(".scoreboard-button").on("click", showScoreboard);
 
+// export name to use in gameplay
 export let playerName = "";
