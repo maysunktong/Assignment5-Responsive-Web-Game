@@ -1,22 +1,19 @@
 import { animate, init } from "./gameplay.js";
 import { drawScoreboard } from "./scoreboard.js";
+import { toggleVisibility } from './utils.js';
 
-const startGameButton = document.getElementById("play-button");
+const startGameButton = document.querySelector(".play-button");
 const mainMenu = document.getElementById("main-menu");
 const gameCanvas = document.getElementById("game-canvas");
 const playerNameInput = document.getElementById("player-name");
-const viewScoreboardButton = document.getElementById("scoreboard-button");
+const viewScoreboardButton = document.querySelector(".scoreboard-button");
 const scoreboard = document.getElementById("scoreboard");
 const errorInputMessage = document.querySelector(".error-input-message");
-const viewCreditsButton = document.getElementById("credits-button");
+const viewCreditsButton = document.querySelector(".credits-button");
 const creditsPanel = document.querySelector(".modal-credits-overlay");
 const closeCreditsButton = document.querySelector(".credits-close-button");
 
 const LETTER_REGEX = /^[a-zæøåäöÆØÅÄÖ]+$/i;
-
-const toggleVisibility = (element, isVisible) => {
-  element.style.display = isVisible ? "block" : "none";
-};
 
 const handleGameStart = () => {
   const enteredName = playerNameInput.value.trim();
@@ -39,15 +36,7 @@ const handleGameStart = () => {
   animate();
 };
 
-export let playerName = "";
 
-startGameButton.addEventListener("click", handleGameStart);
-
-playerNameInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    handleGameStart();
-  }
-});
 
 const showCreditsPanel = () => {
   toggleVisibility(creditsPanel, true);
@@ -59,10 +48,19 @@ const closeCreditsPanel = () => {
 
 const showScoreboard = () => {
   toggleVisibility(scoreboard, true);
-
   drawScoreboard();
 };
+
+startGameButton.addEventListener("click", handleGameStart);
+
+playerNameInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    handleGameStart();
+  }
+});
 
 viewCreditsButton.addEventListener("click", showCreditsPanel);
 closeCreditsButton.addEventListener("click", closeCreditsPanel);
 viewScoreboardButton.addEventListener("click", showScoreboard);
+
+export let playerName = "";

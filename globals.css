@@ -112,8 +112,8 @@ button:hover {
 
 .modal {
   color: white;
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 60%;
   margin: auto;
   text-align: center;
   background-color: pink;
@@ -141,6 +141,11 @@ button:hover {
   justify-content: center;
   align-items: center;
   z-index: 2;
+}
+
+.game-summary-modal {
+  width: 30%;
+  height: 30%;
 }
 
 @media (max-width: 820px) {

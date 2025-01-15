@@ -46,3 +46,7 @@ export function createBlock({ object, platform }) {
       platform.position.x + platform.width
   );
 }
+
+export const toggleVisibility = (element, isVisible) => {
+  element.style.display = isVisible ? "block" : "none";
+};

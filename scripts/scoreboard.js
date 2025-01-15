@@ -1,5 +1,6 @@
 import { playerScore } from "./gameplay.js";
 import { playerName } from "./mainMenu.js";
+import { toggleVisibility } from './utils.js';
 
 const modalScoreboardOverlay = document.querySelector(
   ".modal-scoreboard-overlay"
@@ -38,7 +39,7 @@ const clearScoreboard = () => {
 };
 
 export const drawScoreboard = () => {
-  modalScoreboardOverlay.style.display = "block";
+  toggleVisibility(modalScoreboardOverlay, true)
 
   const scoreboard = document.getElementById("scoreboard");
 
