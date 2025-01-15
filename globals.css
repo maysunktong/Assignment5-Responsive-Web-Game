@@ -39,7 +39,7 @@ body {
   flex-direction: column;
 }
 
-.main-button-wrapper{
+.main-button-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +102,6 @@ button:hover {
   color: white;
   text-align: center;
   padding: 20px;
-  position: fixed;
   z-index: 3;
 }
 
@@ -113,8 +112,8 @@ button:hover {
 
 .modal {
   color: white;
-  width: 500px;
-  height: 200px;
+  width: 80%;
+  height: 80%;
   margin: auto;
   text-align: center;
   background-color: pink;
@@ -123,6 +122,10 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .modal-overlay,
@@ -220,7 +223,7 @@ button:hover {
     padding: 10px;
   }
 
-  .main-button-wrapper{
+  .main-button-wrapper {
     flex-direction: row;
     gap: 12px;
   }

@@ -11,9 +11,6 @@ const errorInputMessage = document.querySelector(".error-input-message");
 const viewCreditsButton = document.getElementById("credits-button");
 const creditsPanel = document.querySelector(".modal-credits-overlay");
 const closeCreditsButton = document.querySelector(".credits-close-button");
-const closeScoreboardButton = document.querySelector(
-  ".scoreboard-close-button"
-);
 
 const LETTER_REGEX = /^[a-zæøåäöÆØÅÄÖ]+$/i;
 
@@ -66,12 +63,6 @@ const showScoreboard = () => {
   drawScoreboard();
 };
 
-const closeScoreboardPanel = () => {
-  window.location.href = "/index.html";
-};
-
 viewCreditsButton.addEventListener("click", showCreditsPanel);
 closeCreditsButton.addEventListener("click", closeCreditsPanel);
-
 viewScoreboardButton.addEventListener("click", showScoreboard);
-closeScoreboardButton.addEventListener("click", closeScoreboardPanel);

@@ -5,6 +5,9 @@ const modalScoreboardOverlay = document.querySelector(
   ".modal-scoreboard-overlay"
 );
 const clearScoreButton = document.querySelector(".clear-score-button");
+const closeScoreboardButton = document.querySelector(
+  ".scoreboard-close-button"
+);
 
 let scoreLocalStorage = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
@@ -55,10 +58,6 @@ export const drawScoreboard = () => {
   // clearScoreButton.innerText = "Clear score";
   scoreboardText.innerText = "Scoreboard:";
 
-  clearScoreButton.addEventListener("click", () => {
-    clearScoreboard();
-  });
-
   addPlayerScore(playerName, playerScore);
 
   scoreLocalStorage.slice(0, 100).forEach((entry, index) => {
@@ -77,4 +76,12 @@ export const drawScoreboard = () => {
   //   window.location.href = "/index.html";
   // }
 
+  const closeScoreboardPanel = () => {
+    window.location.href = "/index.html";
+  };
+
+  clearScoreButton.addEventListener("click", () => {
+    clearScoreboard();
+  });
+  closeScoreboardButton.addEventListener("click", closeScoreboardPanel);
 };
