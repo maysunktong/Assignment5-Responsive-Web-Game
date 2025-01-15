@@ -26,7 +26,7 @@ class Player {
       x: 0,
       y: 0,
     };
-    this.speed = 5;
+    this.speed = 4;
 
     this.image = sprites.swordsman.idle.right;
     this.currentSprite = sprites.swordsman.idle.right;

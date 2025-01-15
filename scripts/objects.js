@@ -5,7 +5,6 @@ const collectibleDiamonds = "../assets/sprites/collectibles/diamonds.png";
 const collectibleGreenRunes = "../assets/sprites/collectibles/greenRunes.png";
 const collectibleRedRunes = "../assets/sprites/collectibles/redRunes.png";
 const collectibleRuby = "../assets/sprites/collectibles/ruby.png";
-const collectibleStars = "../assets/sprites/collectibles/stars.png";
 
 const bgForest = "../assets/images/backgrounds/bg_forest.png";
 const bgNight = "../assets/images/backgrounds/bg_night.png";
