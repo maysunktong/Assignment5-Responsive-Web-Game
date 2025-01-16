@@ -1549,6 +1549,7 @@ export const animate = () => {
   ctx.font = "40px 'Jersey 20', Arial";
   ctx.fillStyle = "white";
   ctx.fillText(`Score: ${player.score}`, canvas.width - 200, 50);
+  ctx.fillText(`Use Escape to exit game`, canvas.width/2-200,50);
   ctx.fillText(`Player: ${playerName}`, 50, 50);
 
   genericObjects.forEach((genericObject) => {
@@ -1779,6 +1780,9 @@ addEventListener("keydown", (event) => {
     case "KeyD":
       keys.right.pressed = true;
       lastKey = "right";
+      break;
+    case "Escape":
+      window.location.href = "/index.html";
       break;
   }
 });
