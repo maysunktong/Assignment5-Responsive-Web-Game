@@ -20,6 +20,7 @@
     <script src="./scripts/mainMenu.js" type="module" defer></script>
     <script src="./scripts/scoreboard.js" type="module" defer></script>
     <script src="./scripts/gameSummaryModal.js" type="module" defer></script>
+    <script src="./scripts/howtoplay.js" type="module" defer></script>
     <!-- css & favicon -->
     <link rel="stylesheet" href="./globals.css" />
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png" />
@@ -56,6 +57,50 @@
     <div class="modal-howtoplay-overlay">
       <div class="modal modal-howtoplay">
         <div class="howtoplay-title">How to play</div>
+        <div class="slideshow-container">
+          <div class="slide">
+            <img
+              src="./assets/images/how-to-play/control.png"
+              alt="slide1-control"
+            />
+            <span class="how-to-play-text"
+              >Pres D to walk to right, press A to walk to left, and press W to jump</span
+            >
+          </div>
+          <div class="slide">
+            <img
+              src="./assets/images/how-to-play/stomping.png"
+              alt="slide2-jumping"
+            />
+            <span class="how-to-play-text"
+              >Press jump to stomp on enemy</span
+            >
+          </div>
+          <div class="slide">
+            <img
+              src="./assets/images/how-to-play/collectibles.png"
+              alt="slide3-collectibles"
+            /><span class="how-to-play-text"
+              >Collect valuable coins</span
+            >
+          </div>
+          <div class="controls">
+            <div class="control prev">
+              <img
+                src="./assets/images/how-to-play/Arrows/chevron-left.svg"
+                width="50"
+                alt="left-arrow"
+              />
+            </div>
+            <div class="control next">
+              <img
+                src="./assets/images/how-to-play/Arrows/chevron-right.svg"
+                width="50"
+                alt="right-arrow"
+              />
+            </div>
+          </div>
+        </div>
         <button class="howtoplay-close-button">Close</button>
       </div>
     </div>
