@@ -28,13 +28,21 @@ const showCreditsPanel = () => {
   toggleVisibility(".modal-credits-overlay", true);
 };
 
-const closeCreditsPanel = () => {
-  toggleVisibility(".modal-credits-overlay", false);
+const showHowToPlayPanel = () => {
+  toggleVisibility(".modal-howtoplay-overlay", true);
 };
 
 const showScoreboard = () => {
   toggleVisibility("#scoreboard", true);
   drawScoreboard();
+};
+
+const closeCreditsPanel = () => {
+  toggleVisibility(".modal-credits-overlay", false);
+};
+
+const closeHowToPlayPanel = () => {
+  toggleVisibility(".modal-howtoplay-overlay", false);
 };
 
 $(".play-button").on("click", handleGameStart);
@@ -45,9 +53,12 @@ $("#player-name").on("keydown", (event) => {
   }
 });
 
-$(".credits-button").on("click", showCreditsPanel);
-$(".credits-close-button").on("click", closeCreditsPanel);
 $(".scoreboard-button").on("click", showScoreboard);
+$(".howtoplay-button").on("click", showHowToPlayPanel);
+$(".credits-button").on("click", showCreditsPanel);
+
+$(".credits-close-button").on("click", closeCreditsPanel);
+$(".howtoplay-close-button").on("click", closeHowToPlayPanel);
 
 // export name to use in gameplay
 export let playerName = "";
