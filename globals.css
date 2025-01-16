@@ -214,6 +214,16 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+}
+
+a:hover {
+  color: #c0392b;
+}
+
 /* slideshow - how to play */
 .slideshow-container {
   width: 100%;
