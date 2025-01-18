@@ -8,7 +8,7 @@ import { collisionTop, createBlock, isOnTop } from "./utils.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 1280;
+canvas.width = window.innerWidth;
 canvas.height = 720;
 
 let gravity = 0.5;
@@ -26,7 +26,8 @@ class Player {
       x: 0,
       y: 0,
     };
-    this.speed = 8;
+    this.speed = 8
+    ;
 
     this.image = sprites.swordsman.idle.right;
     this.currentSprite = sprites.swordsman.idle.right;
