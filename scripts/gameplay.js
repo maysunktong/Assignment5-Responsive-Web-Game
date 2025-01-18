@@ -26,8 +26,7 @@ class Player {
       x: 0,
       y: 0,
     };
-    this.speed = 8
-    ;
+    this.speed = 8;
 
     this.image = sprites.swordsman.idle.right;
     this.currentSprite = sprites.swordsman.idle.right;
@@ -1550,7 +1549,7 @@ export const animate = () => {
   ctx.font = "40px 'Jersey 20', Arial";
   ctx.fillStyle = "white";
   ctx.fillText(`Score: ${player.score}`, canvas.width - 200, 50);
-  ctx.fillText(`Use Escape to exit game`, canvas.width/2-200,50);
+  ctx.fillText(`Use Escape to exit game`, canvas.width / 2 - 200, 50);
   ctx.fillText(`Player: ${playerName}`, 50, 50);
 
   genericObjects.forEach((genericObject) => {
