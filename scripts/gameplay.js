@@ -1,6 +1,6 @@
 import { showModal } from "./gameSummaryModal.js";
 import { imagePlatforms } from "./imagePlatforms.js";
-import { playerName } from "./mainMenu.js";
+import { handleGameStart, playerName } from "./mainMenu.js";
 import { objects } from "./objects.js";
 import { sprites } from "./sprites.js";
 import { collisionTop, createBlock, isOnTop } from "./utils.js";
@@ -1546,7 +1546,7 @@ export const animate = () => {
   playerScore = player.score;
 
   // score counting
-  ctx.font = "40px 'Jersey 20', Arial";
+  ctx.font = "30px 'Jersey 20', Arial";
   ctx.fillStyle = "white";
   ctx.fillText(`Score: ${player.score}`, canvas.width - 200, 50);
   ctx.fillText(`Use Escape to exit game`, canvas.width / 2 - 200, 50);
@@ -1783,6 +1783,7 @@ addEventListener("keydown", (event) => {
       break;
     case "Escape":
       window.location.href = "/index.html";
+      handleGameStart();
       break;
   }
 });

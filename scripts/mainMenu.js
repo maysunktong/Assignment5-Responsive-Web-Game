@@ -4,7 +4,7 @@ import { toggleVisibility } from "./utils.js";
 
 const LETTER_REGEX = /^[a-zæøåäöÆØÅÄÖ]+$/i;
 
-const handleGameStart = () => {
+export const handleGameStart = () => {
   const enteredName = $.trim($("#player-name").val());
   if (enteredName === "") {
     $(".error-input-message").text("Please input your name.");
