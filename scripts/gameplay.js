@@ -8,7 +8,7 @@ import { collisionTop, createBlock, isOnTop } from "./utils.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
+canvas.width = 1280;
 canvas.height = 720;
 
 let gravity = 0.5;
