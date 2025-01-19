@@ -1597,6 +1597,7 @@ export const animate = () => {
       // die when touch enemy
       player.position.y = 500;
       showModal();
+      return;
     }
   });
 
@@ -1750,11 +1751,13 @@ export const animate = () => {
   if (scrollOffset > 19500) {
     player.speed = 0;
     showModal("win");
+    return;
   }
 
   // LOSE condition: death pits
-  if (player.position.y > canvas.width) {
+  if (player.position.y > canvas.height) {
     showModal();
+    return;
   }
 };
 

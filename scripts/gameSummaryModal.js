@@ -17,6 +17,7 @@ export function showModal(status) {
       $(".total-score").text(`Score is ${playerScore}`);
       $(".game-summary").addClass("game-summary-lose");
     }
+    return;
   }
 }
 
